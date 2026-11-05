@@ -1,0 +1,19 @@
+{
+  "name": "IndiaMate",
+  "short_name": "IndiaMate",
+  "description": "आपके हर काम का साथी",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f1f5fb",
+  "theme_color": "#155eef",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
