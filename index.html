@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IndiaMate</title>
+<style>
+body{margin:0;font-family:Arial;background:#f1f5fb;color:#172033}
+header{background:#155eef;color:white;padding:22px;border-radius:0 0 22px 22px}
+h1{margin:0}main{padding:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{border:0;border-radius:13px;padding:17px;background:white;font-size:16px;box-shadow:0 2px 8px #0001}
+#box{background:white;margin-top:18px;padding:16px;border-radius:15px}
+input,textarea{padding:12px;margin:5px 0;width:90%;border:1px solid #bbb;border-radius:8px}
+.action{background:#155eef;color:white}
+</style>
+</head>
+<body>
+<header><h1>🇮🇳 IndiaMate</h1><p>आपके हर काम का साथी</p></header>
+<main>
+<h2>नमस्ते! 👋</h2>
+<p>आज आप क्या करना चाहते हैं?</p>
+<div class="grid">
+<button onclick="show('calc')">🧮<br>Calculator</button>
+<button onclick="show('notes')">📝<br>Notes</button>
+<button onclick="show('expense')">💰<br>खर्चा</button>
+<button onclick="show('tasks')">✅<br>कामों की लिस्ट</button>
+<button onclick="show('timer')">⏱️<br>Timer</button>
+<button onclick="show('study')">📚<br>Study Planner</button>
+<button onclick="show('contact')">📸<br>Contact Owner</button>
+</div>
+<div id="box">ऊपर किसी फीचर पर क्लिक करें।</div>
+</main>
+<script>
+const box=document.getElementById('box');
+function show(x){
+if(x==='calc')box.innerHTML='<h2>Calculator</h2><input id="a" type="number" placeholder="पहली संख्या"><input id="b" type="number" placeholder="दूसरी संख्या"><button class="action" onclick="box.querySelector(\'p\').innerText=Number(a.value)+Number(b.value)">जोड़ें (+)</button><p></p>';
+if(x==='notes')box.innerHTML='<h2>मेरे Notes</h2><textarea id="n" placeholder="नोट लिखें"></textarea><button class="action" onclick="localStorage.setItem(\'notes\',n.value);alert(\'सेव हो गया\')">Save</button><p>'+ (localStorage.getItem('notes')||'')+'</p>';
+if(x==='expense')box.innerHTML='<h2>खर्च का हिसाब</h2><input id="amount" type="number" placeholder="रुपये"><button class="action" onclick="let t=Number(localStorage.getItem(\'spent\')||0)+Number(amount.value);localStorage.setItem(\'spent\',t);total.innerText=\'कुल खर्च: ₹\'+t">जोड़ें</button><p id="total">कुल खर्च: ₹'+(localStorage.getItem('spent')||0)+'</p>';
+if(x==='tasks')box.innerHTML='<h2>कामों की लिस्ट</h2><input id="task" placeholder="काम लिखें"><button class="action" onclick="let a=JSON.parse(localStorage.getItem(\'tasks\')||\'[]\');a.push(task.value);localStorage.setItem(\'tasks\',JSON.stringify(a));list.innerHTML=a.map(v=>\'<p>✓ \'+v+\'</p>\').join(\'\')">जोड़ें</button><div id="list"></div>';
+if(x==='timer')box.innerHTML='<h2>Timer</h2><input id="seconds" type="number" placeholder="सेकंड"><button class="action" onclick="let s=Number(seconds.value);let t=setInterval(()=>{clock.innerText=s+\' सेकंड बाकी\';if(--s<0){clearInterval(t);clock.innerText=\'समय पूरा!\'}},1000)">शुरू करें</button><p id="clock"></p>';
+if(x==='study')box.innerHTML='<h2>Study Planner</h2><input id="subject" placeholder="विषय"><input id="duration" placeholder="कितने मिनट"><button class="action" onclick="plan.innerText=subject.value+\' - \'+duration.value+\' मिनट\'">प्लान बनाओ</button><p id="plan"></p>';
+if(x==='contact')box.innerHTML='<h2>Contact Owner</h2><p>Instagram: @hkkumar00king</p><a href="https://instagram.com/hkkumar00king" target="_blank">Instagram पर जाएँ</a>';
+}
+</script>
+</body>
+</html>
