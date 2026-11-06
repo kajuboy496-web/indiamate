@@ -35,7 +35,6 @@ footer{text-align:center;color:#777;padding:25px}
 a{color:#155eef}
 @media(max-width:380px){.tile{font-size:16px;padding:18px 5px}}
  
-/* MOBILE CALCULATOR DESIGN */
 .mobile-calc{
  background:#101116;
  color:white;
@@ -54,14 +53,14 @@ a{color:#155eef}
  overflow:hidden;
 }
 #calcHistory{
- color:#999;
+ color:#bbbbbb !important;
  font-size:17px;
  min-height:25px;
 }
 #display{
  font-size:48px;
  font-weight:400;
- color:white;
+ color:#ffffff !important;
  overflow-wrap:anywhere;
  text-align:right;
  width:100%;
@@ -79,19 +78,19 @@ a{color:#155eef}
  padding:0;
  font-size:25px;
  background:#303137;
- color:white;
+ color:#ffffff !important;
 }
 .calc-buttons .calc-action{
  background:#a5a6aa;
- color:#171717;
+ color:#171717 !important;
 }
 .calc-buttons .calc-op{
  background:#ff9f0a;
- color:white;
+ color:white !important;
 }
 .calc-buttons .calc-equal{
  background:#ff9f0a;
- color:white;
+ color:white !important;
 }
  
 </style>
@@ -171,10 +170,10 @@ function calc(){
    </div>
 
    <div class="calc-buttons">
-     <button class="calc-action" onclick="calcClear()">AC</button>
-     <button class="calc-action" onclick="calcDelete()">⌫</button>
-     <button class="calc-action" onclick="calcKey('%')">%</button>
-     <button class="calc-op" onclick="calcKey('÷')">÷</button>
+   <button class="calc-action" onclick="calcClear()">AC</button>
+<button class="calc-action" onclick="calcDelete()">⌫</button>
+<button class="calc-action" onclick="calcKey('%')">%</button>
+<button class="calc-op" onclick="calcKey('÷')">÷</button>
 
      <button onclick="calcKey('7')">7</button>
      <button onclick="calcKey('8')">8</button>
