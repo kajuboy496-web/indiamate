@@ -2,45 +2,52 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#155eef">
 <link rel="manifest" href="./manifest.webmanifest">
 <title>IndiaMate</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f2f5fb;color:#172033;font-family:Arial,sans-serif}
-header{background:#155eef;color:white;padding:24px 18px;border-radius:0 0 24px 24px}
-header h1{margin:0;font-size:27px}header p{margin:7px 0 0}
-main{max-width:700px;margin:auto;padding:18px 14px}
+*{box-sizing:border-box}
+body{margin:0;background:#f2f5fb;color:#172033;font-family:Arial,sans-serif}
+header{background:#155eef;color:white;padding:25px 20px;border-radius:0 0 28px 28px}
+header h1{margin:0;font-size:29px}
+header p{margin:8px 0 0}
+main{max-width:720px;margin:auto;padding:18px 14px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.tile{background:white;border:0;border-radius:18px;padding:22px 8px;min-height:110px;font-size:17px;box-shadow:0 4px 15px #0001}
-.tile span{display:block;font-size:27px;margin-bottom:8px}
-.panel{background:white;border-radius:20px;padding:19px;margin-top:18px;box-shadow:0 4px 15px #0001}
-h2{font-size:23px;margin:8px 0 16px}
-input,textarea,select{width:100%;padding:14px;border:1px solid #ccd3df;border-radius:12px;margin:6px 0;font-size:16px}
-textarea{min-height:130px}
+.tile{background:white;border:0;border-radius:19px;padding:22px 7px;min-height:112px;font-size:17px;box-shadow:0 4px 15px #0001}
+.tile span{display:block;font-size:28px;margin-bottom:9px}
+.panel{background:white;border-radius:22px;padding:19px;margin-top:18px;box-shadow:0 4px 15px #0001}
+h2{font-size:24px;margin:15px 0}
+input,textarea,select{width:100%;padding:14px;border:1px solid #ccd3df;border-radius:13px;margin:7px 0;font-size:16px;background:white}
+textarea{min-height:150px;resize:vertical}
 button{cursor:pointer}
-.btn{background:#155eef;color:white;border:0;padding:12px 16px;border-radius:12px;font-size:16px;margin:5px 4px 5px 0}
-.red{background:#ffeded;color:#b42332}.light{background:#eaf0ff;color:#155eef}
-.back{background:#eaf0ff;color:#155eef;border:0;padding:10px 14px;border-radius:10px}
-.item{border:1px solid #e2e6ef;padding:12px;border-radius:13px;margin:10px 0}
-.row{display:flex;gap:8px;align-items:center}.row>*{flex:1;min-width:0}
+.btn{background:#155eef;color:white;border:0;padding:13px 17px;border-radius:12px;font-size:16px;margin:5px 3px 5px 0}
+.light{background:#eaf0ff;color:#155eef}
+.red{background:#ffeded;color:#b42332}
+.back{background:#eaf0ff;color:#155eef;border:0;padding:11px 16px;border-radius:12px}
+.item{border:1px solid #e1e6ef;padding:14px;border-radius:14px;margin:10px 0}
 .muted{color:#697386;font-size:14px}
-.total{font-size:27px;color:#155eef;font-weight:bold}
+.total{font-size:29px;font-weight:bold;color:#155eef}
 .display{background:#f3f6fc;padding:18px;text-align:right;font-size:32px;border-radius:12px;min-height:75px;overflow-wrap:anywhere}
 .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
 .keys button{padding:17px 4px;border:0;border-radius:12px;background:#edf1f8;font-size:20px}
-.keys .op{background:#e3edff;color:#155eef}.keys .eq{background:#155eef;color:white}
-.timer{font-size:43px;text-align:center;font-weight:bold;margin:18px}
-.tabs{display:flex;gap:7px;overflow:auto;margin:12px 0}
-.tabs button{white-space:nowrap;border:0;border-radius:20px;padding:10px;background:#eaf0ff;color:#155eef}
-.tabs button.active{background:#155eef;color:white}
-.lesson{line-height:1.7}.formula{background:#edf3ff;padding:13px;border-left:4px solid #155eef;border-radius:9px;margin:12px 0;font-weight:bold}
-.option{display:block;width:100%;text-align:left;padding:13px;background:white;border:1px solid #ddd;border-radius:10px;margin:8px 0}
-footer{text-align:center;color:#777;padding:20px;font-size:13px}
+.keys .op{background:#e3edff;color:#155eef}
+.keys .eq{background:#155eef;color:white}
+.timer{font-size:45px;text-align:center;font-weight:bold;margin:20px}
+.tabs{display:flex;gap:8px;overflow:auto;margin:14px 0}
+.tabs button{white-space:nowrap;border:0;border-radius:20px;padding:11px;background:#eaf0ff;color:#155eef}
+.formula{background:#edf3ff;padding:14px;border-left:4px solid #155eef;border-radius:9px;margin:12px 0;line-height:1.7}
+.note-card{background:#fff;border:1px solid #e5e9f0;padding:16px;border-radius:15px;margin:10px 0}
+.note-card h3{margin:0 0 8px}
+.option{display:block;width:100%;text-align:left;padding:14px;background:white;border:1px solid #ddd;border-radius:12px;margin:9px 0;font-size:16px}
+footer{text-align:center;color:#777;padding:25px}
 </style>
 </head>
 <body>
-<header><h1>🇮🇳 IndiaMate</h1><p>आपके हर काम का साथी</p></header>
+<header>
+<h1>🇮🇳 IndiaMate</h1>
+<p>आपके हर काम का साथी</p>
+</header>
 <main>
 <div id="home">
 <h2>नमस्ते! 👋</h2>
@@ -54,92 +61,241 @@ footer{text-align:center;color:#777;padding:20px;font-size:13px}
 <button class="tile" onclick="openPage('study')"><span>📚</span>Study Planner</button>
 <button class="tile" onclick="openPage('quiz')"><span>🎯</span>Quiz</button>
 <button class="tile" onclick="openPage('grammar')"><span>📖</span>English Grammar</button>
+<button class="tile" onclick="openPage('math')"><span>📐</span>Math Formula</button>
+<button class="tile" onclick="openPage('contact')"><span>📸</span>Contact Owner</button>
 </div>
 </div>
 <section id="screen" class="panel" hidden></section>
 </main>
 <footer>IndiaMate • आपका स्मार्ट साथी</footer>
+
 <script>
 const $=id=>document.getElementById(id);
-const get=(k,d=[])=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
-const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
-function openPage(p){$('home').hidden=true;$('screen').hidden=false;window.scrollTo(0,0);({calc,notes,expense,tasks,timer,study,quiz,grammar}[p])()}
+function get(k,d=[]){try{let x=JSON.parse(localStorage.getItem(k));return Array.isArray(x)?x:d}catch{return d}}
+function put(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function shell(title,html){$('screen').innerHTML=`<button class="back" onclick="home()">← वापस</button><h2>${title}</h2>${html}`}
+function openPage(p){$('home').hidden=true;$('screen').hidden=false;window.scrollTo(0,0);({calc,notes,expense,tasks,timer,study,quiz,grammar,math,contact}[p])()}
 function home(){if(timerId)pauseTimer();$('screen').hidden=true;$('home').hidden=false;window.scrollTo(0,0)}
-function shell(t,h){$('screen').innerHTML=`<button class="back" onclick="home()">← वापस</button><h2>${t}</h2>${h}`}
-function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 
-/* Calculator */
+/* CALCULATOR */
 let expr='';
-function calc(){shell('Calculator',`<div class="display" id="display">0</div><div class="keys">${['AC','⌫','%','÷','7','8','9','×','4','5','6','−','1','2','3','+','±','0','.','='].map(x=>`<button onclick="key('${x}')" class="${'+−×÷%'.includes(x)?'op ':''}${x==='='?'eq':''}">${x}</button>`).join('')}</div>`)}
-function key(k){let d=$('display');if(k==='AC'){expr='';d.textContent='0';return}if(k==='⌫'){expr=expr.slice(0,-1);d.textContent=expr||'0';return}if(k==='='){try{let x=expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');if(!/^[0-9+\-*/%.() ]+$/.test(x))throw 0;let n=Function('return ('+x+')')();if(!Number.isFinite(n))throw 0;expr=String(Number(n.toFixed(8)));d.textContent=expr}catch{d.textContent='गलत गणना';expr=''}return}if(k==='±'){expr=expr.startsWith('-')?expr.slice(1):'-'+expr}else expr+=k;d.textContent=expr||'0'}
+function calc(){shell('🧮 Calculator',`<div class="display" id="display">0</div><div class="keys">${['AC','⌫','%','÷','7','8','9','×','4','5','6','−','1','2','3','+','±','0','.','='].map(x=>`<button onclick="key('${x}')" class="${'+−×÷%'.includes(x)?'op ':''}${x==='='?'eq':''}">${x}</button>`).join('')}</div>`)}
+function key(k){
+let d=$('display');
+if(k==='AC'){expr='';d.textContent='0';return}
+if(k==='⌫'){expr=expr.slice(0,-1);d.textContent=expr||'0';return}
+if(k==='='){
+try{let x=expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');
+if(!/^[0-9+\-*/%.() ]+$/.test(x))throw 0;
+let n=Function('return ('+x+')')();
+if(!Number.isFinite(n))throw 0;
+expr=String(Number(n.toFixed(8)));d.textContent=expr
+}catch{d.textContent='गलत गणना';expr=''}
+return}
+if(k==='±')expr=expr.startsWith('-')?expr.slice(1):'-'+expr;
+else expr+=k;
+d.textContent=expr||'0'
+}
 
-/* Notes */
-function notes(){shell('मेरे Notes',`<input id="nt" placeholder="नोट का नाम"><textarea id="nb" placeholder="अपना नोट लिखें..."></textarea><button class="btn" onclick="saveNote()">＋ नया नोट सेव करें</button><div id="nl"></div>`);drawNotes()}
-function drawNotes(){$('nl').innerHTML=get('notes').slice().reverse().map((n,i)=>`<div class="item"><b>${safe(n.title)}</b><p>${safe(n.body)}</p><button class="btn light" onclick="editNote('${n.id}')">Edit</button><button class="btn red" onclick="delNote('${n.id}')">Delete</button></div>`).join('')||'<p class="muted">अभी कोई नोट नहीं है।</p>'}
-function saveNote(){let title=$('nt').value.trim(),body=$('nb').value.trim();if(!title&&!body)return alert('पहले कुछ लिखो');let a=get('notes');a.push({id:String(Date.now()),title,body});put('notes',a);$('nt').value='';$('nb').value='';drawNotes()}
-function editNote(id){let a=get('notes'),n=a.find(x=>x.id===id);$('nt').value=n.title;$('nb').value=n.body;let b=$('screen').querySelector('.btn');b.textContent='बदलाव सेव करो';b.onclick=()=>{n.title=$('nt').value;n.body=$('nb').value;put('notes',a);notes()}}
-function delNote(id){if(confirm('नोट हटाना है?')){put('notes',get('notes').filter(n=>n.id!==id));drawNotes()}}
+/* NOTES */
+let editingNote=null;
+function notes(){
+editingNote=null;
+shell('📝 मेरे Notes',`
+<div id="noteEditor">
+<input id="noteTitle" placeholder="नोट का नाम">
+<textarea id="noteBody" placeholder="यहाँ अपना नोट लिखें..."></textarea>
+<button class="btn" onclick="saveNote()">💾 नोट सेव करें</button>
+<button class="btn light" onclick="clearNoteEditor()">नया नोट</button>
+</div>
+<h3>मेरे सभी नोट</h3><div id="noteList"></div>`);
+drawNotes()
+}
+function clearNoteEditor(){editingNote=null;$('noteTitle').value='';$('noteBody').value=''}
+function saveNote(){
+let title=$('noteTitle').value.trim(),body=$('noteBody').value.trim();
+if(!title&&!body)return alert('पहले कुछ लिखो');
+let a=get('notes');
+if(editingNote){let n=a.find(x=>String(x.id)===String(editingNote));if(n){n.title=title;n.body=body}}
+else a.push({id:String(Date.now()),title,body,date:new Date().toLocaleString('hi-IN')});
+put('notes',a);clearNoteEditor();drawNotes()
+}
+function drawNotes(){
+let a=get('notes');
+$('noteList').innerHTML=a.slice().reverse().map(n=>`
+<div class="note-card">
+<h3>${safe(n.title||'बिना नाम का नोट')}</h3>
+<p>${safe(n.body)}</p>
+<p class="muted">${safe(n.date||'')}</p>
+<button class="btn light" onclick="editNote('${safe(n.id)}')">✏️ Edit</button>
+<button class="btn red" onclick="deleteNote('${safe(n.id)}')">हटाएँ</button>
+</div>`).join('')||'<p class="muted">अभी कोई नोट नहीं है।</p>'
+}
+function editNote(id){
+let n=get('notes').find(x=>String(x.id)===String(id));if(!n)return;
+editingNote=id;$('noteTitle').value=n.title||'';$('noteBody').value=n.body||'';window.scrollTo(0,0)
+}
+function deleteNote(id){if(confirm('यह नोट हटाना है?')){put('notes',get('notes').filter(x=>String(x.id)!==String(id)));drawNotes()}}
 
-/* Expense */
-function expense(){shell('खर्च का हिसाब',`<div class="total" id="sum">₹0</div><input id="en" placeholder="किस चीज़ पर खर्च हुआ?"><input id="ea" type="number" min="0" placeholder="रकम ₹"><button class="btn" onclick="addExpense()">＋ खर्च जोड़ें</button><button class="btn red" onclick="clearExpense()">पूरा हिसाब मिटाएँ</button><div id="el"></div>`);drawExpense()}
-function drawExpense(){let a=get('expenses');$('sum').textContent='₹'+a.reduce((s,x)=>s+x.amount,0).toLocaleString('en-IN');$('el').innerHTML=a.slice().reverse().map(x=>`<div class="item">${safe(x.name)} — <b>₹${x.amount}</b><button class="btn red" onclick="delExpense('${x.id}')">हटाएँ</button></div>`).join('')||'<p class="muted">अभी कोई खर्च नहीं।</p>'}
-function addExpense(){let name=$('en').value.trim(),amount=Number($('ea').value);if(!name||amount<=0)return alert('नाम और सही रकम भरो');let a=get('expenses');a.push({id:String(Date.now()),name,amount});put('expenses',a);$('en').value='';$('ea').value='';drawExpense()}
-function delExpense(id){put('expenses',get('expenses').filter(x=>x.id!==id));drawExpense()}
-function clearExpense(){if(confirm('पूरा खर्च हिसाब मिटाएँ?')){put('expenses',[]);drawExpense()}}
+/* EXPENSE */
+function expense(){
+shell('💰 खर्च का हिसाब',`
+<div class="total" id="totalExpense">₹0</div>
+<p class="muted">आज तक का कुल खर्च</p>
+<input id="expenseName" placeholder="किस चीज़ पर खर्च हुआ?">
+<input id="expenseAmount" type="number" min="0" step="0.01" placeholder="रकम ₹">
+<select id="expenseCategory"><option>खाना</option><option>पढ़ाई</option><option>यात्रा</option><option>घर</option><option>अन्य</option></select>
+<button class="btn" onclick="addExpense()">＋ खर्च जोड़ें</button>
+<h3>खर्च की सूची</h3><button class="btn red" onclick="clearExpenses()">पूरा हिसाब साफ करें</button>
+<div id="expenseList"></div>`);
+drawExpenses()
+}
+function drawExpenses(){
+let a=get('expenses');
+let total=a.reduce((s,x)=>s+Number(x.amount||0),0);
+$('totalExpense').textContent='₹'+total.toLocaleString('en-IN');
+$('expenseList').innerHTML=a.slice().reverse().map(x=>`
+<div class="item"><b>${safe(x.name||x.title||x.item||'पुराना खर्च')}</b>
+<p>₹${Number(x.amount??x.price??0).toLocaleString('en-IN')} • ${safe(x.category||'अन्य')}</p>
+<button class="btn red" onclick="deleteExpense('${safe(x.id)}')">हटाएँ</button></div>`).join('')||'<p class="muted">अभी कोई खर्च नहीं है।</p>'
+}
+function addExpense(){
+let name=$('expenseName').value.trim(),amount=Number($('expenseAmount').value);
+if(!name||!Number.isFinite(amount)||amount<=0)return alert('नाम और सही रकम भरो');
+let a=get('expenses');a.push({id:String(Date.now()),name,amount,category:$('expenseCategory').value});
+put('expenses',a);$('expenseName').value='';$('expenseAmount').value='';drawExpenses()
+}
+function deleteExpense(id){put('expenses',get('expenses').filter(x=>String(x.id)!==String(id)));drawExpenses()}
+function clearExpenses(){if(confirm('क्या पूरा खर्च हिसाब मिटाना है?')){put('expenses',[]);drawExpenses()}}
 
-/* Tasks */
-function tasks(){shell('कामों की लिस्ट',`<input id="task" placeholder="नया काम लिखो"><button class="btn" onclick="addTask()">काम जोड़ें</button><div id="tl"></div>`);drawTasks()}
-function drawTasks(){$('tl').innerHTML=get('tasks').map(t=>`<div class="item"><label><input style="width:auto" type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}')"> ${safe(t.text)}</label><button class="btn red" onclick="delTask('${t.id}')">हटाएँ</button></div>`).join('')||'<p class="muted">कोई काम नहीं।</p>'}
-function addTask(){let text=$('task').value.trim();if(!text)return;let a=get('tasks');a.push({id:String(Date.now()),text,done:false});put('tasks',a);$('task').value='';drawTasks()}
-function toggleTask(id){let a=get('tasks'),t=a.find(x=>x.id===id);t.done=!t.done;put('tasks',a);drawTasks()}
-function delTask(id){put('tasks',get('tasks').filter(x=>x.id!==id));drawTasks()}
+/* TASK LIST - OLD DATA SUPPORT */
+function tasks(){
+let a=get('tasks').map((t,i)=>({
+id:String(t.id??i),text:String(t.text??t.task??t.name??t.title??t.item??'पुराना काम'),
+done:Boolean(t.done??t.completed??false)
+}));
+put('tasks',a);
+shell('✅ कामों की लिस्ट',`<input id="taskInput" placeholder="नया काम लिखो"><button class="btn" onclick="addTask()">＋ काम जोड़ें</button><div id="taskList"></div>`);
+drawTasks()
+}
+function drawTasks(){
+$('taskList').innerHTML=get('tasks').map(t=>`
+<div class="item">
+<label><input style="width:auto" type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${safe(t.id)}')"> ${safe(t.text)}</label>
+<button class="btn red" onclick="deleteTask('${safe(t.id)}')">हटाएँ</button>
+</div>`).join('')||'<p class="muted">अभी कोई काम नहीं है।</p>'
+}
+function addTask(){
+let text=$('taskInput').value.trim();if(!text)return alert('काम लिखो');
+let a=get('tasks');a.push({id:String(Date.now()),text,done:false});put('tasks',a);$('taskInput').value='';drawTasks()
+}
+function toggleTask(id){let a=get('tasks'),t=a.find(x=>String(x.id)===String(id));if(t)t.done=!t.done;put('tasks',a);drawTasks()}
+function deleteTask(id){put('tasks',get('tasks').filter(x=>String(x.id)!==String(id)));drawTasks()}
 
-/* Focus Timer */
+/* FOCUS TIMER */
 let timerId=null,endAt=0,remaining=0;
-function timer(){shell('Focus Timer',`<p class="muted">जितना समय चाहो सेट करो। पढ़ाई के समय ऐप से बाहर जाओगे तो वापस आने पर आवाज़ बजेगी (फोन की अनुमति और ब्राउज़र सपोर्ट पर निर्भर)।</p><div class="row"><input id="mins" type="number" min="0" placeholder="मिनट"><input id="secs" type="number" min="0" max="59" placeholder="सेकंड"></div><div class="timer" id="clock">00:00</div><p id="ts" class="muted">तैयार हो?</p><button class="btn" onclick="startTimer()">Start</button><button class="btn light" onclick="pauseTimer()">Pause</button><button class="btn red" onclick="resetTimer()">Reset</button>`)}
-function startTimer(){if(timerId)return;if(!remaining){remaining=Number($('mins').value||0)*60+Number($('secs').value||0);if(remaining<1)return alert('समय भरो')}endAt=Date.now()+remaining*1000;$('ts').textContent='पढ़ाई पर ध्यान दो!';tick();timerId=setInterval(tick,500)}
-function tick(){remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));$('clock').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');if(!remaining){clearInterval(timerId);timerId=null;$('ts').textContent='समय पूरा! शाबाश 🎉';beep()}}
-function pauseTimer(){if(timerId){clearInterval(timerId);timerId=null;remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));$('ts').textContent='Pause किया गया'}}
-function resetTimer(){if(timerId)clearInterval(timerId);timerId=null;remaining=0;$('clock').textContent='00:00';$('ts').textContent='फिर से तैयार हो?'}
-function beep(){try{let c=new AudioContext(),o=c.createOscillator();o.connect(c.destination);o.frequency.value=850;o.start();o.stop(c.currentTime+.7)}catch{}}
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&timerId){$('ts').textContent='वापस आ गए! अब पढ़ाई पर ध्यान दो।';beep()}});
+function timer(){
+shell('⏱️ Focus Timer',`
+<p class="muted">अपना पढ़ाई का समय चुनो। बीच में ऐप छोड़कर वापस आने पर ध्यान दिलाने की आवाज़ आएगी, यदि फोन अनुमति दे।</p>
+<div class="row"><input id="mins" type="number" min="0" placeholder="मिनट"><input id="secs" type="number" min="0" max="59" placeholder="सेकंड"></div>
+<div class="timer" id="clock">00:00</div><p id="timerStatus" class="muted">पढ़ाई के लिए तैयार?</p>
+<button class="btn" onclick="startTimer()">Start</button>
+<button class="btn light" onclick="pauseTimer()">Pause</button>
+<button class="btn red" onclick="resetTimer()">Reset</button>`)
+}
+function startTimer(){
+if(timerId)return;
+if(!remaining){remaining=Number($('mins').value||0)*60+Number($('secs').value||0);if(remaining<1)return alert('समय भरो')}
+endAt=Date.now()+remaining*1000;$('timerStatus').textContent='Focus चालू है!';tick();timerId=setInterval(tick,500)
+}
+function tick(){
+remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));
+$('clock').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');
+if(!remaining){clearInterval(timerId);timerId=null;$('timerStatus').textContent='समय पूरा! शाबाश 🎉';beep()}
+}
+function pauseTimer(){if(timerId){clearInterval(timerId);timerId=null;remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));$('timerStatus').textContent='Pause किया गया'}}
+function resetTimer(){if(timerId)clearInterval(timerId);timerId=null;remaining=0;$('clock').textContent='00:00';$('timerStatus').textContent='फिर से तैयार?'}
+function beep(){try{let c=new AudioContext(),o=c.createOscillator();o.connect(c.destination);o.frequency.value=850;o.start();o.stop(c.currentTime+.8)}catch{}}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&timerId){$('timerStatus').textContent='वापस आ गए! पढ़ाई जारी रखो।';beep()}});
 
-/* Study Planner */
-function study(){shell('Study Planner',`<input id="subject" placeholder="कौन-सा विषय?"><input id="duration" type="number" placeholder="कितने मिनट पढ़ना है?"><button class="btn" onclick="addStudy()">प्लान बनाओ</button><div id="sl"></div>`);drawStudy()}
-function drawStudy(){$('sl').innerHTML=get('study').map(x=>`<div class="item">${safe(x.subject)} — ${x.minutes} मिनट</div>`).join('')}
+/* STUDY PLANNER */
+function study(){
+shell('📚 Study Planner',`<input id="subject" placeholder="कौन-सा विषय?"><input id="duration" type="number" min="1" placeholder="कितने मिनट पढ़ना है?"><button class="btn" onclick="addStudy()">प्लान बनाओ</button><div id="studyList"></div>`);
+drawStudy()
+}
+function drawStudy(){$('studyList').innerHTML=get('study').map(x=>`<div class="item">${safe(x.subject)} — ${Number(x.minutes||0)} मिनट</div>`).join('')||'<p class="muted">अभी कोई प्लान नहीं।</p>'}
 function addStudy(){let subject=$('subject').value.trim(),minutes=Number($('duration').value);if(!subject||minutes<1)return alert('विषय और समय भरो');let a=get('study');a.push({subject,minutes});put('study',a);drawStudy()}
 
-/* Quiz */
+/* QUIZ */
 const questions=[
-['भारत की राजधानी क्या है?',['दिल्ली','मुंबई','लखनऊ','जयपुर'],0,'भारत की राजधानी नई दिल्ली है।'],
-['2 + 2 × 2 कितना होगा?',['8','6','4','10'],1,'पहले गुणा: 2×2=4, फिर 2 जोड़ो = 6।'],
-['पानी का रासायनिक सूत्र क्या है?',['CO2','O2','H2O','NaCl'],2,'पानी का सूत्र H2O है।'],
-['सूर्य किस दिशा से निकलता है?',['पश्चिम','उत्तर','दक्षिण','पूर्व'],3,'सूर्य पूर्व दिशा में उगता दिखाई देता है।'],
-['English में “किताब” क्या है?',['Book','Pen','Table','Chair'],0,'किताब को English में Book कहते हैं।']
-];let qi=0,score=0,answered=false;
-function quiz(){qi=0;score=0;answered=false;shell('Quiz',`<div id="qbox"></div>`);drawQ()}
-function drawQ(){let q=questions[qi];$('qbox').innerHTML=`<p>सवाल ${qi+1}/${questions.length} • स्कोर ${score}</p><h3>${q[0]}</h3>${q[1].map((v,i)=>`<button class="option" onclick="answer(${i})">${v}</button>`).join('')}<div id="feedback"></div>`}
-function answer(i){if(answered)return;answered=true;let q=questions[qi];if(i===q[2])score++;$('feedback').innerHTML=`<div class="item">${i===q[2]?'✅ सही जवाब!':'❌ सही जवाब: '+q[1][q[2]]}<p>${q[3]}</p></div><button class="btn" onclick="nextQ()">${qi===questions.length-1?'Result':'अगला सवाल'}</button>`}
-function nextQ(){if(qi===questions.length-1){$('qbox').innerHTML=`<h3>तुम्हारा स्कोर: ${score}/${questions.length}</h3><button class="btn" onclick="quiz()">फिर से खेलो</button>`;return}qi++;answered=false;drawQ()}
+['भारत की राजधानी क्या है?',['नई दिल्ली','मुंबई','लखनऊ','जयपुर'],0,'भारत की राजधानी नई दिल्ली है।'],
+['2 + 2 × 2 कितना होगा?',['8','6','4','10'],1,'पहले गुणा: 2×2=4, फिर 2 जोड़ने पर 6।'],
+['पानी का सूत्र क्या है?',['CO2','O2','H2O','NaCl'],2,'पानी का रासायनिक सूत्र H2O है।'],
+['सूर्य किस दिशा से निकलता है?',['पश्चिम','उत्तर','दक्षिण','पूर्व'],3,'सूर्य पूर्व दिशा से निकलता दिखाई देता है।'],
+['Book का हिंदी अर्थ क्या है?',['किताब','कलम','मेज','कुर्सी'],0,'Book का अर्थ किताब है।'],
+['15 × 4 कितना है?',['45','50','60','65'],2,'15 को 4 से गुणा करने पर 60।'],
+['भारत का राष्ट्रीय पशु कौन है?',['हाथी','बाघ','शेर','घोड़ा'],1,'भारत का राष्ट्रीय पशु बाघ है।'],
+['एक सप्ताह में कितने दिन होते हैं?',['5','6','7','8'],2,'एक सप्ताह में 7 दिन होते हैं।'],
+['He ___ to school daily.',['go','goes','going','gone'],1,'He के साथ Simple Present में goes।'],
+['त्रिभुज के कोणों का योग कितना होता है?',['90°','180°','270°','360°'],1,'त्रिभुज के तीनों कोणों का योग 180° होता है।'],
+['भारत का संविधान कब लागू हुआ?',['15 अगस्त 1947','26 जनवरी 1950','2 अक्टूबर 1949','26 नवंबर 1950'],1,'संविधान 26 जनवरी 1950 को लागू हुआ।'],
+['एक मीटर में कितने सेंटीमीटर होते हैं?',['10','100','1000','50'],1,'एक मीटर में 100 सेंटीमीटर होते हैं।'],
+['Past tense of Go क्या है?',['Goed','Gone','Went','Going'],2,'Go का Simple Past Went है।'],
+['√81 का मान क्या है?',['7','8','9','10'],2,'9 × 9 = 81।'],
+['पौधे भोजन किस प्रक्रिया से बनाते हैं?',['श्वसन','प्रकाश संश्लेषण','पाचन','वाष्पीकरण'],1,'पौधे प्रकाश संश्लेषण से भोजन बनाते हैं।'],
+['भारत की मुद्रा क्या है?',['डॉलर','यूरो','रुपया','येन'],2,'भारत की मुद्रा रुपया है।'],
+['5² कितना है?',['10','15','20','25'],3,'5 × 5 = 25।'],
+['An apple में An क्यों है?',['Plural है','Vowel sound है','Past tense है','नाम है'],1,'Apple की शुरुआत vowel sound से होती है।'],
+['एक समकोण कितने डिग्री का होता है?',['45°','60°','90°','180°'],2,'समकोण 90° का होता है।'],
+['पृथ्वी का प्राकृतिक उपग्रह कौन है?',['सूर्य','चंद्रमा','मंगल','शुक्र'],1,'चंद्रमा पृथ्वी का प्राकृतिक उपग्रह है।']
+];
+let quizSet=[],qi=0,score=0,answered=false;
+function quiz(){
+quizSet=[...questions].sort(()=>Math.random()-.5).slice(0,10);
+qi=0;score=0;answered=false;
+shell('🎯 Quiz',`<p class="muted">हर बार 10 नए सवालों का सेट मिलेगा। जवाब चुनकर अगला सवाल दबाओ।</p><div id="qbox"></div>`);
+drawQ()
+}
+function drawQ(){
+let q=quizSet[qi];
+$('qbox').innerHTML=`<p>सवाल ${qi+1}/${quizSet.length} • स्कोर ${score}</p><h3>${q[0]}</h3>
+${q[1].map((v,i)=>`<button class="option" onclick="answer(${i})">${v}</button>`).join('')}
+<div id="feedback"></div>`
+}
+function answer(i){
+if(answered)return;answered=true;
+let q=quizSet[qi];if(i===q[2])score++;
+$('feedback').innerHTML=`<div class="item">${i===q[2]?'✅ सही जवाब!':'❌ सही जवाब: '+safe(q[1][q[2]])}<p>${safe(q[3])}</p></div><button class="btn" onclick="nextQ()">${qi===quizSet.length-1?'Result देखें':'अगला सवाल →'}</button>`
+}
+function nextQ(){
+if(qi===quizSet.length-1){$('qbox').innerHTML=`<h3>तुम्हारा स्कोर: ${score}/${quizSet.length}</h3><p>${score>=8?'बहुत बढ़िया! 🎉':score>=5?'अच्छी कोशिश!':'अभ्यास करते रहो!'}</p><button class="btn" onclick="quiz()">नया Quiz खेलें</button>`;return}
+qi++;answered=false;drawQ()
+}
 
-/* English Grammar Teacher */
+/* ENGLISH GRAMMAR */
 const lessons=[
-['Parts of Speech','शब्दों के 8 प्रकार: Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction, Interjection.','Riya quickly reads a good book.','ट्रिक: नाम=Noun, नाम की जगह=Pronoun, काम=Verb, गुण=Adjective।'],
-['Noun','व्यक्ति, जगह, वस्तु या भाव का नाम Noun है। प्रकार: Proper, Common, Collective, Material, Abstract.','Ram lives in Delhi. Honesty is good.','ट्रिक: किसी का नाम पूछो — जवाब Noun हो सकता है।'],
+['Parts of Speech','शब्दों के 8 प्रकार: Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction, Interjection.','Riya quickly reads a good book.','नाम=Noun, नाम की जगह=Pronoun, काम=Verb, गुण=Adjective।'],
+['Noun','व्यक्ति, जगह, वस्तु या भाव का नाम Noun है। प्रकार: Proper, Common, Collective, Material, Abstract.','Ram lives in Delhi. Honesty is good.','किसी का नाम पूछो — जवाब Noun हो सकता है।'],
 ['Pronoun','Noun की जगह आने वाला शब्द Pronoun है।','Aman is kind. He helps me.','I, we, you, he, she, it, they याद करो।'],
-['Verb','काम या अवस्था बताने वाला शब्द Verb है। Main और Helping Verb होते हैं।','She is reading. They play.','ट्रिक: क्या कर रहा है? पूछो।'],
-['Adjective & Adverb','Adjective Noun की विशेषता बताता है। Adverb बताता है काम कैसे हुआ।','A beautiful flower. He runs quickly.','कैसा? Adjective. कैसे? Adverb.'],
+['Verb','काम या अवस्था बताने वाला शब्द Verb है। Main और Helping Verb होते हैं।','She is reading. They play.','क्या कर रहा है? पूछो।'],
+['Adjective','Noun की विशेषता बताता है।','A beautiful flower.','कैसा, कितने, कौन-सा?'],
+['Adverb','Verb, Adjective या दूसरे Adverb की विशेषता बताता है।','He runs quickly.','काम कैसे हुआ?'],
 ['Articles','A, An, The Articles हैं। A consonant sound, An vowel sound और The खास चीज़ के लिए।','A book. An apple. The Sun.','ध्यान: an hour, a university — sound सुनो।'],
-['Preposition','Noun का संबंध बताता है।','The book is on the table.','in a room, on Monday, at 5 o’clock याद करो।'],
+['Preposition','Noun या Pronoun का संबंध बताता है।','The book is on the table.','in, on, at, under, between।'],
 ['Conjunction','शब्द या वाक्य जोड़ता है।','I was tired but I studied.','And=और, But=लेकिन, Because=क्योंकि।'],
-['Subject Verb Agreement','Subject के अनुसार Verb बदलता है।','He plays. They play.','He/She/It के साथ Simple Present में verb में s/es।'],
+['Interjection','अचानक भावना बताने वाला शब्द।','Wow! What a beautiful place!','Wow, Alas, Hurrah।'],
+['Subject Verb Agreement','Subject के अनुसार Verb बदलता है।','He plays. They play.','He/She/It के साथ Simple Present में s/es।'],
 ['Modals','Can, could, may, might, should, must आदि सहायता करने वाली क्रियाएँ हैं।','You should study. I can swim.','Modal के बाद सामान्यतः V1 आती है।'],
-['Active Passive Voice','Active में कर्ता काम करता है। Passive में काम पर जोर होता है।','Ram writes a letter. A letter is written by Ram.','Passive का सामान्य ढाँचा: Object + be + V3।'],
+['Active Passive Voice','Active में कर्ता काम करता है। Passive में काम पर जोर होता है।','Ram writes a letter. A letter is written by Ram.','Object + helping verb + V3।'],
 ['Direct Indirect Speech','किसी के ठीक शब्द Direct और उनका अर्थ बताना Indirect है।','He said, “I am happy.” He said that he was happy.','Pronoun, tense और समय के शब्द ध्यान से बदलो।'],
-['Degrees','Positive, Comparative, Superlative तुलना के रूप हैं।','Tall, taller, tallest.','दो की तुलना: than. सबसे अधिक: the + superlative.'],
-['Question Tags','वाक्य के अंत में पुष्टि के लिए छोटा सवाल।','You are ready, aren’t you?','Positive वाक्य के बाद अक्सर negative tag।'],
+['Degrees of Comparison','Positive, Comparative, Superlative तुलना के रूप हैं।','Tall, taller, tallest.','दो की तुलना: than. सबसे अधिक: the + superlative।'],
+['Question Tags','वाक्य के अंत में पुष्टि के लिए छोटा सवाल।','You are ready, aren’t you?','Positive के बाद अक्सर negative tag।'],
 ['Punctuation','लिखते समय full stop, comma, question mark आदि लगाते हैं।','Where are you? I am here.','सवाल के अंत में ? लगाओ।'],
-['Common Mistakes','गलत वाक्य पहचानकर सही करना सीखो।','He goes. सही; He go. गलत।','Does के बाद V1: She does not like tea.']
+['Conditional Sentences','If से शर्त बताने वाले वाक्य बनते हैं।','If you study, you will learn.','If के बाद वाली क्रिया पर ध्यान दो।'],
+['Gerund and Infinitive','Verb + ing जब Noun का काम करे तो Gerund; to + V1 Infinitive है।','Swimming is fun. I want to learn.','Swimming=Gerund, to learn=Infinitive।'],
+['Determiners','Noun से पहले आने वाले शब्द जैसे some, any, much, many, this, that.','I have some books.','Countable और uncountable का ध्यान रखो।'],
+['Common Errors','गलत वाक्य पहचानकर सही करना सीखो।','He goes. सही; He go. गलत।','Does के बाद V1: She does not like tea.']
 ];
 const tenses=[
 ['Simple Present','Subject + V1(s/es)','I play cricket.','आदत या रोज़ होने वाला काम।'],
@@ -148,17 +304,60 @@ const tenses=[
 ['Present Perfect Continuous','Subject + has/have been + V-ing + since/for','I have been studying for two hours.','पहले शुरू होकर अब तक जारी काम।'],
 ['Simple Past','Subject + V2','He went home.','बीते समय का काम।'],
 ['Past Continuous','Subject + was/were + V-ing','They were playing.','बीते समय में जारी काम।'],
-['Past Perfect','Subject + had + V3','She had eaten.','दूसरे past काम से पहले पूरा काम।'],
+['Past Perfect','Subject + had + V3','She had eaten.','दूसरे Past काम से पहले पूरा काम।'],
 ['Past Perfect Continuous','Subject + had been + V-ing + since/for','He had been waiting for an hour.','Past में कुछ समय से जारी काम।'],
 ['Simple Future','Subject + will + V1','I will call you.','आगे होने वाला काम।'],
 ['Future Continuous','Subject + will be + V-ing','I will be studying.','भविष्य में जारी काम।'],
 ['Future Perfect','Subject + will have + V3','She will have arrived.','भविष्य के समय तक पूरा काम।'],
 ['Future Perfect Continuous','Subject + will have been + V-ing + since/for','I will have been working for two hours.','भविष्य में किसी समय तक जारी अवधि।']
 ];
-function grammar(){shell('English Grammar Teacher',`<p class="muted">आसान हिंदी, Formula, उदाहरण और याद रखने की Tricks। 🔊 बटन से फोन की आवाज़ में सुनो।</p><div class="tabs"><button onclick="showLessons()">Grammar के चैप्टर</button><button onclick="showTenses()">12 Tenses</button></div><div id="gl"></div>`);showLessons()}
-function showLessons(){$('gl').innerHTML=lessons.map((x,i)=>`<div class="item"><b>${x[0]}</b><p>${x[1]}</p><p><b>Example:</b> ${x[2]}</p><p><b>Trick:</b> ${x[3]}</p><button class="btn light" onclick="speak(${i},false)">🔊 Teacher से सुनो</button></div>`).join('')}
-function showTenses(){$('gl').innerHTML=tenses.map((x,i)=>`<div class="item"><b>${i+1}. ${x[0]}</b><div class="formula">${x[1]}</div><p><b>Example:</b> ${x[2]}</p><p>${x[3]}</p><button class="btn light" onclick="speak(${i},true)">🔊 Teacher से सुनो</button></div>`).join('')}
-function speak(i,t){if(!('speechSynthesis'in window))return alert('इस फोन में आवाज़ उपलब्ध नहीं है');let x=t?tenses[i]:lessons[i];speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(x.join('. '));u.lang='hi-IN';speechSynthesis.speak(u)}
+function grammar(){
+shell('📖 English Grammar Teacher',`
+<p class="muted">आसान हिंदी में नियम, Formula, उदाहरण और Teacher की आवाज़।</p>
+<div class="tabs"><button onclick="showLessons()">Grammar Chapters</button><button onclick="showTenses()">12 Tenses</button></div><div id="grammarList"></div>`);
+showLessons()
+}
+function showLessons(){
+$('grammarList').innerHTML=lessons.map((x,i)=>`
+<div class="item"><h3>${i+1}. ${x[0]}</h3><p>${x[1]}</p><p><b>Example:</b> ${x[2]}</p><div class="formula"><b>याद रखने की Trick:</b><br>${x[3]}</div><button class="btn light" onclick="speakGrammar(${i},false)">🔊 Teacher से सुनो</button></div>`).join('')
+}
+function showTenses(){
+$('grammarList').innerHTML=tenses.map((x,i)=>`
+<div class="item"><h3>${i+1}. ${x[0]}</h3><div class="formula">${x[1]}</div><p><b>Example:</b> ${x[2]}</p><p>${x[3]}</p><button class="btn light" onclick="speakGrammar(${i},true)">🔊 Teacher से सुनो</button></div>`).join('')
+}
+function speakGrammar(i,t){
+if(!('speechSynthesis'in window))return alert('फोन में आवाज़ उपलब्ध नहीं है');
+let x=t?tenses[i]:lessons[i];speechSynthesis.cancel();
+let u=new SpeechSynthesisUtterance(x.join('. '));u.lang='en-IN';speechSynthesis.speak(u)
+}
+
+/* MATH FORMULA BOOK */
+const mathTopics=[
+['बीजगणित','(a+b)² = a²+2ab+b²','(a-b)² = a²-2ab+b²','a²-b² = (a-b)(a+b)','(a+b)(a-b)=a²-b²','उदाहरण: (2+3)² = 4+12+9 = 25'],
+['गुणनखंड','x²+(a+b)x+ab = (x+a)(x+b)','x²-a² = (x-a)(x+a)','a³+b³ = (a+b)(a²-ab+b²)','a³-b³ = (a-b)(a²+ab+b²)','उदाहरण: x²+5x+6 = (x+2)(x+3)'],
+['ज्यामिति','वर्ग का क्षेत्रफल = भुजा × भुजा','आयत का क्षेत्रफल = लंबाई × चौड़ाई','त्रिभुज का क्षेत्रफल = ½ × आधार × ऊँचाई','वृत्त का क्षेत्रफल = πr²','वृत्त की परिधि = 2πr'],
+['घन और घनाभ','घन का आयतन = a³','घन का कुल पृष्ठीय क्षेत्रफल = 6a²','घनाभ का आयतन = l × b × h','घनाभ का कुल पृष्ठीय क्षेत्रफल = 2(lb+bh+hl)','बेलन का आयतन = πr²h'],
+['त्रिकोणमिति','sin θ = लंब / कर्ण','cos θ = आधार / कर्ण','tan θ = लंब / आधार','sin²θ + cos²θ = 1','tan θ = sin θ / cos θ'],
+['प्रतिशत और लाभ-हानि','प्रतिशत = (भाग / कुल) × 100','लाभ = विक्रय मूल्य − क्रय मूल्य','हानि = क्रय मूल्य − विक्रय मूल्य','लाभ प्रतिशत = (लाभ / क्रय मूल्य) × 100','छूट = अंकित मूल्य − विक्रय मूल्य'],
+['औसत और अनुपात','औसत = सभी संख्याओं का योग / कुल संख्या','अनुपात = a:b','साधारण ब्याज = (P × R × T) / 100','कुल राशि = मूलधन + ब्याज','गति = दूरी / समय'],
+['घातांक','aᵐ × aⁿ = aᵐ⁺ⁿ','aᵐ ÷ aⁿ = aᵐ⁻ⁿ','(aᵐ)ⁿ = aᵐⁿ','a⁰ = 1 (a ≠ 0)','a⁻ⁿ = 1/aⁿ'],
+['संख्या और वर्गमूल','सम संख्या: 2 से पूरी विभाजित','विषम संख्या: 2 से पूरी विभाजित नहीं','वर्ग = संख्या × संख्या','√a × √a = a','1 से 20 तक के पहाड़े अभ्यास करो'],
+['निर्देशांक ज्यामिति','दो बिंदुओं की दूरी = √[(x₂−x₁)²+(y₂−y₁)²]','मध्य बिंदु = ((x₁+x₂)/2, (y₁+y₂)/2)','x-अक्ष पर y = 0','y-अक्ष पर x = 0','मूल बिंदु = (0,0)']
+];
+function math(){
+shell('📐 Math Formula Book',`<p class="muted">गणित के जरूरी सूत्र, आसान उदाहरण और अभ्यास। विषय चुनो।</p><div id="mathList"></div>`);
+$('mathList').innerHTML=mathTopics.map((x,i)=>`<div class="item"><button class="btn light" onclick="showMath(${i})">${x[0]} →</button></div>`).join('')
+}
+function showMath(i){
+let x=mathTopics[i];
+$('mathList').innerHTML=`<button class="back" onclick="math()">← सभी अध्याय</button><h3>${x[0]}</h3>${x.slice(1).map(v=>`<div class="formula">${safe(v)}</div>`).join('')}`
+}
+
+/* CONTACT */
+function contact(){
+shell('📸 Contact Owner',`<h3>IndiaMate बनाने वाले से जुड़ें</h3><p>Instagram पर संपर्क करें।</p><a href="https://instagram.com/hkkumar00king" target="_blank"><button class="btn">Instagram खोलें</button></a>`)
+}
+
 if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 </script>
 </body>
