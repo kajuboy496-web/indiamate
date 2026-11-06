@@ -34,6 +34,66 @@ button{cursor:pointer;border:0;border-radius:13px;padding:13px 17px;margin:5px 3
 footer{text-align:center;color:#777;padding:25px}
 a{color:#155eef}
 @media(max-width:380px){.tile{font-size:16px;padding:18px 5px}}
+ 
+/* MOBILE CALCULATOR DESIGN */
+.mobile-calc{
+ background:#101116;
+ color:white;
+ border-radius:28px;
+ padding:16px;
+ max-width:420px;
+ margin:15px auto;
+}
+.calc-screen{
+ min-height:155px;
+ display:flex;
+ flex-direction:column;
+ justify-content:flex-end;
+ align-items:flex-end;
+ padding:15px 8px 25px;
+ overflow:hidden;
+}
+#calcHistory{
+ color:#999;
+ font-size:17px;
+ min-height:25px;
+}
+#display{
+ font-size:48px;
+ font-weight:400;
+ color:white;
+ overflow-wrap:anywhere;
+ text-align:right;
+ width:100%;
+}
+.calc-buttons{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:10px;
+}
+.calc-buttons button{
+ width:100%;
+ aspect-ratio:1;
+ border-radius:50%;
+ margin:0;
+ padding:0;
+ font-size:25px;
+ background:#303137;
+ color:white;
+}
+.calc-buttons .calc-action{
+ background:#a5a6aa;
+ color:#171717;
+}
+.calc-buttons .calc-op{
+ background:#ff9f0a;
+ color:white;
+}
+.calc-buttons .calc-equal{
+ background:#ff9f0a;
+ color:white;
+}
+ 
 </style>
 </head>
 
@@ -98,6 +158,104 @@ function backButton(){goHome()}
 /* CALCULATOR */
 let expr='';
 function calc(){
+/* MOBILE STYLE CALCULATOR */
+let expr = '';
+let calcJustSolved = false;
+
+function calc(){
+ shell('🧮 Calculator',`
+ <div class="mobile-calc">
+   <div class="calc-screen">
+     <div id="calcHistory"></div>
+     <div id="display">0</div>
+   </div>
+
+   <div class="calc-buttons">
+     <button class="calc-action" onclick="calcClear()">AC</button>
+     <button class="calc-action" onclick="calcDelete()">⌫</button>
+     <button class="calc-action" onclick="calcKey('%')">%</button>
+     <button class="calc-op" onclick="calcKey('÷')">÷</button>
+
+     <button onclick="calcKey('7')">7</button>
+     <button onclick="calcKey('8')">8</button>
+     <button onclick="calcKey('9')">9</button>
+     <button class="calc-op" onclick="calcKey('×')">×</button>
+
+     <button onclick="calcKey('4')">4</button>
+     <button onclick="calcKey('5')">5</button>
+     <button onclick="calcKey('6')">6</button>
+     <button class="calc-op" onclick="calcKey('−')">−</button>
+
+     <button onclick="calcKey('1')">1</button>
+     <button onclick="calcKey('2')">2</button>
+     <button onclick="calcKey('3')">3</button>
+     <button class="calc-op" onclick="calcKey('+')">+</button>
+
+     <button onclick="calcKey('±')">+/−</button>
+     <button onclick="calcKey('0')">0</button>
+     <button onclick="calcKey('.')">.</button>
+     <button class="calc-equal" onclick="calcKey('=')">=</button>
+   </div>
+ </div>
+ `);
+ $('display').textContent=expr||'0';
+}
+
+function calcKey(k){
+ let operators=['+','−','×','÷'];
+
+ if(k==='='){
+   if(!expr)return;
+   try{
+     let v=expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');
+     if(!/^[0-9+\-*/.%() ]+$/.test(v))throw Error();
+     v=v.replace(/(\d+(?:\.\d+)?)%/g,'($1/100)');
+     let result=Function('"use strict";return ('+v+')')();
+     if(!Number.isFinite(result))throw Error();
+
+     $('calcHistory').textContent=expr+' =';
+     expr=String(Number(result.toFixed(10)));
+     calcJustSolved=true;
+   }catch(e){
+     $('display').textContent='Error';
+     expr='';
+     return;
+   }
+ }else if(k==='AC'){
+   calcClear();return;
+ }else if(k==='⌫'){
+   calcDelete();return;
+ }else if(k==='±'){
+   if(expr)expr=expr.startsWith('-')?expr.slice(1):'-'+expr;
+ }else{
+   if(calcJustSolved){
+     if(operators.includes(k)){} 
+     else expr='';
+     calcJustSolved=false;
+   }
+   if(operators.includes(k)){
+     if(!expr && k!=='−')return;
+     if(operators.includes(expr.slice(-1)))expr=expr.slice(0,-1);
+   }
+   if(k==='.' && expr.split(/[+\-×÷]/).pop().includes('.'))return;
+   expr+=k;
+ }
+ $('display').textContent=expr||'0';
+}
+
+function calcClear(){
+ expr='';
+ calcJustSolved=false;
+ $('display').textContent='0';
+ $('calcHistory').textContent='';
+}
+
+function calcDelete(){
+ expr=expr.slice(0,-1);
+ calcJustSolved=false;
+ $('display').textContent=expr||'0';
+  }
+      
  shell('🧮 Calculator',`
  <div class="formula timer" id="display">0</div>
  <div class="grid">
