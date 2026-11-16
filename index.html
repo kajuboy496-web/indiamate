@@ -6,657 +6,180 @@
 <meta name="theme-color" content="#155eef">
 <link rel="manifest" href="./manifest.webmanifest">
 <title>IndiaMate</title>
-
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f1f4fb;color:#172033;font-family:Arial,sans-serif}
-header{background:#155eef;color:white;padding:28px 20px 35px;border-radius:0 0 28px 28px}
-header h1{font-size:30px;margin:12px 0}
-header p{font-size:17px;margin:8px 0}
-main{max-width:720px;margin:auto;padding:18px 14px}
-h2{font-size:25px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.tile{color:#172033 !important;background:white;border:0;border-radius:22px;padding:22px 8px;min-height:120px;font-size:19px;box-shadow:0 4px 15px #0001}
-.tile span{display:block;font-size:30px;margin-bottom:8px}
-.panel{background:white;border-radius:25px;padding:20px;margin-top:18px;box-shadow:0 5px 18px #0001}
-input,textarea,select{width:100%;padding:15px;margin:7px 0;border:1px solid #ccd3df;border-radius:13px;font-size:17px;background:white}
-textarea{min-height:120px;resize:vertical}
-button{cursor:pointer;border:0;border-radius:13px;padding:13px 17px;margin:5px 3px;font-size:16px;background:#155eef;color:white}
-.light{background:#eaf0ff;color:#155eef}
-.red{background:#ffe9ed;color:#b42332}
-.green{background:#e5f8ed;color:#16834b}
-.item{border:1px solid #e0e4eb;border-radius:15px;padding:13px;margin:10px 0;overflow-wrap:anywhere}
-.muted{color:#697386}
-.back{background:#eaf0ff;color:#155eef}
-.formula{background:#f5f7ff;border-left:4px solid #155eef;padding:13px;margin:10px 0;border-radius:10px;line-height:1.7}
-.option{display:block;width:100%;text-align:left;background:#f1f4fb;color:#172033;margin:8px 0}
-.timer{font-size:42px;text-align:center;font-weight:bold;margin:20px}
-footer{text-align:center;color:#777;padding:25px}
-a{color:#155eef}
-@media(max-width:380px){.tile{font-size:16px;padding:18px 5px}}
- 
-.mobile-calc{
- background:#101116;
- color:white;
- border-radius:28px;
- padding:16px;
- max-width:420px;
- margin:15px auto;
-}
-.calc-screen{
- min-height:155px;
- display:flex;
- flex-direction:column;
- justify-content:flex-end;
- align-items:flex-end;
- padding:15px 8px 25px;
- overflow:hidden;
-}
-#calcHistory{
- color:#bbbbbb !important;
- font-size:17px;
- min-height:25px;
-}
-#display{
- font-size:48px;
- font-weight:400;
- color:#ffffff !important;
- overflow-wrap:anywhere;
- text-align:right;
- width:100%;
-}
-.calc-buttons{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:10px;
-}
-.calc-buttons button{
- width:100%;
- aspect-ratio:1;
- border-radius:50%;
- margin:0;
- padding:0;
- font-size:25px;
- background:#303137;
- color:#ffffff !important;
-}
-.calc-buttons .calc-action{
- background:#a5a6aa;
- color:#171717 !important;
-}
-.calc-buttons .calc-op{
- background:#ff9f0a;
- color:white !important;
-}
-.calc-buttons .calc-equal{
- background:#ff9f0a;
- color:white !important;
-}
- </style>
+*{box-sizing:border-box}body{margin:0;background:#f1f4fb;color:#172033;font-family:Arial,sans-serif}
+header{background:#155eef;color:white;padding:25px 18px 30px;border-radius:0 0 27px 27px}
+header h1{font-size:29px;margin:8px 0}header p{margin:7px 0}
+main{max-width:760px;margin:auto;padding:16px 13px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.tile{background:white!important;color:#172033!important;border:0;border-radius:20px;padding:18px 7px;min-height:112px;font-size:16px;font-weight:600;box-shadow:0 4px 14px #0001}
+.tile span{display:block;font-size:28px;margin-bottom:8px}
+.panel{background:white;border-radius:23px;padding:17px;margin-top:15px;box-shadow:0 5px 18px #0001}
+h2{font-size:23px}button{cursor:pointer;border:0;border-radius:12px;padding:12px 15px;margin:5px 3px;font-size:15px;background:#155eef;color:white}
+input,textarea,select{width:100%;padding:13px;margin:6px 0;border:1px solid #ccd3df;border-radius:12px;font-size:16px;background:white;color:#172033}
+textarea{min-height:100px;resize:vertical}.back,.light{background:#eaf0ff;color:#155eef}.red{background:#ffe9ed;color:#b42332}.green{background:#e5f8ed;color:#16834b}
+.item{border:1px solid #e0e4eb;border-radius:14px;padding:12px;margin:9px 0;overflow-wrap:anywhere}.muted{color:#697386}.formula{background:#f5f7ff;border-left:4px solid #155eef;padding:12px;margin:9px 0;border-radius:10px;line-height:1.6}
+.timer{font-size:38px;text-align:center;font-weight:bold;margin:17px}.option{display:block;width:100%;text-align:left;background:#f1f4fb;color:#172033;margin:7px 0}
+footer{text-align:center;color:#777;padding:22px}.mobile-calc{background:#101116;color:white;border-radius:25px;padding:14px;max-width:420px;margin:12px auto}
+.calc-screen{min-height:125px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;padding:12px;overflow:hidden}
+#calcHistory{color:#bbb;font-size:15px;min-height:22px}#display{font-size:43px;color:white;overflow-wrap:anywhere;text-align:right;width:100%;min-height:52px}
+.calc-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.calc-buttons button{aspect-ratio:1;border-radius:50%;margin:0;padding:0;font-size:23px;background:#303137;color:white}
+.calc-buttons .calc-action{background:#a5a6aa;color:#171717}.calc-buttons .calc-op,.calc-buttons .calc-equal{background:#ff9f0a;color:white}
+.small{font-size:13px}.chat{background:#f4f6fb;border-radius:14px;padding:10px;margin:8px 0;white-space:pre-wrap}
+@media(max-width:380px){.tile{font-size:14px;padding:15px 4px}}
+</style>
 </head>
-
 <body>
-<header>
-<h1>🇮🇳 IndiaMate</h1>
-<p>आपके हर काम का साथी</p>
-</header>
-
+<header><h1>🇮🇳 IndiaMate</h1><p>आपके हर काम का साथी</p></header>
 <main>
 <div id="home">
-<h2>नमस्ते! 👋</h2>
-<p>आज आप क्या करना चाहते हैं?</p>
-
-<div class="grid">
-<button class="tile" onclick="openPage('calc')"><span>🧮</span>Calculator</button>
-<button class="tile" onclick="openPage('notes')"><span>📝</span>Notes</button>
-<button class="tile" onclick="openPage('expense')"><span>💰</span>खर्च का हिसाब</button>
-<button class="tile" onclick="openPage('tasks')"><span>✅</span>कामों की लिस्ट</button>
-<button class="tile" onclick="openPage('timer')"><span>⏱️</span>Focus Timer</button>
-<button class="tile" onclick="openPage('study')"><span>📚</span>Study Planner</button>
-<button class="tile" onclick="openPage('quiz')"><span>🎯</span>Quiz</button>
-<button class="tile" onclick="openPage('grammar')"><span>📖</span>English Grammar</button>
-<button class="tile" onclick="openPage('math')"><span>📐</span>Math Formula</button>
-<button class="tile" onclick="openPage('shayari')"><span>💌</span>Shayari</button>
-<button class="tile" onclick="openPage('contact')"><span>📸</span>Contact Owner</button>
+<h2>नमस्ते! 👋</h2><p>आज आप क्या करना चाहते हैं?</p>
+<div class="grid" id="homeGrid"></div>
 </div>
-</div>
-
 <section id="screen" class="panel" hidden></section>
 </main>
-
 <footer>IndiaMate • आपका स्मार्ट साथी</footer>
-
 <script>
-const $=id=>document.getElementById(id);
-const get=(key,def=[])=>{
- try{return JSON.parse(localStorage.getItem(key))||def}catch(e){return def}
-};
-const put=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
+const $=id=>document.getElementById(id),box=$('screen');
+const get=(k,d=[])=>{try{let v=JSON.parse(localStorage.getItem(k));return v??d}catch(e){return d}};
+const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const box=$('screen');
+const features=[
+['calc','🧮','Calculator'],['notes','📝','Notes'],['expense','💰','खर्च का हिसाब'],['tasks','✅','कामों की लिस्ट'],
+['timer','⏱️','Focus Timer'],['study','📚','Study Planner'],['quiz','🎯','Quiz'],['grammar','📖','English Grammar'],
+['math','📐','Math Formula'],['shayari','💌','Shayari'],['contact','📸','Contact Owner'],
+['weather','🌤️','Weather'],['calendar','🗓️','Calendar & Reminder'],['scanner','📄','Document Scanner'],
+['qr','🔳','QR Code'],['converter','🔁','Unit Converter'],['student','🎓','Student Corner'],
+['typing','⌨️','Typing Test'],['motivation','🌟','Daily Motivation'],['game','🎮','Game Zone']
+];
+$('homeGrid').innerHTML=features.map(([id,icon,name])=>`<button class="tile" onclick="openPage('${id}')"><span>${icon}</span>${name}</button>`).join('');
+let timerId=null,endAt=0,remaining=0,expr='',calcSolved=false,editingNote=null;
+function shell(title,html){box.innerHTML=`<button class="back" onclick="goHome()">← वापस</button><h2>${title}</h2>${html}`}
+function goHome(){if(timerId)pauseTimer();box.hidden=true;$('home').hidden=false;window.scrollTo(0,0)}
+function openPage(p){$('home').hidden=true;box.hidden=false;window.scrollTo(0,0);const f={calc,notes,expense,tasks,timer,study,quiz,grammar,math,shayari,contact,weather,calendar,scanner,qr,converter,student,typing,motivation,game};(f[p]||goHome)()}
+window.addEventListener('popstate',()=>{if(!box.hidden)goHome()});
+function pushPageState(){history.pushState({indiamate:true},'','#'+(features.find(x=>x[0]===currentPage)?.[0]||'page'))}
+let currentPage='';const originalOpenPage=openPage;openPage=function(p){currentPage=p;history.pushState({indiamate:true},'','#'+p);originalOpenPage(p)};
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&!box.hidden)goHome()});
 
-function shell(title,html){
- box.innerHTML=`<button class="back" onclick="goHome()">← वापस</button><h2>${title}</h2>${html}`;
-}
-function goHome(){
- if(timerId){pauseTimer()}
- box.hidden=true;
- $('home').hidden=false;
- window.scrollTo(0,0);
-}
-function openPage(page){
- $('home').hidden=true;
- box.hidden=false;
- window.scrollTo(0,0);
- const pages={calc,notes,expense,tasks,timer,study,quiz,grammar,math,shayari,contact};
- pages[page]();
-}
-function backButton(){goHome()}
+/* Calculator */
+function calc(){expr='';calcSolved=false;shell('🧮 Calculator',`<div class="mobile-calc"><div class="calc-screen"><div id="calcHistory"></div><div id="display">0</div></div><div class="calc-buttons">
+${[['AC','calc-action'],['⌫','calc-action'],['%','calc-action'],['÷','calc-op'],['7',''],['8',''],['9',''],['×','calc-op'],['4',''],['5',''],['6',''],['−','calc-op'],['1',''],['2',''],['3',''],['+','calc-op'],['±',''],['0',''],['.',''],['=','calc-equal']].map(([v,c])=>`<button class="${c}" onclick="calcKey('${v}')">${v}</button>`).join('')}
+</div></div>`)}
+function calcKey(k){let ops=['+','−','×','÷'];if(k==='AC'){expr='';calcSolved=false}
+else if(k==='⌫'){expr=expr.slice(0,-1);calcSolved=false}
+else if(k==='='){if(!expr)return;try{let v=expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(/(\d+(?:\.\d+)?)%/g,'($1/100)');if(!/^[0-9+\-*/(). ]+$/.test(v))throw 0;let r=Function('"use strict";return ('+v+')')();if(!Number.isFinite(r))throw 0;$('calcHistory').textContent=expr+' =';expr=String(Number(r.toFixed(10)));calcSolved=true}catch(e){$('display').textContent='Error';expr='';return}}
+else if(k==='±'){if(expr)expr=expr.startsWith('-')?expr.slice(1):'-'+expr}
+else{if(calcSolved&&!ops.includes(k))expr='';calcSolved=false;if(ops.includes(k)&&(!expr||ops.includes(expr.slice(-1)))){if(!expr&&k!=='−')return;expr=expr.slice(0,-1)}if(k==='.'&&expr.split(/[+\-×÷]/).pop().includes('.'))return;expr+=k}
+$('display').textContent=expr||'0'}
 
-/* CALCULATOR */
-let expr='';
-function calc(){
-/* MOBILE STYLE CALCULATOR */
-let expr = '';
-let calcJustSolved = false;
+/* Notes */
+function notes(){editingNote=null;shell('📝 मेरे Notes',`<input id="noteTitle" placeholder="नोट का नाम"><textarea id="noteBody" placeholder="अपना नोट लिखें..."></textarea><button onclick="saveNote()">💾 नोट सेव करें</button><button class="light" onclick="clearNoteEditor()">नया नोट</button><h3>मेरे सभी नोट</h3><div id="noteList"></div>`);drawNotes()}
+function clearNoteEditor(){editingNote=null;$('noteTitle').value='';$('noteBody').value=''}
+function saveNote(){let title=$('noteTitle').value.trim(),body=$('noteBody').value.trim();if(!title||!body)return alert('पहले नाम और नोट लिखें।');let a=get('notes');if(editingNote!==null){let n=a.find(x=>String(x.id)===String(editingNote));if(n){n.title=title;n.body=body}}else a.push({id:Date.now(),title,body,date:new Date().toLocaleDateString('hi-IN')});put('notes',a);clearNoteEditor();drawNotes()}
+function drawNotes(){let a=get('notes');$('noteList').innerHTML=a.length?a.slice().reverse().map(n=>`<div class="item"><b>${safe(n.title)}</b><p>${safe(n.body)}</p><small class="muted">${safe(n.date||'')}</small><br><button class="light" onclick="editNote('${n.id}')">Edit</button><button class="red" onclick="deleteNote('${n.id}')">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कोई नोट नहीं है।</p>'}
+function editNote(id){let n=get('notes').find(x=>String(x.id)===String(id));if(!n)return;editingNote=id;$('noteTitle').value=n.title;$('noteBody').value=n.body;window.scrollTo(0,0)}
+function deleteNote(id){if(confirm('नोट हटाएँ?')){put('notes',get('notes').filter(x=>String(x.id)!==String(id)));drawNotes()}}
 
-function calc(){
- shell('🧮 Calculator',`
- <div class="mobile-calc">
-   <div class="calc-screen">
-     <div id="calcHistory"></div>
-     <div id="display">0</div>
-   </div>
-
-   <div class="calc-buttons">
-     <button class="calc-action" onclick="calcClear()">AC</button>
-     <button class="calc-action" onclick="calcDelete()">⌫</button>
-     <button class="calc-action" onclick="calcKey('%')">%</button>
-     <button class="calc-op" onclick="calcKey('÷')">÷</button>
-
-     <button onclick="calcKey('7')">7</button>
-     <button onclick="calcKey('8')">8</button>
-     <button onclick="calcKey('9')">9</button>
-     <button class="calc-op" onclick="calcKey('×')">×</button>
-
-     <button onclick="calcKey('4')">4</button>
-     <button onclick="calcKey('5')">5</button>
-     <button onclick="calcKey('6')">6</button>
-     <button class="calc-op" onclick="calcKey('−')">−</button>
-
-     <button onclick="calcKey('1')">1</button>
-     <button onclick="calcKey('2')">2</button>
-     <button onclick="calcKey('3')">3</button>
-     <button class="calc-op" onclick="calcKey('+')">+</button>
-
-     <button onclick="calcKey('±')">+/−</button>
-     <button onclick="calcKey('0')">0</button>
-     <button onclick="calcKey('.')">.</button>
-     <button class="calc-equal" onclick="calcKey('=')">=</button>
-   </div>
- </div>
- `);
- $('display').textContent=expr||'0';
-}
-
-function calcKey(k){
- let operators=['+','−','×','÷'];
-
- if(k==='='){
-   if(!expr)return;
-   try{
-     let v=expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');
-     if(!/^[0-9+\-*/.%() ]+$/.test(v))throw Error();
-     v=v.replace(/(\d+(?:\.\d+)?)%/g,'($1/100)');
-     let result=Function('"use strict";return ('+v+')')();
-     if(!Number.isFinite(result))throw Error();
-
-     $('calcHistory').textContent=expr+' =';
-     expr=String(Number(result.toFixed(10)));
-     calcJustSolved=true;
-   }catch(e){
-     $('display').textContent='Error';
-     expr='';
-     return;
-   }
- }else if(k==='AC'){
-   calcClear();return;
- }else if(k==='⌫'){
-   calcDelete();return;
- }else if(k==='±'){
-   if(expr)expr=expr.startsWith('-')?expr.slice(1):'-'+expr;
- }else{
-   if(calcJustSolved){
-     if(operators.includes(k)){} 
-     else expr='';
-     calcJustSolved=false;
-   }
-   if(operators.includes(k)){
-     if(!expr && k!=='−')return;
-     if(operators.includes(expr.slice(-1)))expr=expr.slice(0,-1);
-   }
-   if(k==='.' && expr.split(/[+\-×÷]/).pop().includes('.'))return;
-   expr+=k;
- }
- $('display').textContent=expr||'0';
-}
-
-function calcClear(){
- expr='';
- calcJustSolved=false;
- $('display').textContent='0';
- $('calcHistory').textContent='';
-}
-
-function calcDelete(){
- expr=expr.slice(0,-1);
- calcJustSolved=false;
- $('display').textContent=expr||'0';
-  }
-      
- shell('🧮 Calculator',`
- <div class="formula timer" id="display">0</div>
- <div class="grid">
- ${['7','8','9','÷','4','5','6','×','1','2','3','−','0','.','=','+'].map(x=>
- `<button onclick="calcKey('${x}')" style="font-size:23px">${x}</button>`).join('')}
- </div>
- <button class="red" onclick="calcClear()">AC</button>
- <button class="light" onclick="calcDelete()">⌫</button>`);
-}
-function calcKey(k){
- if(k==='='){
- try{
- let v=expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');
- if(!/^[0-9+\-*/.() ]+$/.test(v))throw Error();
- let result=Function('"use strict";return ('+v+')')();
- if(!Number.isFinite(result))throw Error();
- expr=String(Number(result.toFixed(8)));
- }catch(e){expr='';$('display').textContent='गलत गणना';return}
- }else expr+=k;
- $('display').textContent=expr||'0';
-}
-function calcClear(){expr='';$('display').textContent='0'}
-function calcDelete(){expr=expr.slice(0,-1);$('display').textContent=expr||'0'}
-
-/* NOTES */
-let editingNote=null;
-function notes(){
- editingNote=null;
- shell('📝 मेरे Notes',`
- <input id="noteTitle" placeholder="नोट का नाम">
- <textarea id="noteBody" placeholder="अपना नोट लिखें..."></textarea>
- <button onclick="saveNote()">💾 नोट सेव करें</button>
- <button class="light" onclick="clearNoteEditor()">नया नोट</button>
- <h3>मेरे सभी नोट</h3><div id="noteList"></div>`);
- drawNotes();
-}
-function clearNoteEditor(){
- editingNote=null;
- $('noteTitle').value='';
- $('noteBody').value='';
-}
-function saveNote(){
- let title=$('noteTitle').value.trim(),body=$('noteBody').value.trim();
- if(!title||!body)return alert('पहले नाम और नोट लिखें।');
- let a=get('notes');
- if(editingNote!==null){
- let n=a.find(x=>String(x.id)===String(editingNote));
- if(n){n.title=title;n.body=body}
- }else{
- a.push({id:Date.now(),title,body,date:new Date().toLocaleDateString('hi-IN')});
- }
- put('notes',a);clearNoteEditor();drawNotes();
-}
-function drawNotes(){
- let a=get('notes');
- $('noteList').innerHTML=a.length?a.slice().reverse().map(n=>`
- <div class="item">
- <h3>${safe(n.title)}</h3><p>${safe(n.body)}</p>
- <small class="muted">${safe(n.date||'')}</small><br>
- <button class="light" onclick="editNote('${n.id}')">✏️ Edit</button>
- <button class="red" onclick="deleteNote('${n.id}')">हटाएँ</button>
- </div>`).join(''):'<p class="muted">अभी कोई नोट नहीं है।</p>';
-}
-function editNote(id){
- let n=get('notes').find(x=>String(x.id)===String(id));if(!n)return;
- editingNote=id;$('noteTitle').value=n.title;$('noteBody').value=n.body;
- window.scrollTo(0,0);
-}
-function deleteNote(id){
- if(confirm('क्या यह नोट हटाना है?')){
- put('notes',get('notes').filter(x=>String(x.id)!==String(id)));drawNotes();
- }
-}
-
-/* EXPENSE */
-function expense(){
- shell('💰 खर्च का हिसाब',`
- <h3>आज का कुल खर्च</h3><div class="timer" id="totalExpense">₹0</div>
- <input id="expenseName" placeholder="खर्च का नाम">
- <input id="expenseAmount" type="number" min="0" step="0.01" placeholder="रकम ₹">
- <select id="expenseCategory">
- <option>अन्य</option><option>खाना</option><option>पढ़ाई</option><option>यात्रा</option><option>घर</option><option>मोबाइल</option>
- </select>
- <button onclick="addExpense()">+ खर्च जोड़ें</button>
- <button class="red" onclick="clearExpenses()">पूरा हिसाब साफ करें</button>
- <h3>खर्च की सूची</h3><div id="expenseList"></div>`);
- drawExpenses();
-}
-function drawExpenses(){
- let a=get('expenses');
- let total=a.reduce((s,x)=>s+(Number(x.amount)||0),0);
- $('totalExpense').textContent='₹'+total.toLocaleString('en-IN');
- $('expenseList').innerHTML=a.length?a.slice().reverse().map(x=>`
- <div class="item"><b>${safe(x.name)}</b><p>₹${Number(x.amount).toLocaleString('en-IN')} • ${safe(x.category)}</p>
- <button class="red" onclick="deleteExpense('${x.id}')">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कोई खर्च नहीं है।</p>';
-}
-function addExpense(){
- let name=$('expenseName').value.trim(),amount=Number($('expenseAmount').value);
- if(!name||!Number.isFinite(amount)||amount<=0)return alert('नाम और सही रकम लिखें।');
- let a=get('expenses');a.push({id:Date.now(),name,amount,category:$('expenseCategory').value});
- put('expenses',a);$('expenseName').value='';$('expenseAmount').value='';drawExpenses();
-}
+/* Expenses */
+function expense(){shell('💰 खर्च का हिसाब',`<h3>कुल खर्च</h3><div class="timer" id="totalExpense">₹0</div><input id="expenseName" placeholder="खर्च का नाम"><input id="expenseAmount" type="number" min="0" step="0.01" placeholder="रकम ₹"><select id="expenseCategory"><option>अन्य</option><option>खाना</option><option>पढ़ाई</option><option>यात्रा</option><option>घर</option><option>मोबाइल</option></select><button onclick="addExpense()">+ खर्च जोड़ें</button><button class="red" onclick="clearExpenses()">पूरा हिसाब साफ करें</button><div id="expenseList"></div>`);drawExpenses()}
+function drawExpenses(){let a=get('expenses'),t=a.reduce((s,x)=>s+(Number(x.amount)||0),0);$('totalExpense').textContent='₹'+t.toLocaleString('en-IN');$('expenseList').innerHTML=a.length?a.slice().reverse().map(x=>`<div class="item"><b>${safe(x.name)}</b><p>₹${Number(x.amount).toLocaleString('en-IN')} • ${safe(x.category)}</p><button class="red" onclick="deleteExpense('${x.id}')">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कोई खर्च नहीं है।</p>'}
+function addExpense(){let n=$('expenseName').value.trim(),v=Number($('expenseAmount').value);if(!n||!Number.isFinite(v)||v<=0)return alert('नाम और सही रकम लिखें।');let a=get('expenses');a.push({id:Date.now(),name:n,amount:v,category:$('expenseCategory').value});put('expenses',a);$('expenseName').value='';$('expenseAmount').value='';drawExpenses()}
 function deleteExpense(id){put('expenses',get('expenses').filter(x=>String(x.id)!==String(id)));drawExpenses()}
-function clearExpenses(){
- if(confirm('क्या पूरा खर्च का हिसाब हटाना है?')){put('expenses',[]);drawExpenses()}
-}
+function clearExpenses(){if(confirm('पूरा हिसाब हटाएँ?')){put('expenses',[]);drawExpenses()}}
 
-/* TASKS */
-function tasks(){
- shell('✅ कामों की लिस्ट',`
- <input id="taskInput" placeholder="नया काम लिखें">
- <button onclick="addTask()">काम जोड़ें</button>
- <div id="taskList"></div>`);
- drawTasks();
-}
-function drawTasks(){
- let a=get('tasks').map((t,i)=>({
- id:t.id??i,text:t.text??t.task??t.name??t.title??'पुराना काम',done:!!(t.done??t.completed)
- }));
- put('tasks',a);
- $('taskList').innerHTML=a.length?a.map(t=>`
- <div class="item">
- <label><input style="width:auto" type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}')">
- <span style="${t.done?'text-decoration:line-through':''}">${safe(t.text)}</span></label>
- <button class="red" onclick="deleteTask('${t.id}')">हटाएँ</button>
- </div>`).join(''):'<p class="muted">अभी कोई काम नहीं है।</p>';
-}
-function addTask(){
- let text=$('taskInput').value.trim();if(!text)return alert('काम लिखें।');
- let a=get('tasks');a.push({id:Date.now(),text,done:false});put('tasks',a);
- $('taskInput').value='';drawTasks();
-}
-function toggleTask(id){
- let a=get('tasks');let t=a.find(x=>String(x.id)===String(id));if(t)t.done=!t.done;
- put('tasks',a);drawTasks();
-}
-function deleteTask(id){put('tasks',get('tasks').filter(x=>String(x.id)!==String(id)));drawTasks()}
+/* Tasks */
+function tasks(){shell('✅ कामों की लिस्ट',`<input id="taskInput" placeholder="नया काम लिखें"><button onclick="addTask()">काम जोड़ें</button><div id="taskList"></div>`);drawTasks()}
+function drawTasks(){let a=get('tasks');$('taskList').innerHTML=a.length?a.map((t,i)=>`<div class="item"><label><input style="width:auto" type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id??i}')"> ${safe(t.text??t.task??'काम')}</label><button class="red" onclick="deleteTask('${t.id??i}')">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कोई काम नहीं है।</p>'}
+function addTask(){let v=$('taskInput').value.trim();if(!v)return;let a=get('tasks');a.push({id:Date.now(),text:v,done:false});put('tasks',a);$('taskInput').value='';drawTasks()}
+function toggleTask(id){let a=get('tasks'),t=a.find(x=>String(x.id)===String(id));if(t)t.done=!t.done;put('tasks',a);drawTasks()}
+function deleteTask(id){put('tasks',get('tasks').filter((x,i)=>String(x.id??i)!==String(id)));drawTasks()}
 
-/* FOCUS TIMER */
-let timerId=null,endAt=0,remaining=0;
-function timer(){
- shell('⏱️ Focus Timer',`
- <p class="muted">पढ़ाई का समय चुनें। बीच में ऐप से बाहर जाने पर आवाज़ बजाने की कोशिश होगी।</p>
- <input id="mins" type="number" min="1" max="600" placeholder="कितने मिनट?">
- <div class="timer" id="clock">00:00</div>
- <p id="timerStatus" class="muted" style="text-align:center">तैयार हैं?</p>
- <button onclick="startTimer()">▶ शुरू करें</button>
- <button class="light" onclick="pauseTimer()">⏸ Pause</button>
- <button class="red" onclick="resetTimer()">↻ Reset</button>`);
-}
-function startTimer(){
- if(timerId)return;
- if(remaining<=0){
- let m=Number($('mins').value);
- if(!Number.isFinite(m)||m<1||m>600)return alert('1 से 600 मिनट के बीच समय लिखें।');
- remaining=m*60;
- }
- endAt=Date.now()+remaining*1000;
- $('timerStatus').textContent='पढ़ाई जारी रखें 📚';
- tick();timerId=setInterval(tick,500);
-}
-function tick(){
- remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));
- $('clock').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');
- if(remaining<=0){
- clearInterval(timerId);timerId=null;$('timerStatus').textContent='समय पूरा हुआ! 🎉';beep();
- }
-}
-function pauseTimer(){
- if(timerId){clearInterval(timerId);timerId=null;remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));$('timerStatus').textContent='Timer रुका हुआ है।'}
-}
-function resetTimer(){
- if(timerId)clearInterval(timerId);timerId=null;remaining=0;
- if($('clock'))$('clock').textContent='00:00';
- if($('timerStatus'))$('timerStatus').textContent='फिर से तैयार!';
-}
-function beep(){
- try{
- let c=new (window.AudioContext||window.webkitAudioContext)();
- let o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);
- o.frequency.value=880;g.gain.value=.2;o.start();o.stop(c.currentTime+1);
- }catch(e){}
-}
-document.addEventListener('visibilitychange',()=>{
- if(document.hidden&&timerId){beep()}
-});
+/* Focus Timer */
+function timer(){shell('⏱️ Focus Timer',`<p class="muted">1 से 600 मिनट तक समय चुनें।</p><input id="mins" type="number" min="1" max="600" placeholder="कितने मिनट?"><div class="timer" id="clock">00:00</div><p id="timerStatus" class="muted">तैयार हैं?</p><button onclick="startTimer()">▶ शुरू करें</button><button class="light" onclick="pauseTimer()">⏸ Pause</button><button class="red" onclick="resetTimer()">↻ Reset</button>`)}
+function startTimer(){if(timerId)return;if(remaining<=0){let m=Number($('mins').value);if(!Number.isFinite(m)||m<1||m>600)return alert('1 से 600 मिनट लिखें।');remaining=m*60}endAt=Date.now()+remaining*1000;$('timerStatus').textContent='पढ़ाई जारी रखें 📚';tick();timerId=setInterval(tick,500)}
+function tick(){remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));if($('clock'))$('clock').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');if(remaining<=0){clearInterval(timerId);timerId=null;if($('timerStatus'))$('timerStatus').textContent='समय पूरा हुआ! 🎉';beep()}}
+function pauseTimer(){if(timerId){clearInterval(timerId);timerId=null;remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));if($('timerStatus'))$('timerStatus').textContent='Timer रुका हुआ है।'}}
+function resetTimer(){clearInterval(timerId);timerId=null;remaining=0;if($('clock'))$('clock').textContent='00:00';if($('timerStatus'))$('timerStatus').textContent='फिर से तैयार!'}
+function beep(){try{let c=new(window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=880;g.gain.value=.2;o.start();o.stop(c.currentTime+1)}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&timerId){/* Background audio is restricted by browsers; timer continues by timestamp. */}});
 
-/* STUDY PLANNER */
-function study(){
- shell('📚 Study Planner',`
- <input id="subject" placeholder="कौन-सा विषय?">
- <input id="duration" type="number" min="1" placeholder="कितने मिनट पढ़ना है?">
- <button onclick="addStudy()">प्लान बनाओ</button>
- <h3>मेरे प्लान</h3><div id="studyList"></div>`);
- drawStudy();
-}
-function addStudy(){
- let subject=$('subject').value.trim(),minutes=Number($('duration').value);
- if(!subject||!Number.isFinite(minutes)||minutes<1)return alert('विषय और सही मिनट लिखें।');
- let a=get('study');a.push({id:Date.now(),subject,minutes});put('study',a);
- $('subject').value='';$('duration').value='';drawStudy();
-}
-function drawStudy(){
- let a=get('study');
- $('studyList').innerHTML=a.length?a.map(x=>`
- <div class="item">${safe(x.subject)} — ${x.minutes} मिनट
- <button class="red" onclick="deleteStudy('${x.id}')">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कोई प्लान नहीं है।</p>';
-}
+/* Study Planner */
+function study(){shell('📚 Study Planner',`<input id="subject" placeholder="विषय"><input id="duration" type="number" min="1" placeholder="कितने मिनट?"><button onclick="addStudy()">प्लान बनाओ</button><div id="studyList"></div>`);drawStudy()}
+function addStudy(){let s=$('subject').value.trim(),m=Number($('duration').value);if(!s||m<1)return alert('विषय और समय लिखें।');let a=get('study');a.push({id:Date.now(),subject:s,minutes:m});put('study',a);$('subject').value='';$('duration').value='';drawStudy()}
+function drawStudy(){$('studyList').innerHTML=get('study').map(x=>`<div class="item">${safe(x.subject)} — ${x.minutes} मिनट <button class="red" onclick="deleteStudy('${x.id}')">हटाएँ</button></div>`).join('')||'<p class="muted">अभी कोई प्लान नहीं है।</p>'}
 function deleteStudy(id){put('study',get('study').filter(x=>String(x.id)!==String(id)));drawStudy()}
 
-/* QUIZ */
-const questions=[
-['भारत की राजधानी क्या है?',['दिल्ली','मुंबई','लखनऊ','जयपुर'],0,'भारत की राजधानी नई दिल्ली है।'],
-['2 + 2 × 2 कितना होगा?',['8','6','4','10'],1,'पहले गुणा: 2×2=4, फिर 2 जोड़ें। उत्तर 6 है।'],
-['पानी का रासायनिक सूत्र क्या है?',['CO2','O2','H2O','NaCl'],2,'पानी का सूत्र H₂O है।'],
-['भारत का राष्ट्रीय पशु कौन है?',['शेर','बाघ','हाथी','घोड़ा'],1,'भारत का राष्ट्रीय पशु बाघ है।'],
-['एक सप्ताह में कितने दिन होते हैं?',['5','6','7','8'],2,'एक सप्ताह में 7 दिन होते हैं।'],
-['Apple कौन-सा शब्द है?',['Noun','Verb','Adjective','Adverb'],0,'Apple एक Noun यानी संज्ञा है।'],
-['15 × 4 कितना होगा?',['45','50','60','65'],2,'15 गुणा 4 = 60।'],
-['विलोम शब्द: दिन',['सुबह','रात','दोपहर','शाम'],1,'दिन का विलोम रात है।'],
-['भारत का स्वतंत्रता दिवस कब है?',['15 अगस्त','26 जनवरी','2 अक्टूबर','14 नवंबर'],0,'15 अगस्त को स्वतंत्रता दिवस मनाया जाता है।'],
-['5 का वर्ग कितना है?',['10','15','20','25'],3,'5 × 5 = 25।'],
-['वह स्कूल जाता है। English?',['He go school','He goes to school','He going school','He gone school'],1,'He goes to school सही वाक्य है।'],
-['100 में 25% कितना है?',['20','25','30','50'],1,'100 का 25 प्रतिशत = 25।']
-];
+/* Quiz */
+const questions=[['भारत की राजधानी?',['दिल्ली','मुंबई','लखनऊ','जयपुर'],0,'भारत की राजधानी नई दिल्ली है।'],['2 + 2 × 2?',['8','6','4','10'],1,'पहले गुणा: 4, फिर 2 जोड़ें।'],['पानी का सूत्र?',['CO2','O2','H2O','NaCl'],2,'पानी H₂O है।'],['राष्ट्रीय पशु?',['शेर','बाघ','हाथी','घोड़ा'],1,'बाघ राष्ट्रीय पशु है।'],['एक सप्ताह में दिन?',['5','6','7','8'],2,'सात दिन।'],['Apple कौन-सा शब्द?',['Noun','Verb','Adjective','Adverb'],0,'Apple एक Noun है।'],['15 × 4?',['45','50','60','65'],2,'उत्तर 60।'],['दिन का विलोम?',['सुबह','रात','दोपहर','शाम'],1,'रात।'],['स्वतंत्रता दिवस?',['15 अगस्त','26 जनवरी','2 अक्टूबर','14 नवंबर'],0,'15 अगस्त।'],['5 का वर्ग?',['10','15','20','25'],3,'5×5=25।'],['He ___ to school.',['go','goes','going','gone'],1,'He goes सही है।'],['100 का 25%?',['20','25','30','50'],1,'उत्तर 25।']];
 let qSet=[],qIndex=0,qScore=0,qAnswered=false;
-function quiz(){
- shell('🎯 Quiz',`
- <p>अपना स्तर चुनें और सवालों के जवाब दें।</p>
- <select id="quizLevel"><option value="easy">आसान Quiz</option><option value="hard">कठिन Quiz</option></select>
- <button onclick="startQuiz()">Quiz शुरू करें</button>
- <div id="quizBox"></div>`);
-}
-function startQuiz(){
- let level=$('quizLevel').value;
- qSet=questions.slice();
- if(level==='hard')qSet=qSet.slice().reverse();
- qSet=qSet.sort(()=>Math.random()-.5).slice(0,5);
- qIndex=0;qScore=0;qAnswered=false;drawQuestion();
-}
-function drawQuestion(){
- let q=qSet[qIndex];
- $('quizBox').innerHTML=`
- <p>सवाल ${qIndex+1} / ${qSet.length} • स्कोर ${qScore}</p>
- <h3>${safe(q[0])}</h3>
- ${q[1].map((v,i)=>`<button class="option" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${safe(v)}</button>`).join('')}
- <div id="feedback"></div>`;
- qAnswered=false;
-}
-function answerQuiz(i){
- if(qAnswered)return;qAnswered=true;
- let q=qSet[qIndex],correct=i===q[2];if(correct)qScore++;
- $('feedback').innerHTML=`<p>${correct?'✅ सही जवाब!':'❌ सही जवाब: '+safe(q[1][q[2]])}</p><p>${safe(q[3])}</p>
- <button onclick="nextQuestion()">${qIndex===qSet.length-1?'रिजल्ट देखें':'अगला सवाल'}</button>`;
-}
-function nextQuestion(){
- qIndex++;
- if(qIndex>=qSet.length){
- $('quizBox').innerHTML=`<h3>Quiz पूरा हुआ 🎉</h3><div class="timer">${qScore}/${qSet.length}</div>
- <p>${qScore>=4?'बहुत बढ़िया!':'अच्छी कोशिश! फिर अभ्यास करें।'}</p>
- <button onclick="startQuiz()">दूसरा Quiz खेलें</button>`;
- }else drawQuestion();
-}
+function quiz(){shell('🎯 Quiz',`<p>आसान या कठिन स्तर चुनें।</p><select id="quizLevel"><option value="easy">आसान</option><option value="hard">कठिन</option></select><button onclick="startQuiz()">Quiz शुरू करें</button><div id="quizBox"></div>`)}
+function startQuiz(){qSet=questions.slice().sort(()=>Math.random()-.5).slice(0,5);if($('quizLevel').value==='hard')qSet=qSet.reverse();qIndex=0;qScore=0;drawQuestion()}
+function drawQuestion(){let q=qSet[qIndex];$('quizBox').innerHTML=`<p>सवाल ${qIndex+1}/${qSet.length} • स्कोर ${qScore}</p><h3>${safe(q[0])}</h3>${q[1].map((v,i)=>`<button class="option" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${safe(v)}</button>`).join('')}<div id="feedback"></div>`;qAnswered=false}
+function answerQuiz(i){if(qAnswered)return;qAnswered=true;let q=qSet[qIndex],ok=i===q[2];if(ok)qScore++;$('feedback').innerHTML=`<p>${ok?'✅ सही!':'❌ सही जवाब: '+safe(q[1][q[2]])}</p><p>${safe(q[3])}</p><button onclick="nextQuestion()">${qIndex===qSet.length-1?'रिजल्ट':'अगला सवाल'}</button>`}
+function nextQuestion(){if(++qIndex>=qSet.length){$('quizBox').innerHTML=`<h3>Quiz पूरा! 🎉</h3><div class="timer">${qScore}/${qSet.length}</div><button onclick="startQuiz()">फिर खेलें</button>`}else drawQuestion()}
 
-/* ENGLISH GRAMMAR */
-const lessons=[
-['Parts of Speech','English में शब्दों के 8 प्रकार होते हैं: Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction और Interjection।','Ram is a good boy.'],
-['Noun','किसी व्यक्ति, जगह, वस्तु या भाव के नाम को Noun कहते हैं।','Ram, Delhi, Book, Honesty'],
-['Pronoun','Noun की जगह इस्तेमाल होने वाले शब्द Pronoun कहलाते हैं।','I, We, You, He, She, It, They'],
-['Verb','काम या अवस्था बताने वाले शब्द Verb कहलाते हैं।','Run, Eat, Read, Is, Am, Are'],
-['Adjective','Noun या Pronoun की विशेषता बताने वाला शब्द Adjective है।','She is a beautiful girl.'],
-['Adverb','Verb, Adjective या दूसरे Adverb की विशेषता बताता है।','He runs quickly.'],
-['Preposition','Noun या Pronoun का दूसरे शब्दों से संबंध बताता है।','In, On, At, Under, Between'],
-['Conjunction','दो शब्दों या वाक्यों को जोड़ता है।','And, But, Because, Or'],
-['Interjection','अचानक भावना प्रकट करने वाला शब्द।','Wow! Alas! Hurrah!'],
-['Articles','A, An, The को Articles कहते हैं।','A book, An apple, The Sun'],
-['Subject Verb Agreement','Subject के अनुसार Verb का सही रूप लगाते हैं।','He plays. They play.'],
-['Modals','Can, Could, May, Might, Must, Should आदि सहायक क्रियाएँ हैं।','You should study.'],
-['Active and Passive Voice','Active में Subject काम करता है। Passive में काम पर जोर होता है।','Ram writes a letter. A letter is written by Ram.'],
-['Direct and Indirect Speech','किसी के कहे हुए शब्द ज्यों के त्यों Direct Speech हैं। अपने शब्दों में बताना Indirect Speech है।','Direct: He said, “I am happy.” Indirect: He said that he was happy.'],
-['Question Tags','वाक्य के अंत में छोटा सवाल लगाते हैं।','You are ready, aren’t you?'],
-['Punctuation','वाक्य में सही विराम चिह्न लगाना।','Full stop (.), comma (,), question mark (?)'],
-['Conditional Sentences','शर्त बताने वाले वाक्य Conditional Sentences हैं।','If you study, you will learn.'],
-['Gerund and Infinitive','Verb में ing लगने पर Gerund बन सकता है; to + V1 Infinitive है।','Swimming is fun. I want to learn.'],
-['Determiners','Noun से पहले आने वाले शब्द जो उसकी जानकारी देते हैं।','A, An, The, Some, Any, Many, Much'],
-['Common Errors','अंग्रेज़ी में होने वाली आम गलतियों को समझें।','He goes. सही; He go. गलत।']
-];
-const tenses=[
-['Simple Present','Subject + V1(s/es)','I play cricket.','मैं क्रिकेट खेलता हूँ।'],
-['Present Continuous','Subject + is/am/are + V-ing','She is reading.','वह पढ़ रही है।'],
-['Present Perfect','Subject + has/have + V3','They have finished work.','उन्होंने काम पूरा कर लिया है।'],
-['Present Perfect Continuous','Subject + has/have been + V-ing + since/for','I have been studying for two hours.','मैं दो घंटे से पढ़ रहा हूँ।'],
-['Simple Past','Subject + V2','He went home.','वह घर गया।'],
-['Past Continuous','Subject + was/were + V-ing','They were playing.','वे खेल रहे थे।'],
-['Past Perfect','Subject + had + V3','She had eaten.','उसने खा लिया था।'],
-['Past Perfect Continuous','Subject + had been + V-ing + since/for','He had been waiting for an hour.','वह एक घंटे से इंतजार कर रहा था।'],
-['Simple Future','Subject + will + V1','I will call you.','मैं तुम्हें फोन करूँगा।'],
-['Future Continuous','Subject + will be + V-ing','I will be studying.','मैं पढ़ रहा होऊँगा।'],
-['Future Perfect','Subject + will have + V3','She will have finished.','वह पूरा कर चुकी होगी।'],
-['Future Perfect Continuous','Subject + will have been + V-ing + since/for','I will have been working for two hours.','मैं दो घंटे से काम कर रहा होऊँगा।']
-];
-function grammar(){
- shell('📖 English Grammar Teacher',`
- <p class="muted">आसान भाषा में Grammar सीखें। किसी पाठ पर सुनें दबाएँ।</p>
- <h3>Grammar के सभी मुख्य टॉपिक</h3><div id="grammarList"></div>
- <h3>12 Tenses</h3><div id="tenseList"></div>`);
- $('grammarList').innerHTML=lessons.map((x,i)=>`
- <div class="item"><b>${i+1}. ${safe(x[0])}</b><p>${safe(x[1])}</p>
- <div class="formula">Example: ${safe(x[2])}</div>
- <button class="light" onclick="speakGrammar(${i},false)">🔊 समझें</button>
- </div>`).join('');
- $('tenseList').innerHTML=tenses.map((x,i)=>`
- <div class="item"><b>${safe(x[0])}</b>
- <div class="formula">Formula: ${safe(x[1])}</div>
- <p>Example: ${safe(x[2])}</p><p>हिंदी: ${safe(x[3])}</p>
- <button class="light" onclick="speakGrammar(${i},true)">🔊 सुनें</button></div>`).join('');
-}
-function speakGrammar(i,isTense){
- if(!('speechSynthesis'in window))return alert('इस फोन में आवाज़ की सुविधा उपलब्ध नहीं है।');
- speechSynthesis.cancel();
- let x=isTense?tenses[i]:lessons[i];
- let u=new SpeechSynthesisUtterance(x.join('. '));
- u.lang='en-IN';u.rate=.85;speechSynthesis.speak(u);
-}
+/* Grammar and formulas */
+const lessons=[['Noun','व्यक्ति, जगह, वस्तु या भाव के नाम को Noun कहते हैं।','Ram, Delhi, Book'],['Pronoun','Noun की जगह आने वाले शब्द।','I, We, You, He, She'],['Verb','काम या अवस्था बताने वाले शब्द।','Run, Eat, Read, Is'],['Adjective','Noun की विशेषता बताने वाला शब्द।','A beautiful flower.'],['Adverb','Verb की विशेषता बताता है।','He runs quickly.'],['Preposition','शब्दों का संबंध बताता है।','In, On, At, Under'],['Conjunction','शब्दों/वाक्यों को जोड़ता है।','And, But, Or'],['Interjection','अचानक भावना बताता है।','Wow! Hurrah!'],['Articles','A, An, The को Articles कहते हैं।','A book, An apple'],['Active/Passive','Active में subject काम करता है; passive में काम पर जोर होता है।','Ram writes a letter.'],['Direct/Indirect','कहे गए शब्द ज्यों के त्यों direct; अपने शब्दों में indirect।','He said, “I am happy.”'],['Modals','Can, Could, May, Must, Should आदि।','You should study.']];
+const tenses=[['Simple Present','Subject + V1(s/es)','I play cricket.'],['Present Continuous','is/am/are + V-ing','She is reading.'],['Present Perfect','has/have + V3','They have finished.'],['Present Perfect Continuous','has/have been + V-ing','I have been studying.'],['Simple Past','Subject + V2','He went home.'],['Past Continuous','was/were + V-ing','They were playing.'],['Past Perfect','had + V3','She had eaten.'],['Past Perfect Continuous','had been + V-ing','He had been waiting.'],['Simple Future','will + V1','I will call you.'],['Future Continuous','will be + V-ing','I will be studying.'],['Future Perfect','will have + V3','She will have finished.'],['Future Perfect Continuous','will have been + V-ing','I will have been working.']];
+function grammar(){shell('📖 English Grammar',`<p class="muted">आसान हिंदी में सीखें।</p><h3>Grammar Topics</h3><div id="grammarList"></div><h3>12 Tenses</h3><div id="tenseList"></div>`);$('grammarList').innerHTML=lessons.map((x,i)=>`<div class="item"><b>${x[0]}</b><p>${x[1]}</p><div class="formula">Example: ${x[2]}</div><button class="light" onclick="speakText('${safe(x.join('. ')).replace(/'/g,"\\'")}')">🔊 सुनें</button></div>`).join('');$('tenseList').innerHTML=tenses.map(x=>`<div class="item"><b>${x[0]}</b><div class="formula">${x[1]}</div><p>${x[2]}</p></div>`).join('')}
+function speakText(t){if(!speechSynthesis)return alert('आवाज सुविधा उपलब्ध नहीं।');speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='en-IN';speechSynthesis.speak(u)}
+const mathTopics=[['बीजगणित','(a+b)² = a²+2ab+b²','(a-b)² = a²-2ab+b²','a²-b²=(a+b)(a-b)'],['प्रतिशत','प्रतिशत = (भाग ÷ कुल) × 100','25% = 1/4'],['लाभ-हानि','लाभ = विक्रय मूल्य - क्रय मूल्य','हानि = क्रय मूल्य - विक्रय मूल्य'],['साधारण ब्याज','SI = (P×R×T)/100'],['गति-दूरी-समय','गति = दूरी ÷ समय','दूरी = गति × समय'],['क्षेत्रफल','वर्ग = भुजा²','आयत = लंबाई × चौड़ाई','त्रिभुज = 1/2 × आधार × ऊँचाई'],['वृत्त','क्षेत्रफल = πr²','परिधि = 2πr'],['घनाभ','आयतन = लंबाई × चौड़ाई × ऊँचाई']];
+function math(){shell('📐 Math Formula Book',`<div id="mathList"></div>`);$('mathList').innerHTML=mathTopics.map(x=>`<div class="item"><b>${x[0]}</b>${x.slice(1).map(y=>`<div class="formula">${y}</div>`).join('')}</div>`).join('')}
 
-/* MATH FORMULAS */
-const mathTopics=[
-['बीजगणित','(a+b)² = a² + 2ab + b²','(a-b)² = a² - 2ab + b²','a²-b² = (a+b)(a-b)'],
-['गुणनखंड','a² + 2ab + b² = (a+b)²','a² - 2ab + b² = (a-b)²','a³+b³ = (a+b)(a²-ab+b²)'],
-['प्रतिशत','प्रतिशत = (प्राप्त भाग ÷ कुल भाग) × 100','किसी संख्या का 10% = संख्या × 10/100','25% = 1/4'],
-['लाभ और हानि','लाभ = विक्रय मूल्य - क्रय मूल्य','हानि = क्रय मूल्य - विक्रय मूल्य','लाभ % = (लाभ ÷ क्रय मूल्य) × 100'],
-['साधारण ब्याज','SI = (P × R × T) / 100','P = मूलधन, R = दर, T = समय','कुल राशि = मूलधन + ब्याज'],
-['गति, दूरी, समय','गति = दूरी ÷ समय','दूरी = गति × समय','समय = दूरी ÷ गति'],
-['औसत','औसत = सभी संख्याओं का योग ÷ कुल संख्याएँ','कुल योग = औसत × कुल संख्याएँ',''],
-['क्षेत्रफल','वर्ग = भुजा × भुजा','आयत = लंबाई × चौड़ाई','त्रिभुज = 1/2 × आधार × ऊँचाई'],
-['परिमाप','वर्ग = 4 × भुजा','आयत = 2 × (लंबाई + चौड़ाई)','वृत्त की परिधि = 2πr'],
-['वृत्त','क्षेत्रफल = πr²','व्यास = 2r','π ≈ 22/7'],
-['घन और घनाभ','घन का आयतन = भुजा³','घनाभ का आयतन = लंबाई × चौड़ाई × ऊँचाई',''],
-['त्रिकोणमिति','sin θ = लंब / कर्ण','cos θ = आधार / कर्ण','tan θ = लंब / आधार'],
-['घातांक','aᵐ × aⁿ = aᵐ⁺ⁿ','aᵐ ÷ aⁿ = aᵐ⁻ⁿ','(aᵐ)ⁿ = aᵐⁿ'],
-['वर्गमूल','√(a × b) = √a × √b','√(a²) = a (जब a धनात्मक हो)','']
-];
-function math(){
- shell('📐 Math Formula Book',`
- <p class="muted">गणित के जरूरी फॉर्मूले आसान उदाहरणों के साथ।</p>
- <div id="mathList"></div>`);
- $('mathList').innerHTML=mathTopics.map(x=>`
- <div class="item"><h3>${safe(x[0])}</h3>
- ${x.slice(1).filter(Boolean).map(y=>`<div class="formula">${safe(y)}</div>`).join('')}
- </div>`).join('');
-}
+/* Shayari */
+const shayaris=['मंजिल उन्हीं को मिलती है, जिनके सपनों में जान होती है।','छोटी कोशिशें एक दिन बड़ी सफलता बन जाती हैं।','हर सुबह एक नया मौका लेकर आती है।','रास्ते मुश्किल हों तो हौसले मजबूत रखो।','मेहनत खामोशी से करो, सफलता शोर मचाएगी।','दिल साफ रखो, इरादे मजबूत रखो।'];
+let shayariIndex=0;function shayari(){shayariIndex=Math.floor(Math.random()*shayaris.length);shell('💌 Shayari',`<div class="formula" style="font-size:21px;text-align:center;padding:25px" id="shayariText"></div><button onclick="nextShayari()">अगली शायरी</button><button class="light" onclick="copyShayari()">कॉपी</button>`);showShayari()}
+function showShayari(){$('shayariText').textContent=shayaris[shayariIndex]}function nextShayari(){shayariIndex=(shayariIndex+1)%shayaris.length;showShayari()}function copyShayari(){navigator.clipboard?.writeText(shayaris[shayariIndex]).then(()=>alert('कॉपी हो गई।'))}
+function contact(){shell('📸 Contact Owner',`<div class="formula"><h3>IndiaMate के निर्माता</h3><p>सुझाव या समस्या के लिए Instagram पर संपर्क करें।</p><b>@hkkumar00king</b></div><button onclick="window.open('https://instagram.com/hkkumar00king','_blank')">Instagram पर संपर्क करें</button>`)}
 
-/* SHAYARI */
-const shayaris=[
-'मंजिल उन्हीं को मिलती है, जिनके सपनों में जान होती है।',
-'छोटी-छोटी कोशिशें एक दिन बड़ी सफलता बन जाती हैं।',
-'खामोशी भी बहुत कुछ कह जाती है, जब समझने वाला कोई अपना हो।',
-'हर सुबह एक नया मौका लेकर आती है, बस हिम्मत बनाए रखना।',
-'मुस्कुराते रहो, क्योंकि अच्छी सोच से ही अच्छे दिन आते हैं।',
-'रास्ते मुश्किल हों तो क्या हुआ, हौसले मजबूत होने चाहिए।',
-'वक्त बदलता है, हालात बदलते हैं, मेहनत करने वालों के दिन भी बदलते हैं।',
-'कुछ सपने नींद में नहीं आते, उन्हें पूरा करने के लिए जागना पड़ता है।',
-'दिल साफ रखो, इरादे मजबूत रखो, मंजिल जरूर मिलेगी।',
-'हार मानना नहीं, क्योंकि कोशिश करने वालों की कभी हार नहीं होती।',
-'दोस्ती वो नहीं जो हर दिन मिले, दोस्ती वो है जो हर वक्त साथ खड़ी रहे।',
-'चेहरे की मुस्कान की वजह बनो, परेशानी की वजह नहीं।'
-];
-let shayariIndex=0;
-function shayari(){
- shell('💌 Shayari',`
- <div class="formula" style="font-size:21px;text-align:center;padding:28px" id="shayariText"></div>
- <button onclick="nextShayari()">अगली शायरी ➜</button>
- <button class="light" onclick="copyShayari()">कॉपी करें</button>`);
- shayariIndex=Math.floor(Math.random()*shayaris.length);showShayari();
-}
-function showShayari(){$('shayariText').textContent=shayaris[shayariIndex]}
-function nextShayari(){
- shayariIndex=(shayariIndex+1)%shayaris.length;showShayari();
-}
-function copyShayari(){
- if(navigator.clipboard)navigator.clipboard.writeText(shayaris[shayariIndex]).then(()=>alert('शायरी कॉपी हो गई।'));
- else alert(shayaris[shayariIndex]);
-}
+/* Weather */
+function weather(){shell('🌤️ Weather',`<p>शहर का नाम लिखकर मौसम देखें। इंटरनेट जरूरी है।</p><input id="city" placeholder="जैसे Kushinagar"><button onclick="getWeather()">मौसम देखें</button><div id="weatherResult"></div>`)}
+async function getWeather(){let city=$('city').value.trim();if(!city)return alert('शहर लिखें।');$('weatherResult').textContent='मौसम खोज रहे हैं...';try{let g=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(city)+'&count=1&language=hi&format=json').then(r=>r.json());if(!g.results?.length)throw Error('शहर नहीं मिला');let p=g.results[0],w=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${p.latitude}&longitude=${p.longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m&timezone=auto`).then(r=>r.json());let c=w.current;$('weatherResult').innerHTML=`<div class="item"><h3>${safe(p.name)}, ${safe(p.country||'')}</h3><div class="timer">${c.temperature_2m}°C</div><p>नमी: ${c.relative_humidity_2m}%</p><p>हवा: ${c.wind_speed_10m} km/h</p></div>`}catch(e){$('weatherResult').textContent='मौसम नहीं मिल पाया। इंटरनेट जाँचें और फिर कोशिश करें।'}}
 
-/* CONTACT OWNER */
-function contact(){
- shell('📸 Contact Owner',`
- <div class="formula">
- <h3>IndiaMate के निर्माता</h3>
- <p>IndiaMate बनाने के लिए धन्यवाद!</p>
- <p>किसी सुझाव या समस्या के लिए Instagram पर संपर्क करें।</p>
- <b>@hkkumar00king</b>
- </div>
- <button onclick="window.open('https://instagram.com/hkkumar00king','_blank')">Instagram पर संपर्क करें</button>
- <p class="muted">आपका सुझाव IndiaMate को बेहतर बनाने में मदद करेगा।</p>`);
-}
+/* Calendar and reminders */
+function calendar(){shell('🗓️ Calendar & Reminder',`<input id="remDate" type="date"><input id="remText" placeholder="रिमाइंडर का नाम"><button onclick="addReminder()">रिमाइंडर सेव करें</button><p class="muted small">सूचना दिखाने के लिए अनुमति माँगी जा सकती है। ऐप बंद होने पर हर फोन में notification की गारंटी नहीं है।</p><div id="remList"></div>`);drawReminders()}
+function addReminder(){let d=$('remDate').value,t=$('remText').value.trim();if(!d||!t)return alert('तारीख और नाम भरें।');let a=get('reminders');a.push({id:Date.now(),date:d,text:t});put('reminders',a);if('Notification'in window&&Notification.permission==='default')Notification.requestPermission();$('remText').value='';drawReminders()}
+function drawReminders(){$('remList').innerHTML=get('reminders').map(x=>`<div class="item"><b>${safe(x.text)}</b><p>${safe(x.date)}</p><button class="red" onclick="deleteReminder('${x.id}')">हटाएँ</button></div>`).join('')||'<p class="muted">अभी कोई रिमाइंडर नहीं।</p>'}
+function deleteReminder(id){put('reminders',get('reminders').filter(x=>String(x.id)!==String(id)));drawReminders()}
 
-/* SERVICE WORKER */
-if('serviceWorker'in navigator){
- window.addEventListener('load',()=>{
- navigator.serviceWorker.register('./sw.js').catch(()=>{});
- });
-}
+/* Document scanner: camera capture and print/save as PDF */
+let scanStream=null;function scanner(){shell('📄 Document Scanner',`<p>कैमरे से दस्तावेज़ की फोटो लें। फिर ब्राउज़र के Print विकल्प से PDF सेव कर सकते हैं।</p><input id="scanFile" type="file" accept="image/*" capture="environment" onchange="previewScan()"><div id="scanPreview"></div><button onclick="printScan()">PDF / Print</button><p class="muted small">यह बेसिक फोटो स्कैन सुविधा है; ऑटो edge detection शामिल नहीं है।</p>`)}
+function previewScan(){let f=$('scanFile').files[0];if(!f)return;let u=URL.createObjectURL(f);$('scanPreview').innerHTML=`<img src="${u}" style="width:100%;border-radius:12px;margin-top:10px" alt="Document preview">`}
+function printScan(){let img=$('scanPreview').querySelector('img');if(!img)return alert('पहले दस्तावेज़ की फोटो लें।');let w=window.open('','_blank');if(!w)return alert('Popup की अनुमति दें।');w.document.write(`<html><body style="margin:0"><img src="${img.src}" style="width:100%"></body></html>`);w.document.close();w.onload=()=>w.print()}
+
+/* QR generator and scanner */
+function qr(){shell('🔳 QR Code',`<h3>QR बनाएं</h3><input id="qrText" placeholder="Text या website link"><button onclick="makeQR()">QR बनाएं</button><div id="qrOut"></div><hr><h3>QR Scan</h3><button onclick="scanQR()">कैमरा शुरू करें</button><video id="qrVideo" playsinline style="width:100%;display:none;border-radius:12px"></video><p id="qrResult" class="item"></p><p class="muted small">QR बनाने के लिए इंटरनेट और scan के लिए समर्थित कैमरा ब्राउज़र चाहिए।</p>`)}
+function makeQR(){let t=$('qrText').value.trim();if(!t)return alert('Text लिखें।');$('qrOut').innerHTML=`<img alt="QR code" style="display:block;margin:12px auto;max-width:220px" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(t)}">`}
+let qrStream=null,qrLoop=null;async function scanQR(){let v=$('qrVideo');if(!('BarcodeDetector'in window))return alert('इस ब्राउज़र में QR scanning supported नहीं है। QR image upload या दूसरे ब्राउज़र का उपयोग करें।');try{qrStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});v.srcObject=qrStream;v.style.display='block';await v.play();let detector=new BarcodeDetector({formats:['qr_code']});qrLoop=setInterval(async()=>{try{let codes=await detector.detect(v);if(codes.length){$('qrResult').textContent=codes[0].rawValue;stopQR()}}catch(e){}},500)}catch(e){alert('कैमरा अनुमति नहीं मिली।')}}
+function stopQR(){clearInterval(qrLoop);qrStream?.getTracks().forEach(t=>t.stop());qrStream=null}
+
+/* Unit converter */
+function converter(){shell('🔁 Unit Converter',`<input id="unitValue" type="number" value="1"><select id="unitType" onchange="convertUnit()"><option value="km-mi">Kilometer → Mile</option><option value="mi-km">Mile → Kilometer</option><option value="kg-lb">Kilogram → Pound</option><option value="lb-kg">Pound → Kilogram</option><option value="cm-in">Centimeter → Inch</option><option value="in-cm">Inch → Centimeter</option><option value="c-f">Celsius → Fahrenheit</option><option value="f-c">Fahrenheit → Celsius</option><option value="l-ml">Liter → Milliliter</option><option value="ml-l">Milliliter → Liter</option></select><button onclick="convertUnit()">Convert</button><div class="timer" id="unitResult">1</div>`);$('unitValue').addEventListener('input',convertUnit);convertUnit()}
+function convertUnit(){let v=Number($('unitValue').value),t=$('unitType').value,fn={'km-mi':x=>x*.621371,'mi-km':x=>x/ .621371,'kg-lb':x=>x*2.20462,'lb-kg':x=>x/2.20462,'cm-in':x=>x/2.54,'in-cm':x=>x*2.54,'c-f':x=>x*9/5+32,'f-c':x=>(x-32)*5/9,'l-ml':x=>x*1000,'ml-l':x=>x/1000};$('unitResult').textContent=Number.isFinite(v)?fn[t](v).toLocaleString('en-IN',{maximumFractionDigits:5}):'—'}
+
+/* Student corner */
+function student(){shell('🎓 Student Corner',`<h3>आज का टाइमटेबल / Homework</h3><input id="stuSubject" placeholder="विषय"><input id="stuWork" placeholder="Homework या पढ़ाई का लक्ष्य"><input id="stuDate" type="date"><button onclick="addStudent()">जोड़ें</button><div id="studentList"></div>`);drawStudent()}
+function addStudent(){let s=$('stuSubject').value.trim(),w=$('stuWork').value.trim(),d=$('stuDate').value;if(!s||!w)return alert('विषय और काम लिखें।');let a=get('student');a.push({id:Date.now(),s,w,d});put('student',a);$('stuSubject').value='';$('stuWork').value='';drawStudent()}
+function drawStudent(){$('studentList').innerHTML=get('student').map(x=>`<div class="item"><b>${safe(x.s)}</b><p>${safe(x.w)}</p><small>${safe(x.d||'')}</small><button class="red" onclick="deleteStudent('${x.id}')">हटाएँ</button></div>`).join('')||'<p class="muted">अभी कुछ नहीं जोड़ा।</p>'}
+function deleteStudent(id){put('student',get('student').filter(x=>String(x.id)!==String(id)));drawStudent()}
+
+/* Typing test */
+const typingText='मेहनत सफलता की पहली सीढ़ी है। रोज थोड़ा सीखें और अपने लक्ष्य की ओर आगे बढ़ें।';
+let typingStart=0;function typing(){shell('⌨️ Typing Test',`<p class="formula">${typingText}</p><textarea id="typingInput" placeholder="ऊपर दिया वाक्य यहाँ टाइप करें..." oninput="typingCheck()"></textarea><div id="typingResult" class="item">टाइप करना शुरू करें।</div><button class="light" onclick="resetTyping()">फिर से शुरू</button>`);typingStart=0}
+function typingCheck(){let v=$('typingInput').value;if(!typingStart&&v.length)typingStart=Date.now();let mins=typingStart?(Date.now()-typingStart)/60000:0,wpm=mins>0?(v.trim().split(/\s+/).filter(Boolean).length/mins):0,correct=0;for(let i=0;i<Math.min(v.length,typingText.length);i++)if(v[i]===typingText[i])correct++;$('typingResult').textContent=`Speed: ${Math.round(wpm)} शब्द/मिनट • सही अक्षर: ${correct}/${v.length} • Accuracy: ${v.length?Math.round(correct/v.length*100):100}%`}
+function resetTyping(){$('typingInput').value='';typingStart=0;typingCheck()}
+
+/* Motivation */
+const quotes=['हर दिन थोड़ा बेहतर बनना ही असली जीत है।','सपने तभी पूरे होते हैं जब मेहनत रोज होती है।','गलती सीखने का मौका है, रुकने की वजह नहीं।','आज की मेहनत कल का आत्मविश्वास बनेगी।','धीरे चलो, लेकिन रुकना मत।','खुद पर भरोसा रखो और कोशिश जारी रखो।'];
+function motivation(){let q=quotes[Math.floor(Math.random()*quotes.length)];shell('🌟 Daily Motivation',`<div class="formula" style="font-size:23px;text-align:center;padding:28px" id="quote">${q}</div><button onclick="motivation()">नई प्रेरणा</button><button class="light" onclick="navigator.clipboard?.writeText($('quote').textContent)">कॉपी करें</button>`)}
+
+/* Game Zone: number guessing game */
+let secret=0,tries=0;function game(){shell('🎮 Game Zone — Number Challenge',`<p>1 से 20 के बीच छिपी संख्या पहचानो। हर बार नया अंदाज़ा लगाओ!</p><input id="guess" type="number" min="1" max="20" placeholder="अपना नंबर लिखें"><button onclick="checkGuess()">जवाब जाँचें</button><button class="light" onclick="newGame()">नया गेम</button><div id="gameMsg" class="item">चलो खेल शुरू करें!</div><p id="gameTries">कोशिश: 0</p>`);newGame()}
+function newGame(){secret=Math.floor(Math.random()*20)+1;tries=0;if($('gameMsg'))$('gameMsg').textContent='नई संख्या चुन ली गई है।';if($('gameTries'))$('gameTries').textContent='कोशिश: 0';if($('guess'))$('guess').value=''}
+function checkGuess(){let n=Number($('guess').value);if(!Number.isInteger(n)||n<1||n>20)return alert('1 से 20 के बीच संख्या लिखें।');tries++;$('gameTries').textContent='कोशिश: '+tries;$('gameMsg').textContent=n===secret?`🎉 सही जवाब! ${tries} कोशिश में जीत गए।`:n<secret?'थोड़ा बड़ा नंबर सोचो ⬆️':'थोड़ा छोटा नंबर सोचो ⬇️'}
+
+/* Service worker */
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script>
 </body>
 </html>
