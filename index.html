@@ -2,184 +2,205 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#155eef">
-<link rel="manifest" href="./manifest.webmanifest">
-<title>IndiaMate</title>
+<meta name="description" content="IndiaMate Students Hub - Learn, practice and grow together">
+<title>IndiaMate Students Hub</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f1f4fb;color:#172033;font-family:Arial,sans-serif}
-header{background:#155eef;color:white;padding:25px 18px 30px;border-radius:0 0 27px 27px}
-header h1{font-size:29px;margin:8px 0}header p{margin:7px 0}
-main{max-width:760px;margin:auto;padding:16px 13px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.tile{background:white!important;color:#172033!important;border:0;border-radius:20px;padding:18px 7px;min-height:112px;font-size:16px;font-weight:600;box-shadow:0 4px 14px #0001}
-.tile span{display:block;font-size:28px;margin-bottom:8px}
-.panel{background:white;border-radius:23px;padding:17px;margin-top:15px;box-shadow:0 5px 18px #0001}
-h2{font-size:23px}button{cursor:pointer;border:0;border-radius:12px;padding:12px 15px;margin:5px 3px;font-size:15px;background:#155eef;color:white}
-input,textarea,select{width:100%;padding:13px;margin:6px 0;border:1px solid #ccd3df;border-radius:12px;font-size:16px;background:white;color:#172033}
-textarea{min-height:100px;resize:vertical}.back,.light{background:#eaf0ff;color:#155eef}.red{background:#ffe9ed;color:#b42332}.green{background:#e5f8ed;color:#16834b}
-.item{border:1px solid #e0e4eb;border-radius:14px;padding:12px;margin:9px 0;overflow-wrap:anywhere}.muted{color:#697386}.formula{background:#f5f7ff;border-left:4px solid #155eef;padding:12px;margin:9px 0;border-radius:10px;line-height:1.6}
-.timer{font-size:38px;text-align:center;font-weight:bold;margin:17px}.option{display:block;width:100%;text-align:left;background:#f1f4fb;color:#172033;margin:7px 0}
-footer{text-align:center;color:#777;padding:22px}.mobile-calc{background:#101116;color:white;border-radius:25px;padding:14px;max-width:420px;margin:12px auto}
-.calc-screen{min-height:125px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;padding:12px;overflow:hidden}
-#calcHistory{color:#bbb;font-size:15px;min-height:22px}#display{font-size:43px;color:white;overflow-wrap:anywhere;text-align:right;width:100%;min-height:52px}
-.calc-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.calc-buttons button{aspect-ratio:1;border-radius:50%;margin:0;padding:0;font-size:23px;background:#303137;color:white}
-.calc-buttons .calc-action{background:#a5a6aa;color:#171717}.calc-buttons .calc-op,.calc-buttons .calc-equal{background:#ff9f0a;color:white}
-.small{font-size:13px}.chat{background:#f4f6fb;border-radius:14px;padding:10px;margin:8px 0;white-space:pre-wrap}
-@media(max-width:380px){.tile{font-size:14px;padding:15px 4px}}
+:root{--blue:#155eef;--blue2:#0b48c5;--ink:#172033;--muted:#68758a;--bg:#f3f6fc;--card:#fff;--line:#e7ecf4;--soft:#edf3ff;--green:#168653;--shadow:0 8px 28px rgba(25,55,105,.08)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;padding-bottom:calc(78px + env(safe-area-inset-bottom));-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app{max-width:760px;margin:auto;min-height:100vh;background:var(--bg)}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:19px;letter-spacing:-.4px}
+.logo{width:38px;height:38px;border-radius:13px;background:linear-gradient(145deg,#2c75ff,#1046c0);color:white;display:grid;place-items:center;font-weight:900;box-shadow:0 5px 14px #155eef40}
+.top-actions{display:flex;gap:8px}
+.iconbtn{border:1px solid var(--line);background:white;border-radius:12px;width:40px;height:40px;font-size:18px;color:var(--ink)}
+main{padding:16px}
+.page{display:none;animation:fade .18s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+.hero{border-radius:25px;padding:23px 20px;color:white;background:radial-gradient(circle at 90% 0%,#77a8ff 0,transparent 34%),linear-gradient(135deg,#155eef,#103ca5);box-shadow:0 14px 28px #155eef28;position:relative;overflow:hidden}
+.hero .eyebrow{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#dce8ff;font-weight:750}
+.hero h1{font-size:27px;line-height:1.2;margin:10px 0 8px;max-width:440px}
+.hero p{margin:0;color:#e3edff;font-size:14px;line-height:1.6}
+.hero .hero-pill{display:inline-flex;margin-top:17px;padding:9px 13px;border-radius:12px;background:#ffffff20;border:1px solid #ffffff38;font-size:13px;font-weight:700}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:23px 2px 12px}
+.section-head h2{font-size:18px;margin:0}
+.muted{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.tile{border:1px solid var(--line);background:var(--card);border-radius:19px;padding:15px;text-align:left;min-height:112px;box-shadow:0 3px 12px #1d3d7008;color:var(--ink)}
+.tile:active,.action:active,.navbtn:active{transform:scale(.98)}
+.tile-icon{width:42px;height:42px;border-radius:14px;background:var(--soft);display:grid;place-items:center;font-size:21px;margin-bottom:11px}
+.tile strong{display:block;font-size:14px}
+.tile small{display:block;color:var(--muted);font-size:11px;margin-top:4px;line-height:1.4}
+.tip{margin-top:15px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+.tip .bulb{font-size:23px}
+.tip strong{font-size:14px}.tip p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+.panel{background:white;border:1px solid var(--line);border-radius:19px;padding:16px;margin:12px 0;box-shadow:0 3px 12px #1d3d7008}
+.panel h3{font-size:16px;margin:0 0 8px}
+.action{border:0;background:var(--blue);color:white;border-radius:12px;padding:11px 15px;font-weight:750;font-size:13px}
+.action.secondary{background:var(--soft);color:var(--blue)}
+.action.ghost{background:white;border:1px solid var(--line);color:var(--ink)}
+.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.field{width:100%;border:1px solid #dce3ef;border-radius:12px;padding:12px;background:#fff;color:var(--ink);outline:none;margin:6px 0 10px}
+.field:focus{border-color:var(--blue);box-shadow:0 0 0 3px #155eef18}
+textarea.field{min-height:90px;resize:vertical}
+label{font-size:12px;font-weight:750;color:#46536a}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.chip{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:white;color:var(--ink);font-size:12px}
+.chip.selected{background:var(--soft);border-color:#a9c4ff;color:var(--blue);font-weight:800}
+.list-item{border-bottom:1px solid var(--line);padding:12px 0}
+.list-item:last-child{border:0}
+.empty{padding:22px;text-align:center;color:var(--muted);font-size:13px}
+.profile-top{display:flex;align-items:center;gap:14px}
+.avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(145deg,#dce9ff,#a9c7ff);display:grid;place-items:center;font-size:30px;border:3px solid white;box-shadow:0 0 0 1px var(--line)}
+.statrow{display:flex;justify-content:space-around;text-align:center;margin:18px 0 4px}
+.statrow b{display:block;font-size:19px}.statrow span{font-size:11px;color:var(--muted)}
+.bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,760px);z-index:20;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,1fr)}
+.navbtn{border:0;background:transparent;color:#7c8798;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;padding:5px 2px;font-weight:650}
+.navbtn .navico{font-size:21px;line-height:1.2}
+.navbtn.active{color:var(--blue)}
+.navbtn.create .navico{background:var(--blue);color:white;border-radius:11px;width:31px;height:29px;display:grid;place-items:center;font-size:22px}
+.notice{background:#fff8e8;border:1px solid #f5e3b5;color:#795b13;border-radius:13px;padding:12px;font-size:12px;line-height:1.5;margin:12px 0}
+.contact{display:flex;align-items:center;gap:11px}
+.contact-icon{width:40px;height:40px;border-radius:13px;background:#fff0f4;display:grid;place-items:center;font-size:21px}
+a{color:var(--blue);text-decoration:none;font-weight:750}
+footer{text-align:center;color:#8993a3;font-size:11px;padding:20px 0 6px}
+@media(min-width:600px){main{padding:22px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:30px}.hero h1{font-size:32px}}
 </style>
 </head>
 <body>
-<header><h1>🇮🇳 IndiaMate</h1><p>आपके हर काम का साथी</p></header>
+<div class="app">
+<header class="topbar">
+ <div class="brand"><div class="logo">IM</div><span>IndiaMate</span></div>
+ <div class="top-actions">
+  <button class="iconbtn" id="langTop" aria-label="Change language" onclick="toggleLanguage()">文</button>
+  <button class="iconbtn" aria-label="Profile" onclick="showPage('profile')">👤</button>
+ </div>
+</header>
 <main>
-<div id="home">
-<h2>नमस्ते! 👋</h2><p>आज आप क्या करना चाहते हैं?</p>
-<div class="grid" id="homeGrid"></div>
-</div>
-<section id="screen" class="panel" hidden></section>
+<section class="page active" id="home">
+ <div class="hero">
+  <div class="eyebrow" data-hi="आपका स्मार्ट स्टडी साथी" data-en="YOUR SMART STUDY COMPANION">आपका स्मार्ट स्टडी साथी</div>
+  <h1 data-hi="सीखो आज, चमको कल! ✨" data-en="Learn Today, Shine Tomorrow! ✨">सीखो आज, चमको कल! ✨</h1>
+  <p data-hi="आसान ट्रिक्स, छोटे अभ्यास और दोस्तों के साथ सीखने का नया तरीका।" data-en="Learn with easy tricks, quick practice and friends by your side.">आसान ट्रिक्स, छोटे अभ्यास और दोस्तों के साथ सीखने का नया तरीका।</p>
+  <span class="hero-pill" data-hi="🚀 चलो पढ़ाई शुरू करें" data-en="🚀 Let's start learning">🚀 चलो पढ़ाई शुरू करें</span>
+ </div>
+ <div class="section-head"><h2 data-hi="तुम्हारे लिए खास" data-en="Made for your learning">तुम्हारे लिए खास</h2><span class="muted" data-hi="सीखो • अभ्यास करो" data-en="Learn • Practice">सीखो • अभ्यास करो</span></div>
+ <div class="grid">
+  <button class="tile" onclick="showPage('study')"><span class="tile-icon">📚</span><strong data-hi="Study Zone" data-en="Study Zone">Study Zone</strong><small data-hi="कक्षा और विषय के अनुसार पढ़ाई" data-en="Study by class and subject">कक्षा और विषय के अनुसार पढ़ाई</small></button>
+  <button class="tile" onclick="showPage('quiz')"><span class="tile-icon">🏆</span><strong data-hi="Quiz Challenge" data-en="Quiz Challenge">Quiz Challenge</strong><small data-hi="खेलो और अपनी जानकारी बढ़ाओ" data-en="Play and grow your knowledge">खेलो और अपनी जानकारी बढ़ाओ</small></button>
+  <button class="tile" onclick="showPage('doubts')"><span class="tile-icon">💬</span><strong data-hi="Doubts Community" data-en="Doubts Community">Doubts Community</strong><small data-hi="सवाल पूछो और जवाब सीखो" data-en="Ask questions and learn answers">सवाल पूछो और जवाब सीखो</small></button>
+  <button class="tile" onclick="showPage('groups')"><span class="tile-icon">👥</span><strong data-hi="My Groups" data-en="My Groups">My Groups</strong><small data-hi="दोस्तों के साथ पढ़ाई" data-en="Study together with friends">दोस्तों के साथ पढ़ाई</small></button>
+  <button class="tile" onclick="showPage('notes')"><span class="tile-icon">📝</span><strong data-hi="Notes & Papers" data-en="Notes & Papers">Notes & Papers</strong><small data-hi="अपने नोट्स सेव करो" data-en="Save your study notes">अपने नोट्स सेव करो</small></button>
+  <button class="tile" onclick="showPage('planner')"><span class="tile-icon">🗓️</span><strong data-hi="Study Planner" data-en="Study Planner">Study Planner</strong><small data-hi="पढ़ाई का प्लान बनाओ" data-en="Plan your study routine">पढ़ाई का प्लान बनाओ</small></button>
+  <button class="tile" onclick="showPage('leaderboard')"><span class="tile-icon">🥇</span><strong data-hi="Leaderboard" data-en="Leaderboard">Leaderboard</strong><small data-hi="अपनी प्रगति देखो" data-en="Track your progress">अपनी प्रगति देखो</small></button>
+ </div>
+ <div class="tip"><div class="bulb">💡</div><div><strong data-hi="आज की पढ़ाई की ट्रिक" data-en="Today's study tip">आज की पढ़ाई की ट्रिक</strong><p data-hi="किसी भी नए टॉपिक को पढ़ने के बाद उसे अपने शब्दों में 2 मिनट में समझाने की कोशिश करो। इससे याद रखने में मदद मिलती है।" data-en="After learning a new topic, try explaining it in your own words in two minutes. It can help you remember it.">किसी भी नए टॉपिक को पढ़ने के बाद उसे अपने शब्दों में 2 मिनट में समझाने की कोशिश करो। इससे याद रखने में मदद मिलती है।</p></div></div>
+</section>
+
+<section class="page" id="study">
+ <h2 data-hi="📚 Study Zone" data-en="📚 Study Zone">📚 Study Zone</h2><p class="muted" data-hi="अपनी कक्षा, बोर्ड और भाषा चुनकर पढ़ाई शुरू करो।" data-en="Choose your class, board and language to begin.">अपनी कक्षा, बोर्ड और भाषा चुनकर पढ़ाई शुरू करो।</p>
+ <div class="panel"><label data-hi="कक्षा चुनें" data-en="Choose class">कक्षा चुनें</label><select class="field" id="classChoice"><option>Class 6</option><option>Class 7</option><option>Class 8</option><option selected>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option></select>
+ <label data-hi="बोर्ड" data-en="Board">बोर्ड</label><select class="field"><option>UP Board</option><option>CBSE</option><option>Other</option></select>
+ <label data-hi="विषय" data-en="Subject">विषय</label><div class="chips"><button class="chip selected">Science</button><button class="chip">Maths</button><button class="chip">English</button><button class="chip">Hindi</button><button class="chip">Social Science</button></div>
+ <div class="notice" data-hi="यह शुरुआती डेमो है। असली चैप्टर-वाइज प्रमाणित सामग्री अगले चरण में जोड़ी जाएगी।" data-en="This is an initial demo. Verified chapter-wise learning content will be added in the next stage.">यह शुरुआती डेमो है। असली चैप्टर-वाइज प्रमाणित सामग्री अगले चरण में जोड़ी जाएगी।</div></div>
+ <div class="panel"><h3 data-hi="Smart Learning कैसे होगा?" data-en="How Smart Learning works">Smart Learning कैसे होगा?</h3><div class="list-item">🧠 <b data-hi="आसान भाषा में समझो" data-en="Understand in simple language">आसान भाषा में समझो</b><div class="muted" data-hi="हर टॉपिक छोटे हिस्सों और उदाहरणों में।" data-en="Each topic in small steps with examples.">हर टॉपिक छोटे हिस्सों और उदाहरणों में।</div></div><div class="list-item">⚡ <b data-hi="ट्रिक्स और शॉर्टकट" data-en="Tricks and shortcuts">ट्रिक्स और शॉर्टकट</b><div class="muted" data-hi="जहाँ सही और उपयोगी हों, वहाँ याद रखने के तरीके।" data-en="Useful memory aids where appropriate.">जहाँ सही और उपयोगी हों, वहाँ याद रखने के तरीके।</div></div><div class="list-item">✍️ <b data-hi="अभ्यास और टेस्ट" data-en="Practice and tests">अभ्यास और टेस्ट</b><div class="muted" data-hi="आसान से कठिन सवालों तक।" data-en="From easy to challenging questions.">आसान से कठिन सवालों तक।</div></div></div>
+</section>
+
+<section class="page" id="quiz">
+ <h2 data-hi="🏆 Quiz Challenge" data-en="🏆 Quiz Challenge">🏆 Quiz Challenge</h2><p class="muted" data-hi="अभी अभ्यास के लिए छोटा डेमो क्विज़।" data-en="A small demo quiz for practice.">अभी अभ्यास के लिए छोटा डेमो क्विज़।</p>
+ <div class="panel"><div class="row"><button class="chip selected">Easy</button><button class="chip">Medium</button><button class="chip">Hard</button></div><label data-hi="कितने सवाल?" data-en="Number of questions">कितने सवाल?</label><select class="field"><option>10</option><option>20</option><option>30</option></select><button class="action" onclick="startDemoQuiz()" data-hi="डेमो क्विज़ शुरू करें" data-en="Start demo quiz">डेमो क्विज़ शुरू करें</button><div id="quizArea" class="muted" style="margin-top:12px"></div></div>
+ <div class="notice" data-hi="ऑनलाइन 1-vs-1, ग्रुप मैच, अलग-अलग प्रश्न और सुरक्षित स्कोर के लिए सर्वर बैकएंड जोड़ा जाएगा।" data-en="Online 1-vs-1, group matches, unique question sets and secure scoring need a server backend.">ऑनलाइन 1-vs-1, ग्रुप मैच, अलग-अलग प्रश्न और सुरक्षित स्कोर के लिए सर्वर बैकएंड जोड़ा जाएगा।</div>
+</section>
+
+<section class="page" id="doubts">
+ <h2 data-hi="💬 Doubts Community" data-en="💬 Doubts Community">💬 Doubts Community</h2><div class="panel"><h3 data-hi="अपना सवाल लिखो" data-en="Write your question">अपना सवाल लिखो</h3><textarea id="doubtText" class="field" placeholder="अपना सवाल यहाँ लिखें..."></textarea><button class="action" onclick="addLocal('doubts','doubtText','doubtList')" data-hi="सवाल सेव करें" data-en="Save question">सवाल सेव करें</button></div><div class="panel"><h3 data-hi="तुम्हारे सवाल" data-en="Your questions">तुम्हारे सवाल</h3><div id="doubtList" class="empty" data-hi="अभी कोई सवाल नहीं।" data-en="No questions yet.">अभी कोई सवाल नहीं।</div></div><div class="notice" data-hi="यह डेमो पोस्ट केवल इसी डिवाइस पर सेव होती है। सभी छात्रों के साथ साझा करने के लिए ऑनलाइन बैकएंड चाहिए।" data-en="Demo posts are saved only on this device. Sharing with all students requires an online backend.">यह डेमो पोस्ट केवल इसी डिवाइस पर सेव होती है। सभी छात्रों के साथ साझा करने के लिए ऑनलाइन बैकएंड चाहिए।</div>
+</section>
+
+<section class="page" id="groups">
+ <h2 data-hi="👥 My Groups" data-en="👥 My Groups">👥 My Groups</h2><div class="panel"><h3 data-hi="नया ग्रुप बनाओ" data-en="Create a group">नया ग्रुप बनाओ</h3><input id="groupName" class="field" placeholder="ग्रुप का नाम / Group name"><button class="action" onclick="createGroup()" data-hi="ग्रुप सेव करें" data-en="Save group">ग्रुप सेव करें</button></div><div class="panel"><h3 data-hi="मेरे ग्रुप" data-en="My groups">मेरे ग्रुप</h3><div id="groupList" class="empty" data-hi="अभी कोई ग्रुप नहीं।" data-en="No groups yet.">अभी कोई ग्रुप नहीं।</div></div><div class="notice" data-hi="दोस्तों को ऑनलाइन जोड़ना, मैसेज और लाइव ग्रुप क्विज़ अगले बैकएंड चरण में आएँगे।" data-en="Inviting friends online, messaging and live group quizzes will come with the backend.">दोस्तों को ऑनलाइन जोड़ना, मैसेज और लाइव ग्रुप क्विज़ अगले बैकएंड चरण में आएँगे।</div>
+</section>
+
+<section class="page" id="notes">
+ <h2 data-hi="📝 Notes & Papers" data-en="📝 Notes & Papers">📝 Notes & Papers</h2><div class="panel"><label data-hi="नोट का शीर्षक" data-en="Note title">नोट का शीर्षक</label><input id="noteTitle" class="field" placeholder="जैसे: Science Chapter 1"><label data-hi="नोट लिखें" data-en="Write your note">नोट लिखें</label><textarea id="noteText" class="field" placeholder="यहाँ नोट लिखें..."></textarea><button class="action" onclick="saveNote()" data-hi="नोट सेव करें" data-en="Save note">नोट सेव करें</button></div><div class="panel"><h3 data-hi="सेव किए गए नोट्स" data-en="Saved notes">सेव किए गए नोट्स</h3><div id="noteList" class="empty">अभी कोई नोट नहीं।</div></div>
+</section>
+
+<section class="page" id="planner">
+ <h2 data-hi="🗓️ Study Planner" data-en="🗓️ Study Planner">🗓️ Study Planner</h2><div class="panel"><label data-hi="आज का लक्ष्य" data-en="Today's goal">आज का लक्ष्य</label><input id="taskText" class="field" placeholder="जैसे: Maths के 10 सवाल"><button class="action" onclick="addLocal('tasks','taskText','taskList')" data-hi="लक्ष्य जोड़ें" data-en="Add goal">लक्ष्य जोड़ें</button></div><div class="panel"><h3 data-hi="मेरे लक्ष्य" data-en="My goals">मेरे लक्ष्य</h3><div id="taskList" class="empty">अभी कोई लक्ष्य नहीं।</div></div>
+</section>
+
+<section class="page" id="leaderboard">
+ <h2 data-hi="🥇 Leaderboard" data-en="🥇 Leaderboard">🥇 Leaderboard</h2><div class="panel"><div class="empty" data-hi="क्विज़ खेलने के बाद तुम्हारे डेमो पॉइंट्स यहाँ दिखेंगे।" data-en="Your demo points will appear here after quizzes.">क्विज़ खेलने के बाद तुम्हारे डेमो पॉइंट्स यहाँ दिखेंगे।</div></div><div class="notice" data-hi="असली All India, State, Class और Friends ranking के लिए ऑनलाइन अकाउंट और सर्वर जरूरी है।" data-en="Real All India, State, Class and Friends rankings need online accounts and a server.">असली All India, State, Class और Friends ranking के लिए ऑनलाइन अकाउंट और सर्वर जरूरी है।</div></section>
+
+<section class="page" id="profile">
+ <h2 data-hi="Profile" data-en="Profile">Profile</h2><div class="panel"><div class="profile-top"><div class="avatar">👤</div><div><h3 id="profileName" style="margin:0 0 4px">Student</h3><div class="muted" data-hi="IndiaMate Student" data-en="IndiaMate Student">IndiaMate Student</div></div></div><div class="statrow"><div><b id="postCount">0</b><span data-hi="Posts" data-en="Posts">Posts</span></div><div><b>0</b><span data-hi="Friends" data-en="Friends">Friends</span></div><div><b id="points">0</b><span data-hi="Points" data-en="Points">Points</span></div></div><label data-hi="अपना नाम" data-en="Your name">अपना नाम</label><input id="nameInput" class="field" placeholder="अपना नाम लिखें"><button class="action secondary" onclick="saveName()" data-hi="नाम सेव करें" data-en="Save name">नाम सेव करें</button></div>
+ <div class="panel"><h3 data-hi="मेरी गतिविधि" data-en="My activity">मेरी गतिविधि</h3><div class="list-item">📝 <span data-hi="मेरे नोट्स" data-en="My notes">मेरे नोट्स</span></div><div class="list-item">👥 <span data-hi="मेरे ग्रुप" data-en="My groups">मेरे ग्रुप</span></div><div class="list-item">🏆 <span data-hi="मेरे क्विज़" data-en="My quizzes">मेरे क्विज़</span></div></div>
+ <div class="panel contact"><div class="contact-icon">📷</div><div><b data-hi="Contact Owner" data-en="Contact Owner">Contact Owner</b><br><a href="https://www.instagram.com/hkkumar00king/" target="_blank" rel="noopener">@hkkumar00king</a></div></div>
+</section>
+<footer>IndiaMate Students Hub • Learn • Practice • Grow</footer>
 </main>
-<footer>IndiaMate • आपका स्मार्ट साथी</footer>
+<nav class="bottomnav" aria-label="Main navigation">
+ <button class="navbtn active" data-page="home" onclick="showPage('home')"><span class="navico">⌂</span><span data-hi="Home" data-en="Home">Home</span></button>
+ <button class="navbtn" data-page="study" onclick="showPage('study')"><span class="navico">⌕</span><span data-hi="Study" data-en="Study">Study</span></button>
+ <button class="navbtn create" data-page="quiz" onclick="showPage('quiz')"><span class="navico">＋</span><span data-hi="Quiz" data-en="Quiz">Quiz</span></button>
+ <button class="navbtn" data-page="doubts" onclick="showPage('doubts')"><span class="navico">▤</span><span data-hi="Doubts" data-en="Doubts">Doubts</span></button>
+ <button class="navbtn" data-page="profile" onclick="showPage('profile')"><span class="navico">♙</span><span data-hi="Profile" data-en="Profile">Profile</span></button>
+</nav>
+</div>
 <script>
-const $=id=>document.getElementById(id),box=$('screen');
-const get=(k,d=[])=>{try{let v=JSON.parse(localStorage.getItem(k));return v??d}catch(e){return d}};
-const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
-const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const features=[
-['calc','🧮','Calculator'],['notes','📝','Notes'],['expense','💰','खर्च का हिसाब'],['tasks','✅','कामों की लिस्ट'],
-['timer','⏱️','Focus Timer'],['study','📚','Study Planner'],['quiz','🎯','Quiz'],['grammar','📖','English Grammar'],
-['math','📐','Math Formula'],['shayari','💌','Shayari'],['contact','📸','Contact Owner'],
-['weather','🌤️','Weather'],['calendar','🗓️','Calendar & Reminder'],['scanner','📄','Document Scanner'],
-['qr','🔳','QR Code'],['converter','🔁','Unit Converter'],['student','🎓','Student Corner'],
-['typing','⌨️','Typing Test'],['motivation','🌟','Daily Motivation'],['game','🎮','Game Zone']
-];
-$('homeGrid').innerHTML=features.map(([id,icon,name])=>`<button class="tile" onclick="openPage('${id}')"><span>${icon}</span>${name}</button>`).join('');
-let timerId=null,endAt=0,remaining=0,expr='',calcSolved=false,editingNote=null;
-function shell(title,html){box.innerHTML=`<button class="back" onclick="goHome()">← वापस</button><h2>${title}</h2>${html}`}
-function goHome(){if(timerId)pauseTimer();box.hidden=true;$('home').hidden=false;window.scrollTo(0,0)}
-function openPage(p){$('home').hidden=true;box.hidden=false;window.scrollTo(0,0);const f={calc,notes,expense,tasks,timer,study,quiz,grammar,math,shayari,contact,weather,calendar,scanner,qr,converter,student,typing,motivation,game};(f[p]||goHome)()}
-window.addEventListener('popstate',()=>{if(!box.hidden)goHome()});
-function pushPageState(){history.pushState({indiamate:true},'','#'+(features.find(x=>x[0]===currentPage)?.[0]||'page'))}
-let currentPage='';const originalOpenPage=openPage;openPage=function(p){currentPage=p;history.pushState({indiamate:true},'','#'+p);originalOpenPage(p)};
-window.addEventListener('keydown',e=>{if(e.key==='Escape'&&!box.hidden)goHome()});
-
-/* Calculator */
-function calc(){expr='';calcSolved=false;shell('🧮 Calculator',`<div class="mobile-calc"><div class="calc-screen"><div id="calcHistory"></div><div id="display">0</div></div><div class="calc-buttons">
-${[['AC','calc-action'],['⌫','calc-action'],['%','calc-action'],['÷','calc-op'],['7',''],['8',''],['9',''],['×','calc-op'],['4',''],['5',''],['6',''],['−','calc-op'],['1',''],['2',''],['3',''],['+','calc-op'],['±',''],['0',''],['.',''],['=','calc-equal']].map(([v,c])=>`<button class="${c}" onclick="calcKey('${v}')">${v}</button>`).join('')}
-</div></div>`)}
-function calcKey(k){let ops=['+','−','×','÷'];if(k==='AC'){expr='';calcSolved=false}
-else if(k==='⌫'){expr=expr.slice(0,-1);calcSolved=false}
-else if(k==='='){if(!expr)return;try{let v=expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(/(\d+(?:\.\d+)?)%/g,'($1/100)');if(!/^[0-9+\-*/(). ]+$/.test(v))throw 0;let r=Function('"use strict";return ('+v+')')();if(!Number.isFinite(r))throw 0;$('calcHistory').textContent=expr+' =';expr=String(Number(r.toFixed(10)));calcSolved=true}catch(e){$('display').textContent='Error';expr='';return}}
-else if(k==='±'){if(expr)expr=expr.startsWith('-')?expr.slice(1):'-'+expr}
-else{if(calcSolved&&!ops.includes(k))expr='';calcSolved=false;if(ops.includes(k)&&(!expr||ops.includes(expr.slice(-1)))){if(!expr&&k!=='−')return;expr=expr.slice(0,-1)}if(k==='.'&&expr.split(/[+\-×÷]/).pop().includes('.'))return;expr+=k}
-$('display').textContent=expr||'0'}
-
-/* Notes */
-function notes(){editingNote=null;shell('📝 मेरे Notes',`<input id="noteTitle" placeholder="नोट का नाम"><textarea id="noteBody" placeholder="अपना नोट लिखें..."></textarea><button onclick="saveNote()">💾 नोट सेव करें</button><button class="light" onclick="clearNoteEditor()">नया नोट</button><h3>मेरे सभी नोट</h3><div id="noteList"></div>`);drawNotes()}
-function clearNoteEditor(){editingNote=null;$('noteTitle').value='';$('noteBody').value=''}
-function saveNote(){let title=$('noteTitle').value.trim(),body=$('noteBody').value.trim();if(!title||!body)return alert('पहले नाम और नोट लिखें।');let a=get('notes');if(editingNote!==null){let n=a.find(x=>String(x.id)===String(editingNote));if(n){n.title=title;n.body=body}}else a.push({id:Date.now(),title,body,date:new Date().toLocaleDateString('hi-IN')});put('notes',a);clearNoteEditor();drawNotes()}
-function drawNotes(){let a=get('notes');$('noteList').innerHTML=a.length?a.slice().reverse().map(n=>`<div class="item"><b>${safe(n.title)}</b><p>${safe(n.body)}</p><small class="muted">${safe(n.date||'')}</small><br><button class="light" onclick="editNote('${n.id}')">Edit</button><button class="red" onclick="deleteNote('${n.id}')">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कोई नोट नहीं है।</p>'}
-function editNote(id){let n=get('notes').find(x=>String(x.id)===String(id));if(!n)return;editingNote=id;$('noteTitle').value=n.title;$('noteBody').value=n.body;window.scrollTo(0,0)}
-function deleteNote(id){if(confirm('नोट हटाएँ?')){put('notes',get('notes').filter(x=>String(x.id)!==String(id)));drawNotes()}}
-
-/* Expenses */
-function expense(){shell('💰 खर्च का हिसाब',`<h3>कुल खर्च</h3><div class="timer" id="totalExpense">₹0</div><input id="expenseName" placeholder="खर्च का नाम"><input id="expenseAmount" type="number" min="0" step="0.01" placeholder="रकम ₹"><select id="expenseCategory"><option>अन्य</option><option>खाना</option><option>पढ़ाई</option><option>यात्रा</option><option>घर</option><option>मोबाइल</option></select><button onclick="addExpense()">+ खर्च जोड़ें</button><button class="red" onclick="clearExpenses()">पूरा हिसाब साफ करें</button><div id="expenseList"></div>`);drawExpenses()}
-function drawExpenses(){let a=get('expenses'),t=a.reduce((s,x)=>s+(Number(x.amount)||0),0);$('totalExpense').textContent='₹'+t.toLocaleString('en-IN');$('expenseList').innerHTML=a.length?a.slice().reverse().map(x=>`<div class="item"><b>${safe(x.name)}</b><p>₹${Number(x.amount).toLocaleString('en-IN')} • ${safe(x.category)}</p><button class="red" onclick="deleteExpense('${x.id}')">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कोई खर्च नहीं है।</p>'}
-function addExpense(){let n=$('expenseName').value.trim(),v=Number($('expenseAmount').value);if(!n||!Number.isFinite(v)||v<=0)return alert('नाम और सही रकम लिखें।');let a=get('expenses');a.push({id:Date.now(),name:n,amount:v,category:$('expenseCategory').value});put('expenses',a);$('expenseName').value='';$('expenseAmount').value='';drawExpenses()}
-function deleteExpense(id){put('expenses',get('expenses').filter(x=>String(x.id)!==String(id)));drawExpenses()}
-function clearExpenses(){if(confirm('पूरा हिसाब हटाएँ?')){put('expenses',[]);drawExpenses()}}
-
-/* Tasks */
-function tasks(){shell('✅ कामों की लिस्ट',`<input id="taskInput" placeholder="नया काम लिखें"><button onclick="addTask()">काम जोड़ें</button><div id="taskList"></div>`);drawTasks()}
-function drawTasks(){let a=get('tasks');$('taskList').innerHTML=a.length?a.map((t,i)=>`<div class="item"><label><input style="width:auto" type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id??i}')"> ${safe(t.text??t.task??'काम')}</label><button class="red" onclick="deleteTask('${t.id??i}')">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कोई काम नहीं है।</p>'}
-function addTask(){let v=$('taskInput').value.trim();if(!v)return;let a=get('tasks');a.push({id:Date.now(),text:v,done:false});put('tasks',a);$('taskInput').value='';drawTasks()}
-function toggleTask(id){let a=get('tasks'),t=a.find(x=>String(x.id)===String(id));if(t)t.done=!t.done;put('tasks',a);drawTasks()}
-function deleteTask(id){put('tasks',get('tasks').filter((x,i)=>String(x.id??i)!==String(id)));drawTasks()}
-
-/* Focus Timer */
-function timer(){shell('⏱️ Focus Timer',`<p class="muted">1 से 600 मिनट तक समय चुनें।</p><input id="mins" type="number" min="1" max="600" placeholder="कितने मिनट?"><div class="timer" id="clock">00:00</div><p id="timerStatus" class="muted">तैयार हैं?</p><button onclick="startTimer()">▶ शुरू करें</button><button class="light" onclick="pauseTimer()">⏸ Pause</button><button class="red" onclick="resetTimer()">↻ Reset</button>`)}
-function startTimer(){if(timerId)return;if(remaining<=0){let m=Number($('mins').value);if(!Number.isFinite(m)||m<1||m>600)return alert('1 से 600 मिनट लिखें।');remaining=m*60}endAt=Date.now()+remaining*1000;$('timerStatus').textContent='पढ़ाई जारी रखें 📚';tick();timerId=setInterval(tick,500)}
-function tick(){remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));if($('clock'))$('clock').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');if(remaining<=0){clearInterval(timerId);timerId=null;if($('timerStatus'))$('timerStatus').textContent='समय पूरा हुआ! 🎉';beep()}}
-function pauseTimer(){if(timerId){clearInterval(timerId);timerId=null;remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));if($('timerStatus'))$('timerStatus').textContent='Timer रुका हुआ है।'}}
-function resetTimer(){clearInterval(timerId);timerId=null;remaining=0;if($('clock'))$('clock').textContent='00:00';if($('timerStatus'))$('timerStatus').textContent='फिर से तैयार!'}
-function beep(){try{let c=new(window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=880;g.gain.value=.2;o.start();o.stop(c.currentTime+1)}catch(e){}}
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&timerId){/* Background audio is restricted by browsers; timer continues by timestamp. */}});
-
-/* Study Planner */
-function study(){shell('📚 Study Planner',`<input id="subject" placeholder="विषय"><input id="duration" type="number" min="1" placeholder="कितने मिनट?"><button onclick="addStudy()">प्लान बनाओ</button><div id="studyList"></div>`);drawStudy()}
-function addStudy(){let s=$('subject').value.trim(),m=Number($('duration').value);if(!s||m<1)return alert('विषय और समय लिखें।');let a=get('study');a.push({id:Date.now(),subject:s,minutes:m});put('study',a);$('subject').value='';$('duration').value='';drawStudy()}
-function drawStudy(){$('studyList').innerHTML=get('study').map(x=>`<div class="item">${safe(x.subject)} — ${x.minutes} मिनट <button class="red" onclick="deleteStudy('${x.id}')">हटाएँ</button></div>`).join('')||'<p class="muted">अभी कोई प्लान नहीं है।</p>'}
-function deleteStudy(id){put('study',get('study').filter(x=>String(x.id)!==String(id)));drawStudy()}
-
-/* Quiz */
-const questions=[['भारत की राजधानी?',['दिल्ली','मुंबई','लखनऊ','जयपुर'],0,'भारत की राजधानी नई दिल्ली है।'],['2 + 2 × 2?',['8','6','4','10'],1,'पहले गुणा: 4, फिर 2 जोड़ें।'],['पानी का सूत्र?',['CO2','O2','H2O','NaCl'],2,'पानी H₂O है।'],['राष्ट्रीय पशु?',['शेर','बाघ','हाथी','घोड़ा'],1,'बाघ राष्ट्रीय पशु है।'],['एक सप्ताह में दिन?',['5','6','7','8'],2,'सात दिन।'],['Apple कौन-सा शब्द?',['Noun','Verb','Adjective','Adverb'],0,'Apple एक Noun है।'],['15 × 4?',['45','50','60','65'],2,'उत्तर 60।'],['दिन का विलोम?',['सुबह','रात','दोपहर','शाम'],1,'रात।'],['स्वतंत्रता दिवस?',['15 अगस्त','26 जनवरी','2 अक्टूबर','14 नवंबर'],0,'15 अगस्त।'],['5 का वर्ग?',['10','15','20','25'],3,'5×5=25।'],['He ___ to school.',['go','goes','going','gone'],1,'He goes सही है।'],['100 का 25%?',['20','25','30','50'],1,'उत्तर 25।']];
-let qSet=[],qIndex=0,qScore=0,qAnswered=false;
-function quiz(){shell('🎯 Quiz',`<p>आसान या कठिन स्तर चुनें।</p><select id="quizLevel"><option value="easy">आसान</option><option value="hard">कठिन</option></select><button onclick="startQuiz()">Quiz शुरू करें</button><div id="quizBox"></div>`)}
-function startQuiz(){qSet=questions.slice().sort(()=>Math.random()-.5).slice(0,5);if($('quizLevel').value==='hard')qSet=qSet.reverse();qIndex=0;qScore=0;drawQuestion()}
-function drawQuestion(){let q=qSet[qIndex];$('quizBox').innerHTML=`<p>सवाल ${qIndex+1}/${qSet.length} • स्कोर ${qScore}</p><h3>${safe(q[0])}</h3>${q[1].map((v,i)=>`<button class="option" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${safe(v)}</button>`).join('')}<div id="feedback"></div>`;qAnswered=false}
-function answerQuiz(i){if(qAnswered)return;qAnswered=true;let q=qSet[qIndex],ok=i===q[2];if(ok)qScore++;$('feedback').innerHTML=`<p>${ok?'✅ सही!':'❌ सही जवाब: '+safe(q[1][q[2]])}</p><p>${safe(q[3])}</p><button onclick="nextQuestion()">${qIndex===qSet.length-1?'रिजल्ट':'अगला सवाल'}</button>`}
-function nextQuestion(){if(++qIndex>=qSet.length){$('quizBox').innerHTML=`<h3>Quiz पूरा! 🎉</h3><div class="timer">${qScore}/${qSet.length}</div><button onclick="startQuiz()">फिर खेलें</button>`}else drawQuestion()}
-
-/* Grammar and formulas */
-const lessons=[['Noun','व्यक्ति, जगह, वस्तु या भाव के नाम को Noun कहते हैं।','Ram, Delhi, Book'],['Pronoun','Noun की जगह आने वाले शब्द।','I, We, You, He, She'],['Verb','काम या अवस्था बताने वाले शब्द।','Run, Eat, Read, Is'],['Adjective','Noun की विशेषता बताने वाला शब्द।','A beautiful flower.'],['Adverb','Verb की विशेषता बताता है।','He runs quickly.'],['Preposition','शब्दों का संबंध बताता है।','In, On, At, Under'],['Conjunction','शब्दों/वाक्यों को जोड़ता है।','And, But, Or'],['Interjection','अचानक भावना बताता है।','Wow! Hurrah!'],['Articles','A, An, The को Articles कहते हैं।','A book, An apple'],['Active/Passive','Active में subject काम करता है; passive में काम पर जोर होता है।','Ram writes a letter.'],['Direct/Indirect','कहे गए शब्द ज्यों के त्यों direct; अपने शब्दों में indirect।','He said, “I am happy.”'],['Modals','Can, Could, May, Must, Should आदि।','You should study.']];
-const tenses=[['Simple Present','Subject + V1(s/es)','I play cricket.'],['Present Continuous','is/am/are + V-ing','She is reading.'],['Present Perfect','has/have + V3','They have finished.'],['Present Perfect Continuous','has/have been + V-ing','I have been studying.'],['Simple Past','Subject + V2','He went home.'],['Past Continuous','was/were + V-ing','They were playing.'],['Past Perfect','had + V3','She had eaten.'],['Past Perfect Continuous','had been + V-ing','He had been waiting.'],['Simple Future','will + V1','I will call you.'],['Future Continuous','will be + V-ing','I will be studying.'],['Future Perfect','will have + V3','She will have finished.'],['Future Perfect Continuous','will have been + V-ing','I will have been working.']];
-function grammar(){shell('📖 English Grammar',`<p class="muted">आसान हिंदी में सीखें।</p><h3>Grammar Topics</h3><div id="grammarList"></div><h3>12 Tenses</h3><div id="tenseList"></div>`);$('grammarList').innerHTML=lessons.map((x,i)=>`<div class="item"><b>${x[0]}</b><p>${x[1]}</p><div class="formula">Example: ${x[2]}</div><button class="light" onclick="speakText('${safe(x.join('. ')).replace(/'/g,"\\'")}')">🔊 सुनें</button></div>`).join('');$('tenseList').innerHTML=tenses.map(x=>`<div class="item"><b>${x[0]}</b><div class="formula">${x[1]}</div><p>${x[2]}</p></div>`).join('')}
-function speakText(t){if(!speechSynthesis)return alert('आवाज सुविधा उपलब्ध नहीं।');speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='en-IN';speechSynthesis.speak(u)}
-const mathTopics=[['बीजगणित','(a+b)² = a²+2ab+b²','(a-b)² = a²-2ab+b²','a²-b²=(a+b)(a-b)'],['प्रतिशत','प्रतिशत = (भाग ÷ कुल) × 100','25% = 1/4'],['लाभ-हानि','लाभ = विक्रय मूल्य - क्रय मूल्य','हानि = क्रय मूल्य - विक्रय मूल्य'],['साधारण ब्याज','SI = (P×R×T)/100'],['गति-दूरी-समय','गति = दूरी ÷ समय','दूरी = गति × समय'],['क्षेत्रफल','वर्ग = भुजा²','आयत = लंबाई × चौड़ाई','त्रिभुज = 1/2 × आधार × ऊँचाई'],['वृत्त','क्षेत्रफल = πr²','परिधि = 2πr'],['घनाभ','आयतन = लंबाई × चौड़ाई × ऊँचाई']];
-function math(){shell('📐 Math Formula Book',`<div id="mathList"></div>`);$('mathList').innerHTML=mathTopics.map(x=>`<div class="item"><b>${x[0]}</b>${x.slice(1).map(y=>`<div class="formula">${y}</div>`).join('')}</div>`).join('')}
-
-/* Shayari */
-const shayaris=['मंजिल उन्हीं को मिलती है, जिनके सपनों में जान होती है।','छोटी कोशिशें एक दिन बड़ी सफलता बन जाती हैं।','हर सुबह एक नया मौका लेकर आती है।','रास्ते मुश्किल हों तो हौसले मजबूत रखो।','मेहनत खामोशी से करो, सफलता शोर मचाएगी।','दिल साफ रखो, इरादे मजबूत रखो।'];
-let shayariIndex=0;function shayari(){shayariIndex=Math.floor(Math.random()*shayaris.length);shell('💌 Shayari',`<div class="formula" style="font-size:21px;text-align:center;padding:25px" id="shayariText"></div><button onclick="nextShayari()">अगली शायरी</button><button class="light" onclick="copyShayari()">कॉपी</button>`);showShayari()}
-function showShayari(){$('shayariText').textContent=shayaris[shayariIndex]}function nextShayari(){shayariIndex=(shayariIndex+1)%shayaris.length;showShayari()}function copyShayari(){navigator.clipboard?.writeText(shayaris[shayariIndex]).then(()=>alert('कॉपी हो गई।'))}
-function contact(){shell('📸 Contact Owner',`<div class="formula"><h3>IndiaMate के निर्माता</h3><p>सुझाव या समस्या के लिए Instagram पर संपर्क करें।</p><b>@hkkumar00king</b></div><button onclick="window.open('https://instagram.com/hkkumar00king','_blank')">Instagram पर संपर्क करें</button>`)}
-
-/* Weather */
-function weather(){shell('🌤️ Weather',`<p>शहर का नाम लिखकर मौसम देखें। इंटरनेट जरूरी है।</p><input id="city" placeholder="जैसे Kushinagar"><button onclick="getWeather()">मौसम देखें</button><div id="weatherResult"></div>`)}
-async function getWeather(){let city=$('city').value.trim();if(!city)return alert('शहर लिखें।');$('weatherResult').textContent='मौसम खोज रहे हैं...';try{let g=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(city)+'&count=1&language=hi&format=json').then(r=>r.json());if(!g.results?.length)throw Error('शहर नहीं मिला');let p=g.results[0],w=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${p.latitude}&longitude=${p.longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m&timezone=auto`).then(r=>r.json());let c=w.current;$('weatherResult').innerHTML=`<div class="item"><h3>${safe(p.name)}, ${safe(p.country||'')}</h3><div class="timer">${c.temperature_2m}°C</div><p>नमी: ${c.relative_humidity_2m}%</p><p>हवा: ${c.wind_speed_10m} km/h</p></div>`}catch(e){$('weatherResult').textContent='मौसम नहीं मिल पाया। इंटरनेट जाँचें और फिर कोशिश करें।'}}
-
-/* Calendar and reminders */
-function calendar(){shell('🗓️ Calendar & Reminder',`<input id="remDate" type="date"><input id="remText" placeholder="रिमाइंडर का नाम"><button onclick="addReminder()">रिमाइंडर सेव करें</button><p class="muted small">सूचना दिखाने के लिए अनुमति माँगी जा सकती है। ऐप बंद होने पर हर फोन में notification की गारंटी नहीं है।</p><div id="remList"></div>`);drawReminders()}
-function addReminder(){let d=$('remDate').value,t=$('remText').value.trim();if(!d||!t)return alert('तारीख और नाम भरें।');let a=get('reminders');a.push({id:Date.now(),date:d,text:t});put('reminders',a);if('Notification'in window&&Notification.permission==='default')Notification.requestPermission();$('remText').value='';drawReminders()}
-function drawReminders(){$('remList').innerHTML=get('reminders').map(x=>`<div class="item"><b>${safe(x.text)}</b><p>${safe(x.date)}</p><button class="red" onclick="deleteReminder('${x.id}')">हटाएँ</button></div>`).join('')||'<p class="muted">अभी कोई रिमाइंडर नहीं।</p>'}
-function deleteReminder(id){put('reminders',get('reminders').filter(x=>String(x.id)!==String(id)));drawReminders()}
-
-/* Document scanner: camera capture and print/save as PDF */
-let scanStream=null;function scanner(){shell('📄 Document Scanner',`<p>कैमरे से दस्तावेज़ की फोटो लें। फिर ब्राउज़र के Print विकल्प से PDF सेव कर सकते हैं।</p><input id="scanFile" type="file" accept="image/*" capture="environment" onchange="previewScan()"><div id="scanPreview"></div><button onclick="printScan()">PDF / Print</button><p class="muted small">यह बेसिक फोटो स्कैन सुविधा है; ऑटो edge detection शामिल नहीं है।</p>`)}
-function previewScan(){let f=$('scanFile').files[0];if(!f)return;let u=URL.createObjectURL(f);$('scanPreview').innerHTML=`<img src="${u}" style="width:100%;border-radius:12px;margin-top:10px" alt="Document preview">`}
-function printScan(){let img=$('scanPreview').querySelector('img');if(!img)return alert('पहले दस्तावेज़ की फोटो लें।');let w=window.open('','_blank');if(!w)return alert('Popup की अनुमति दें।');w.document.write(`<html><body style="margin:0"><img src="${img.src}" style="width:100%"></body></html>`);w.document.close();w.onload=()=>w.print()}
-
-/* QR generator and scanner */
-function qr(){shell('🔳 QR Code',`<h3>QR बनाएं</h3><input id="qrText" placeholder="Text या website link"><button onclick="makeQR()">QR बनाएं</button><div id="qrOut"></div><hr><h3>QR Scan</h3><button onclick="scanQR()">कैमरा शुरू करें</button><video id="qrVideo" playsinline style="width:100%;display:none;border-radius:12px"></video><p id="qrResult" class="item"></p><p class="muted small">QR बनाने के लिए इंटरनेट और scan के लिए समर्थित कैमरा ब्राउज़र चाहिए।</p>`)}
-function makeQR(){let t=$('qrText').value.trim();if(!t)return alert('Text लिखें।');$('qrOut').innerHTML=`<img alt="QR code" style="display:block;margin:12px auto;max-width:220px" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(t)}">`}
-let qrStream=null,qrLoop=null;async function scanQR(){let v=$('qrVideo');if(!('BarcodeDetector'in window))return alert('इस ब्राउज़र में QR scanning supported नहीं है। QR image upload या दूसरे ब्राउज़र का उपयोग करें।');try{qrStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});v.srcObject=qrStream;v.style.display='block';await v.play();let detector=new BarcodeDetector({formats:['qr_code']});qrLoop=setInterval(async()=>{try{let codes=await detector.detect(v);if(codes.length){$('qrResult').textContent=codes[0].rawValue;stopQR()}}catch(e){}},500)}catch(e){alert('कैमरा अनुमति नहीं मिली।')}}
-function stopQR(){clearInterval(qrLoop);qrStream?.getTracks().forEach(t=>t.stop());qrStream=null}
-
-/* Unit converter */
-function converter(){shell('🔁 Unit Converter',`<input id="unitValue" type="number" value="1"><select id="unitType" onchange="convertUnit()"><option value="km-mi">Kilometer → Mile</option><option value="mi-km">Mile → Kilometer</option><option value="kg-lb">Kilogram → Pound</option><option value="lb-kg">Pound → Kilogram</option><option value="cm-in">Centimeter → Inch</option><option value="in-cm">Inch → Centimeter</option><option value="c-f">Celsius → Fahrenheit</option><option value="f-c">Fahrenheit → Celsius</option><option value="l-ml">Liter → Milliliter</option><option value="ml-l">Milliliter → Liter</option></select><button onclick="convertUnit()">Convert</button><div class="timer" id="unitResult">1</div>`);$('unitValue').addEventListener('input',convertUnit);convertUnit()}
-function convertUnit(){let v=Number($('unitValue').value),t=$('unitType').value,fn={'km-mi':x=>x*.621371,'mi-km':x=>x/ .621371,'kg-lb':x=>x*2.20462,'lb-kg':x=>x/2.20462,'cm-in':x=>x/2.54,'in-cm':x=>x*2.54,'c-f':x=>x*9/5+32,'f-c':x=>(x-32)*5/9,'l-ml':x=>x*1000,'ml-l':x=>x/1000};$('unitResult').textContent=Number.isFinite(v)?fn[t](v).toLocaleString('en-IN',{maximumFractionDigits:5}):'—'}
-
-/* Student corner */
-function student(){shell('🎓 Student Corner',`<h3>आज का टाइमटेबल / Homework</h3><input id="stuSubject" placeholder="विषय"><input id="stuWork" placeholder="Homework या पढ़ाई का लक्ष्य"><input id="stuDate" type="date"><button onclick="addStudent()">जोड़ें</button><div id="studentList"></div>`);drawStudent()}
-function addStudent(){let s=$('stuSubject').value.trim(),w=$('stuWork').value.trim(),d=$('stuDate').value;if(!s||!w)return alert('विषय और काम लिखें।');let a=get('student');a.push({id:Date.now(),s,w,d});put('student',a);$('stuSubject').value='';$('stuWork').value='';drawStudent()}
-function drawStudent(){$('studentList').innerHTML=get('student').map(x=>`<div class="item"><b>${safe(x.s)}</b><p>${safe(x.w)}</p><small>${safe(x.d||'')}</small><button class="red" onclick="deleteStudent('${x.id}')">हटाएँ</button></div>`).join('')||'<p class="muted">अभी कुछ नहीं जोड़ा।</p>'}
-function deleteStudent(id){put('student',get('student').filter(x=>String(x.id)!==String(id)));drawStudent()}
-
-/* Typing test */
-const typingText='मेहनत सफलता की पहली सीढ़ी है। रोज थोड़ा सीखें और अपने लक्ष्य की ओर आगे बढ़ें।';
-let typingStart=0;function typing(){shell('⌨️ Typing Test',`<p class="formula">${typingText}</p><textarea id="typingInput" placeholder="ऊपर दिया वाक्य यहाँ टाइप करें..." oninput="typingCheck()"></textarea><div id="typingResult" class="item">टाइप करना शुरू करें।</div><button class="light" onclick="resetTyping()">फिर से शुरू</button>`);typingStart=0}
-function typingCheck(){let v=$('typingInput').value;if(!typingStart&&v.length)typingStart=Date.now();let mins=typingStart?(Date.now()-typingStart)/60000:0,wpm=mins>0?(v.trim().split(/\s+/).filter(Boolean).length/mins):0,correct=0;for(let i=0;i<Math.min(v.length,typingText.length);i++)if(v[i]===typingText[i])correct++;$('typingResult').textContent=`Speed: ${Math.round(wpm)} शब्द/मिनट • सही अक्षर: ${correct}/${v.length} • Accuracy: ${v.length?Math.round(correct/v.length*100):100}%`}
-function resetTyping(){$('typingInput').value='';typingStart=0;typingCheck()}
-
-/* Motivation */
-const quotes=['हर दिन थोड़ा बेहतर बनना ही असली जीत है।','सपने तभी पूरे होते हैं जब मेहनत रोज होती है।','गलती सीखने का मौका है, रुकने की वजह नहीं।','आज की मेहनत कल का आत्मविश्वास बनेगी।','धीरे चलो, लेकिन रुकना मत।','खुद पर भरोसा रखो और कोशिश जारी रखो।'];
-function motivation(){let q=quotes[Math.floor(Math.random()*quotes.length)];shell('🌟 Daily Motivation',`<div class="formula" style="font-size:23px;text-align:center;padding:28px" id="quote">${q}</div><button onclick="motivation()">नई प्रेरणा</button><button class="light" onclick="navigator.clipboard?.writeText($('quote').textContent)">कॉपी करें</button>`)}
-
-/* Game Zone: number guessing game */
-let secret=0,tries=0;function game(){shell('🎮 Game Zone — Number Challenge',`<p>1 से 20 के बीच छिपी संख्या पहचानो। हर बार नया अंदाज़ा लगाओ!</p><input id="guess" type="number" min="1" max="20" placeholder="अपना नंबर लिखें"><button onclick="checkGuess()">जवाब जाँचें</button><button class="light" onclick="newGame()">नया गेम</button><div id="gameMsg" class="item">चलो खेल शुरू करें!</div><p id="gameTries">कोशिश: 0</p>`);newGame()}
-function newGame(){secret=Math.floor(Math.random()*20)+1;tries=0;if($('gameMsg'))$('gameMsg').textContent='नई संख्या चुन ली गई है।';if($('gameTries'))$('gameTries').textContent='कोशिश: 0';if($('guess'))$('guess').value=''}
-function checkGuess(){let n=Number($('guess').value);if(!Number.isInteger(n)||n<1||n>20)return alert('1 से 20 के बीच संख्या लिखें।');tries++;$('gameTries').textContent='कोशिश: '+tries;$('gameMsg').textContent=n===secret?`🎉 सही जवाब! ${tries} कोशिश में जीत गए।`:n<secret?'थोड़ा बड़ा नंबर सोचो ⬆️':'थोड़ा छोटा नंबर सोचो ⬇️'}
-
-/* Service worker */
-if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+'use strict';
+const $=id=>document.getElementById(id);
+let lang=localStorage.getItem('im_lang')||'hi';
+let currentPage='home';
+function setLanguage(){
+ document.documentElement.lang=lang;
+ document.querySelectorAll('[data-hi][data-en]').forEach(el=>{el.textContent=el.dataset[lang]});
+ $('langTop').textContent=lang==='hi'?'EN':'हि';
+}
+function toggleLanguage(){lang=lang==='hi'?'en':'hi';localStorage.setItem('im_lang',lang);setLanguage()}
+function showPage(id,fromBack=false){
+ const target=$(id);if(!target)return;
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ target.classList.add('active');currentPage=id;
+ document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+ window.scrollTo({top:0,behavior:'instant'});
+ if(!fromBack){history.pushState({imPage:id},'', '#'+id)}
+}
+function setupBackButton(){
+ // Keep an in-app history entry so Android/browser Back returns to the previous app screen.
+ history.replaceState({imPage:'home'},'',location.pathname+location.search+'#home');
+ history.pushState({imPage:'home',guard:true},'',location.pathname+location.search+'#home');
+ window.addEventListener('popstate',()=>{
+   if(currentPage!=='home'){showPage('home',true)}
+   // Re-arm the guard: on Home, a further Back stays in the app instead of accidentally closing it.
+   history.pushState({imPage:'home',guard:true},'',location.pathname+location.search+'#home');
+ });
+}
+function readList(key){try{return JSON.parse(localStorage.getItem('im_'+key)||'[]')}catch(e){return []}}
+function writeList(key,data){localStorage.setItem('im_'+key,JSON.stringify(data))}
+function renderList(key,id){
+ const arr=readList(key),el=$(id);if(!el)return;
+ if(!arr.length){el.className='empty';el.textContent=lang==='hi'?'अभी कुछ नहीं है।':'Nothing here yet.';return}
+ el.className='';
+ el.innerHTML=arr.map((x,i)=>`<div class="list-item"><b>${escapeHtml(x.title||x.text||x)}</b>${x.body?`<div class="muted">${escapeHtml(x.body)}</div>`:''}<button class="action ghost" style="margin-top:7px;padding:6px 10px" onclick="removeItem('${key}',${i})">${lang==='hi'?'हटाएँ':'Delete'}</button></div>`).join('');
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function removeItem(key,i){const a=readList(key);a.splice(i,1);writeList(key,a);refreshLists()}
+function addLocal(key,inputId,listId){
+ const el=$(inputId),value=el.value.trim();if(!value)return alert(lang==='hi'?'पहले कुछ लिखें।':'Please enter something first.');
+ const a=readList(key);a.unshift({text:value,title:value,created:Date.now()});writeList(key,a);el.value='';renderList(key,listId);
+}
+function createGroup(){const el=$('groupName'),v=el.value.trim();if(!v)return alert(lang==='hi'?'ग्रुप का नाम लिखें।':'Enter a group name.');const a=readList('groups');a.unshift({title:v});writeList('groups',a);el.value='';renderList('groups','groupList')}
+function saveNote(){const t=$('noteTitle').value.trim(),b=$('noteText').value.trim();if(!t||!b)return alert(lang==='hi'?'शीर्षक और नोट दोनों लिखें।':'Enter both title and note.');const a=readList('notes');a.unshift({title:t,body:b});writeList('notes',a);$('noteTitle').value='';$('noteText').value='';renderList('notes','noteList')}
+function saveName(){const n=$('nameInput').value.trim();if(!n)return;localStorage.setItem('im_name',n);$('profileName').textContent=n}
+function startDemoQuiz(){const q=[{q:'पानी का रासायनिक सूत्र क्या है?',a:['H₂O','CO₂','O₂'],correct:0},{q:'2 + 3 = ?',a:['4','5','6'],correct:1}];let i=0,score=0;const area=$('quizArea');function draw(){if(i>=q.length){area.textContent=(lang==='hi'?'डेमो पूरा! सही जवाब: ':'Demo complete! Correct answers: ')+score+'/'+q.length;$('points').textContent=String(Number($('points').textContent)+score);return}const x=q[i];area.innerHTML=`<b>${escapeHtml(x.q)}</b><div class="chips">${x.a.map((v,j)=>`<button class="chip" onclick="answerDemo(${j})">${escapeHtml(v)}</button>`).join('')}</div>`;window.answerDemo=(j)=>{if(j===x.correct)score++;i++;draw()}}draw()}
+function refreshLists(){renderList('doubts','doubtList');renderList('groups','groupList');renderList('notes','noteList');renderList('tasks','taskList');$('postCount').textContent=String(readList('doubts').length)}
+setLanguage();refreshLists();const savedName=localStorage.getItem('im_name');if(savedName){$('profileName').textContent=savedName;$('nameInput').value=savedName}setupBackButton();
 </script>
 </body>
-</html>
+  </html>
