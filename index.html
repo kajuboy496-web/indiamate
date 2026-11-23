@@ -1,206 +1,43 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#155eef">
-<meta name="description" content="IndiaMate Students Hub - Learn, practice and grow together">
-<title>IndiaMate Students Hub</title>
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#155eef"><title>IndiaMate Students Hub</title>
 <style>
-:root{--blue:#155eef;--blue2:#0b48c5;--ink:#172033;--muted:#68758a;--bg:#f3f6fc;--card:#fff;--line:#e7ecf4;--soft:#edf3ff;--green:#168653;--shadow:0 8px 28px rgba(25,55,105,.08)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;padding-bottom:calc(78px + env(safe-area-inset-bottom));-webkit-tap-highlight-color:transparent}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.app{max-width:760px;margin:auto;min-height:100vh;background:var(--bg)}
-.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:19px;letter-spacing:-.4px}
-.logo{width:38px;height:38px;border-radius:13px;background:linear-gradient(145deg,#2c75ff,#1046c0);color:white;display:grid;place-items:center;font-weight:900;box-shadow:0 5px 14px #155eef40}
-.top-actions{display:flex;gap:8px}
-.iconbtn{border:1px solid var(--line);background:white;border-radius:12px;width:40px;height:40px;font-size:18px;color:var(--ink)}
-main{padding:16px}
-.page{display:none;animation:fade .18s ease}
-.page.active{display:block}
-@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
-.hero{border-radius:25px;padding:23px 20px;color:white;background:radial-gradient(circle at 90% 0%,#77a8ff 0,transparent 34%),linear-gradient(135deg,#155eef,#103ca5);box-shadow:0 14px 28px #155eef28;position:relative;overflow:hidden}
-.hero .eyebrow{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#dce8ff;font-weight:750}
-.hero h1{font-size:27px;line-height:1.2;margin:10px 0 8px;max-width:440px}
-.hero p{margin:0;color:#e3edff;font-size:14px;line-height:1.6}
-.hero .hero-pill{display:inline-flex;margin-top:17px;padding:9px 13px;border-radius:12px;background:#ffffff20;border:1px solid #ffffff38;font-size:13px;font-weight:700}
-.section-head{display:flex;justify-content:space-between;align-items:center;margin:23px 2px 12px}
-.section-head h2{font-size:18px;margin:0}
-.muted{color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.tile{border:1px solid var(--line);background:var(--card);border-radius:19px;padding:15px;text-align:left;min-height:112px;box-shadow:0 3px 12px #1d3d7008;color:var(--ink)}
-.tile:active,.action:active,.navbtn:active{transform:scale(.98)}
-.tile-icon{width:42px;height:42px;border-radius:14px;background:var(--soft);display:grid;place-items:center;font-size:21px;margin-bottom:11px}
-.tile strong{display:block;font-size:14px}
-.tile small{display:block;color:var(--muted);font-size:11px;margin-top:4px;line-height:1.4}
-.tip{margin-top:15px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;gap:12px;align-items:flex-start}
-.tip .bulb{font-size:23px}
-.tip strong{font-size:14px}.tip p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
-.panel{background:white;border:1px solid var(--line);border-radius:19px;padding:16px;margin:12px 0;box-shadow:0 3px 12px #1d3d7008}
-.panel h3{font-size:16px;margin:0 0 8px}
-.action{border:0;background:var(--blue);color:white;border-radius:12px;padding:11px 15px;font-weight:750;font-size:13px}
-.action.secondary{background:var(--soft);color:var(--blue)}
-.action.ghost{background:white;border:1px solid var(--line);color:var(--ink)}
-.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
-.field{width:100%;border:1px solid #dce3ef;border-radius:12px;padding:12px;background:#fff;color:var(--ink);outline:none;margin:6px 0 10px}
-.field:focus{border-color:var(--blue);box-shadow:0 0 0 3px #155eef18}
-textarea.field{min-height:90px;resize:vertical}
-label{font-size:12px;font-weight:750;color:#46536a}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-.chip{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:white;color:var(--ink);font-size:12px}
-.chip.selected{background:var(--soft);border-color:#a9c4ff;color:var(--blue);font-weight:800}
-.list-item{border-bottom:1px solid var(--line);padding:12px 0}
-.list-item:last-child{border:0}
-.empty{padding:22px;text-align:center;color:var(--muted);font-size:13px}
-.profile-top{display:flex;align-items:center;gap:14px}
-.avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(145deg,#dce9ff,#a9c7ff);display:grid;place-items:center;font-size:30px;border:3px solid white;box-shadow:0 0 0 1px var(--line)}
-.statrow{display:flex;justify-content:space-around;text-align:center;margin:18px 0 4px}
-.statrow b{display:block;font-size:19px}.statrow span{font-size:11px;color:var(--muted)}
-.bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,760px);z-index:20;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,1fr)}
-.navbtn{border:0;background:transparent;color:#7c8798;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;padding:5px 2px;font-weight:650}
-.navbtn .navico{font-size:21px;line-height:1.2}
-.navbtn.active{color:var(--blue)}
-.navbtn.create .navico{background:var(--blue);color:white;border-radius:11px;width:31px;height:29px;display:grid;place-items:center;font-size:22px}
-.notice{background:#fff8e8;border:1px solid #f5e3b5;color:#795b13;border-radius:13px;padding:12px;font-size:12px;line-height:1.5;margin:12px 0}
-.contact{display:flex;align-items:center;gap:11px}
-.contact-icon{width:40px;height:40px;border-radius:13px;background:#fff0f4;display:grid;place-items:center;font-size:21px}
-a{color:var(--blue);text-decoration:none;font-weight:750}
-footer{text-align:center;color:#8993a3;font-size:11px;padding:20px 0 6px}
-@media(min-width:600px){main{padding:22px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:30px}.hero h1{font-size:32px}}
-</style>
-</head>
-<body>
-<div class="app">
-<header class="topbar">
- <div class="brand"><div class="logo">IM</div><span>IndiaMate</span></div>
- <div class="top-actions">
-  <button class="iconbtn" id="langTop" aria-label="Change language" onclick="toggleLanguage()">文</button>
-  <button class="iconbtn" aria-label="Profile" onclick="showPage('profile')">👤</button>
- </div>
-</header>
+:root{--b:#155eef;--ink:#172033;--mut:#748096;--bg:#f3f6fc;--line:#e5eaf2}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,Arial;padding-bottom:78px}.app{max-width:760px;margin:auto}.top{height:65px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:sticky;top:0;z-index:5}.brand{font-size:20px;font-weight:850;display:flex;align-items:center;gap:10px}.logo{background:linear-gradient(140deg,#3983ff,#1046bf);color:white;border-radius:13px;padding:9px 10px}.top button,.back{border:1px solid var(--line);background:white;border-radius:12px;padding:10px}main{padding:16px}.page{display:none;min-height:65vh}.page.active{display:block;animation:fade .15s}@keyframes fade{from{opacity:.5;transform:translateY(3px)}to{opacity:1;transform:none}}h1{font-size:28px;margin:10px 0}h2{font-size:22px;margin:8px 0}h3{font-size:16px;margin:0 0 8px}.muted{font-size:13px;color:var(--mut);line-height:1.5}.hero{background:radial-gradient(circle at 90% 0,#78aaff,transparent 35%),linear-gradient(135deg,#1764f5,#123b9b);color:white;padding:24px 20px;border-radius:24px}.hero p{color:#e5edff;line-height:1.55;font-size:14px}.tag{display:inline-block;background:#ffffff20;border:1px solid #ffffff55;border-radius:11px;padding:8px 12px;font-size:12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-top:13px}.tile,.card{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 4px 15px #1b3d7008}.tile{padding:14px;text-align:left;min-height:105px;color:var(--ink)}.tile i{font-style:normal;background:#edf3ff;width:39px;height:39px;border-radius:12px;display:grid;place-items:center;font-size:21px;margin-bottom:8px}.tile b{display:block;font-size:14px}.tile small{color:var(--mut);font-size:11px}.card{padding:15px;margin:12px 0}.btn{background:var(--b);color:white;border:0;border-radius:12px;padding:11px 15px;font-weight:750;font-size:13px}.btn.soft{background:#edf3ff;color:var(--b)}.btn.line{background:white;color:var(--ink);border:1px solid var(--line)}.field{width:100%;padding:12px;border:1px solid #dce3ee;border-radius:12px;margin:6px 0 11px;font:inherit;outline:none}.field:focus{border-color:var(--b)}textarea.field{min-height:80px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{display:flex;justify-content:space-between;align-items:center;gap:8px}.chip{border:1px solid var(--line);background:white;border-radius:20px;padding:8px 12px;font-size:12px}.chip.on{background:#edf3ff;color:var(--b);border-color:#aac5ff}.notice{background:#fff9eb;border:1px solid #f0dfb5;color:#795f21;padding:12px;border-radius:13px;font-size:12px;line-height:1.5;margin:12px 0}.empty{text-align:center;color:var(--mut);padding:20px;font-size:13px}.person{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}.person:last-child{border:0}.avatar{width:43px;height:43px;border-radius:50%;background:#e8f0ff;display:grid;place-items:center;font-size:20px;flex:none}.details{flex:1;min-width:0}.details b{font-size:14px}.chat{height:43vh;min-height:220px;overflow:auto;background:#f5f8ff;border:1px solid var(--line);border-radius:14px;padding:10px;margin:10px 0}.bubble{max-width:84%;background:white;border:1px solid var(--line);padding:9px 12px;border-radius:14px;margin:7px 0;font-size:13px;overflow-wrap:anywhere}.bubble.me{margin-left:auto;background:#e5efff}.send{display:flex;gap:7px}.send input{flex:1;min-width:0}.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,760px);display:grid;grid-template-columns:repeat(5,1fr);background:#fffffff5;border-top:1px solid var(--line);padding:7px 5px calc(7px + env(safe-area-inset-bottom));z-index:8}.nav{border:0;background:none;color:#7b8798;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;font-weight:700}.nav span{font-size:21px}.nav.active{color:var(--b)}.nav.quiz span{background:var(--b);color:white;border-radius:10px;padding:1px 9px}a{color:var(--b);text-decoration:none;font-weight:750}footer{text-align:center;color:#8993a3;font-size:11px;padding:20px 0}@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}main{padding:22px}}
+</style></head><body><div class="app">
+<header class="top"><div class="brand"><span class="logo">IM</span>IndiaMate</div><div class="row"><button onclick="toggleLang()" id="langBtn">EN</button><button onclick="go('profile')">👤</button></div></header>
 <main>
-<section class="page active" id="home">
- <div class="hero">
-  <div class="eyebrow" data-hi="आपका स्मार्ट स्टडी साथी" data-en="YOUR SMART STUDY COMPANION">आपका स्मार्ट स्टडी साथी</div>
-  <h1 data-hi="सीखो आज, चमको कल! ✨" data-en="Learn Today, Shine Tomorrow! ✨">सीखो आज, चमको कल! ✨</h1>
-  <p data-hi="आसान ट्रिक्स, छोटे अभ्यास और दोस्तों के साथ सीखने का नया तरीका।" data-en="Learn with easy tricks, quick practice and friends by your side.">आसान ट्रिक्स, छोटे अभ्यास और दोस्तों के साथ सीखने का नया तरीका।</p>
-  <span class="hero-pill" data-hi="🚀 चलो पढ़ाई शुरू करें" data-en="🚀 Let's start learning">🚀 चलो पढ़ाई शुरू करें</span>
- </div>
- <div class="section-head"><h2 data-hi="तुम्हारे लिए खास" data-en="Made for your learning">तुम्हारे लिए खास</h2><span class="muted" data-hi="सीखो • अभ्यास करो" data-en="Learn • Practice">सीखो • अभ्यास करो</span></div>
- <div class="grid">
-  <button class="tile" onclick="showPage('study')"><span class="tile-icon">📚</span><strong data-hi="Study Zone" data-en="Study Zone">Study Zone</strong><small data-hi="कक्षा और विषय के अनुसार पढ़ाई" data-en="Study by class and subject">कक्षा और विषय के अनुसार पढ़ाई</small></button>
-  <button class="tile" onclick="showPage('quiz')"><span class="tile-icon">🏆</span><strong data-hi="Quiz Challenge" data-en="Quiz Challenge">Quiz Challenge</strong><small data-hi="खेलो और अपनी जानकारी बढ़ाओ" data-en="Play and grow your knowledge">खेलो और अपनी जानकारी बढ़ाओ</small></button>
-  <button class="tile" onclick="showPage('doubts')"><span class="tile-icon">💬</span><strong data-hi="Doubts Community" data-en="Doubts Community">Doubts Community</strong><small data-hi="सवाल पूछो और जवाब सीखो" data-en="Ask questions and learn answers">सवाल पूछो और जवाब सीखो</small></button>
-  <button class="tile" onclick="showPage('groups')"><span class="tile-icon">👥</span><strong data-hi="My Groups" data-en="My Groups">My Groups</strong><small data-hi="दोस्तों के साथ पढ़ाई" data-en="Study together with friends">दोस्तों के साथ पढ़ाई</small></button>
-  <button class="tile" onclick="showPage('notes')"><span class="tile-icon">📝</span><strong data-hi="Notes & Papers" data-en="Notes & Papers">Notes & Papers</strong><small data-hi="अपने नोट्स सेव करो" data-en="Save your study notes">अपने नोट्स सेव करो</small></button>
-  <button class="tile" onclick="showPage('planner')"><span class="tile-icon">🗓️</span><strong data-hi="Study Planner" data-en="Study Planner">Study Planner</strong><small data-hi="पढ़ाई का प्लान बनाओ" data-en="Plan your study routine">पढ़ाई का प्लान बनाओ</small></button>
-  <button class="tile" onclick="showPage('leaderboard')"><span class="tile-icon">🥇</span><strong data-hi="Leaderboard" data-en="Leaderboard">Leaderboard</strong><small data-hi="अपनी प्रगति देखो" data-en="Track your progress">अपनी प्रगति देखो</small></button>
- </div>
- <div class="tip"><div class="bulb">💡</div><div><strong data-hi="आज की पढ़ाई की ट्रिक" data-en="Today's study tip">आज की पढ़ाई की ट्रिक</strong><p data-hi="किसी भी नए टॉपिक को पढ़ने के बाद उसे अपने शब्दों में 2 मिनट में समझाने की कोशिश करो। इससे याद रखने में मदद मिलती है।" data-en="After learning a new topic, try explaining it in your own words in two minutes. It can help you remember it.">किसी भी नए टॉपिक को पढ़ने के बाद उसे अपने शब्दों में 2 मिनट में समझाने की कोशिश करो। इससे याद रखने में मदद मिलती है।</p></div></div>
-</section>
-
-<section class="page" id="study">
- <h2 data-hi="📚 Study Zone" data-en="📚 Study Zone">📚 Study Zone</h2><p class="muted" data-hi="अपनी कक्षा, बोर्ड और भाषा चुनकर पढ़ाई शुरू करो।" data-en="Choose your class, board and language to begin.">अपनी कक्षा, बोर्ड और भाषा चुनकर पढ़ाई शुरू करो।</p>
- <div class="panel"><label data-hi="कक्षा चुनें" data-en="Choose class">कक्षा चुनें</label><select class="field" id="classChoice"><option>Class 6</option><option>Class 7</option><option>Class 8</option><option selected>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option></select>
- <label data-hi="बोर्ड" data-en="Board">बोर्ड</label><select class="field"><option>UP Board</option><option>CBSE</option><option>Other</option></select>
- <label data-hi="विषय" data-en="Subject">विषय</label><div class="chips"><button class="chip selected">Science</button><button class="chip">Maths</button><button class="chip">English</button><button class="chip">Hindi</button><button class="chip">Social Science</button></div>
- <div class="notice" data-hi="यह शुरुआती डेमो है। असली चैप्टर-वाइज प्रमाणित सामग्री अगले चरण में जोड़ी जाएगी।" data-en="This is an initial demo. Verified chapter-wise learning content will be added in the next stage.">यह शुरुआती डेमो है। असली चैप्टर-वाइज प्रमाणित सामग्री अगले चरण में जोड़ी जाएगी।</div></div>
- <div class="panel"><h3 data-hi="Smart Learning कैसे होगा?" data-en="How Smart Learning works">Smart Learning कैसे होगा?</h3><div class="list-item">🧠 <b data-hi="आसान भाषा में समझो" data-en="Understand in simple language">आसान भाषा में समझो</b><div class="muted" data-hi="हर टॉपिक छोटे हिस्सों और उदाहरणों में।" data-en="Each topic in small steps with examples.">हर टॉपिक छोटे हिस्सों और उदाहरणों में।</div></div><div class="list-item">⚡ <b data-hi="ट्रिक्स और शॉर्टकट" data-en="Tricks and shortcuts">ट्रिक्स और शॉर्टकट</b><div class="muted" data-hi="जहाँ सही और उपयोगी हों, वहाँ याद रखने के तरीके।" data-en="Useful memory aids where appropriate.">जहाँ सही और उपयोगी हों, वहाँ याद रखने के तरीके।</div></div><div class="list-item">✍️ <b data-hi="अभ्यास और टेस्ट" data-en="Practice and tests">अभ्यास और टेस्ट</b><div class="muted" data-hi="आसान से कठिन सवालों तक।" data-en="From easy to challenging questions.">आसान से कठिन सवालों तक।</div></div></div>
-</section>
-
-<section class="page" id="quiz">
- <h2 data-hi="🏆 Quiz Challenge" data-en="🏆 Quiz Challenge">🏆 Quiz Challenge</h2><p class="muted" data-hi="अभी अभ्यास के लिए छोटा डेमो क्विज़।" data-en="A small demo quiz for practice.">अभी अभ्यास के लिए छोटा डेमो क्विज़।</p>
- <div class="panel"><div class="row"><button class="chip selected">Easy</button><button class="chip">Medium</button><button class="chip">Hard</button></div><label data-hi="कितने सवाल?" data-en="Number of questions">कितने सवाल?</label><select class="field"><option>10</option><option>20</option><option>30</option></select><button class="action" onclick="startDemoQuiz()" data-hi="डेमो क्विज़ शुरू करें" data-en="Start demo quiz">डेमो क्विज़ शुरू करें</button><div id="quizArea" class="muted" style="margin-top:12px"></div></div>
- <div class="notice" data-hi="ऑनलाइन 1-vs-1, ग्रुप मैच, अलग-अलग प्रश्न और सुरक्षित स्कोर के लिए सर्वर बैकएंड जोड़ा जाएगा।" data-en="Online 1-vs-1, group matches, unique question sets and secure scoring need a server backend.">ऑनलाइन 1-vs-1, ग्रुप मैच, अलग-अलग प्रश्न और सुरक्षित स्कोर के लिए सर्वर बैकएंड जोड़ा जाएगा।</div>
-</section>
-
-<section class="page" id="doubts">
- <h2 data-hi="💬 Doubts Community" data-en="💬 Doubts Community">💬 Doubts Community</h2><div class="panel"><h3 data-hi="अपना सवाल लिखो" data-en="Write your question">अपना सवाल लिखो</h3><textarea id="doubtText" class="field" placeholder="अपना सवाल यहाँ लिखें..."></textarea><button class="action" onclick="addLocal('doubts','doubtText','doubtList')" data-hi="सवाल सेव करें" data-en="Save question">सवाल सेव करें</button></div><div class="panel"><h3 data-hi="तुम्हारे सवाल" data-en="Your questions">तुम्हारे सवाल</h3><div id="doubtList" class="empty" data-hi="अभी कोई सवाल नहीं।" data-en="No questions yet.">अभी कोई सवाल नहीं।</div></div><div class="notice" data-hi="यह डेमो पोस्ट केवल इसी डिवाइस पर सेव होती है। सभी छात्रों के साथ साझा करने के लिए ऑनलाइन बैकएंड चाहिए।" data-en="Demo posts are saved only on this device. Sharing with all students requires an online backend.">यह डेमो पोस्ट केवल इसी डिवाइस पर सेव होती है। सभी छात्रों के साथ साझा करने के लिए ऑनलाइन बैकएंड चाहिए।</div>
-</section>
-
-<section class="page" id="groups">
- <h2 data-hi="👥 My Groups" data-en="👥 My Groups">👥 My Groups</h2><div class="panel"><h3 data-hi="नया ग्रुप बनाओ" data-en="Create a group">नया ग्रुप बनाओ</h3><input id="groupName" class="field" placeholder="ग्रुप का नाम / Group name"><button class="action" onclick="createGroup()" data-hi="ग्रुप सेव करें" data-en="Save group">ग्रुप सेव करें</button></div><div class="panel"><h3 data-hi="मेरे ग्रुप" data-en="My groups">मेरे ग्रुप</h3><div id="groupList" class="empty" data-hi="अभी कोई ग्रुप नहीं।" data-en="No groups yet.">अभी कोई ग्रुप नहीं।</div></div><div class="notice" data-hi="दोस्तों को ऑनलाइन जोड़ना, मैसेज और लाइव ग्रुप क्विज़ अगले बैकएंड चरण में आएँगे।" data-en="Inviting friends online, messaging and live group quizzes will come with the backend.">दोस्तों को ऑनलाइन जोड़ना, मैसेज और लाइव ग्रुप क्विज़ अगले बैकएंड चरण में आएँगे।</div>
-</section>
-
-<section class="page" id="notes">
- <h2 data-hi="📝 Notes & Papers" data-en="📝 Notes & Papers">📝 Notes & Papers</h2><div class="panel"><label data-hi="नोट का शीर्षक" data-en="Note title">नोट का शीर्षक</label><input id="noteTitle" class="field" placeholder="जैसे: Science Chapter 1"><label data-hi="नोट लिखें" data-en="Write your note">नोट लिखें</label><textarea id="noteText" class="field" placeholder="यहाँ नोट लिखें..."></textarea><button class="action" onclick="saveNote()" data-hi="नोट सेव करें" data-en="Save note">नोट सेव करें</button></div><div class="panel"><h3 data-hi="सेव किए गए नोट्स" data-en="Saved notes">सेव किए गए नोट्स</h3><div id="noteList" class="empty">अभी कोई नोट नहीं।</div></div>
-</section>
-
-<section class="page" id="planner">
- <h2 data-hi="🗓️ Study Planner" data-en="🗓️ Study Planner">🗓️ Study Planner</h2><div class="panel"><label data-hi="आज का लक्ष्य" data-en="Today's goal">आज का लक्ष्य</label><input id="taskText" class="field" placeholder="जैसे: Maths के 10 सवाल"><button class="action" onclick="addLocal('tasks','taskText','taskList')" data-hi="लक्ष्य जोड़ें" data-en="Add goal">लक्ष्य जोड़ें</button></div><div class="panel"><h3 data-hi="मेरे लक्ष्य" data-en="My goals">मेरे लक्ष्य</h3><div id="taskList" class="empty">अभी कोई लक्ष्य नहीं।</div></div>
-</section>
-
-<section class="page" id="leaderboard">
- <h2 data-hi="🥇 Leaderboard" data-en="🥇 Leaderboard">🥇 Leaderboard</h2><div class="panel"><div class="empty" data-hi="क्विज़ खेलने के बाद तुम्हारे डेमो पॉइंट्स यहाँ दिखेंगे।" data-en="Your demo points will appear here after quizzes.">क्विज़ खेलने के बाद तुम्हारे डेमो पॉइंट्स यहाँ दिखेंगे।</div></div><div class="notice" data-hi="असली All India, State, Class और Friends ranking के लिए ऑनलाइन अकाउंट और सर्वर जरूरी है।" data-en="Real All India, State, Class and Friends rankings need online accounts and a server.">असली All India, State, Class और Friends ranking के लिए ऑनलाइन अकाउंट और सर्वर जरूरी है।</div></section>
-
-<section class="page" id="profile">
- <h2 data-hi="Profile" data-en="Profile">Profile</h2><div class="panel"><div class="profile-top"><div class="avatar">👤</div><div><h3 id="profileName" style="margin:0 0 4px">Student</h3><div class="muted" data-hi="IndiaMate Student" data-en="IndiaMate Student">IndiaMate Student</div></div></div><div class="statrow"><div><b id="postCount">0</b><span data-hi="Posts" data-en="Posts">Posts</span></div><div><b>0</b><span data-hi="Friends" data-en="Friends">Friends</span></div><div><b id="points">0</b><span data-hi="Points" data-en="Points">Points</span></div></div><label data-hi="अपना नाम" data-en="Your name">अपना नाम</label><input id="nameInput" class="field" placeholder="अपना नाम लिखें"><button class="action secondary" onclick="saveName()" data-hi="नाम सेव करें" data-en="Save name">नाम सेव करें</button></div>
- <div class="panel"><h3 data-hi="मेरी गतिविधि" data-en="My activity">मेरी गतिविधि</h3><div class="list-item">📝 <span data-hi="मेरे नोट्स" data-en="My notes">मेरे नोट्स</span></div><div class="list-item">👥 <span data-hi="मेरे ग्रुप" data-en="My groups">मेरे ग्रुप</span></div><div class="list-item">🏆 <span data-hi="मेरे क्विज़" data-en="My quizzes">मेरे क्विज़</span></div></div>
- <div class="panel contact"><div class="contact-icon">📷</div><div><b data-hi="Contact Owner" data-en="Contact Owner">Contact Owner</b><br><a href="https://www.instagram.com/hkkumar00king/" target="_blank" rel="noopener">@hkkumar00king</a></div></div>
-</section>
-<footer>IndiaMate Students Hub • Learn • Practice • Grow</footer>
-</main>
-<nav class="bottomnav" aria-label="Main navigation">
- <button class="navbtn active" data-page="home" onclick="showPage('home')"><span class="navico">⌂</span><span data-hi="Home" data-en="Home">Home</span></button>
- <button class="navbtn" data-page="study" onclick="showPage('study')"><span class="navico">⌕</span><span data-hi="Study" data-en="Study">Study</span></button>
- <button class="navbtn create" data-page="quiz" onclick="showPage('quiz')"><span class="navico">＋</span><span data-hi="Quiz" data-en="Quiz">Quiz</span></button>
- <button class="navbtn" data-page="doubts" onclick="showPage('doubts')"><span class="navico">▤</span><span data-hi="Doubts" data-en="Doubts">Doubts</span></button>
- <button class="navbtn" data-page="profile" onclick="showPage('profile')"><span class="navico">♙</span><span data-hi="Profile" data-en="Profile">Profile</span></button>
-</nav>
-</div>
+<section class="page active" id="home"><div class="hero"><small data-hi="आपका स्मार्ट स्टडी साथी" data-en="YOUR SMART STUDY COMPANION">आपका स्मार्ट स्टडी साथी</small><h1 data-hi="सीखो आज, चमको कल! ✨" data-en="Learn Today, Shine Tomorrow! ✨">सीखो आज, चमको कल! ✨</h1><p data-hi="आसान ट्रिक्स, छोटे अभ्यास और दोस्तों के साथ सीखने का नया तरीका।" data-en="Easy tricks, quick practice and learning with friends.">आसान ट्रिक्स, छोटे अभ्यास और दोस्तों के साथ सीखने का नया तरीका।</p><span class="tag">🚀 <span data-hi="आज कुछ नया सीखें" data-en="Learn something new today">आज कुछ नया सीखें</span></span></div><h2 style="font-size:18px;margin-top:22px" data-hi="तुम्हारी पढ़ाई की दुनिया" data-en="Your learning space">तुम्हारी पढ़ाई की दुनिया</h2><div class="grid">
+<button class="tile" onclick="go('study')"><i>📚</i><b>Study Zone</b><small>Class • Subject • Tricks</small></button><button class="tile" onclick="go('quiz')"><i>🏆</i><b>Quiz Challenge</b><small>Practice and score</small></button><button class="tile" onclick="go('doubts')"><i>💬</i><b>Doubts Community</b><small>Ask and learn</small></button><button class="tile" onclick="go('groups')"><i>👥</i><b>Groups & Friends</b><small>Group and private chats</small></button><button class="tile" onclick="go('notes')"><i>📝</i><b>Notes & Papers</b><small>Save your notes</small></button><button class="tile" onclick="go('planner')"><i>🗓️</i><b>Study Planner</b><small>Daily goals</small></button><button class="tile" onclick="go('leaderboard')"><i>🥇</i><b>Leaderboard</b><small>Track progress</small></button></div><div class="card">💡 <b data-hi="पढ़ाई की ट्रिक" data-en="Study tip">पढ़ाई की ट्रिक</b><p class="muted" data-hi="पढ़ने के बाद किताब बंद करके टॉपिक अपने शब्दों में दोहराओ। फिर किताब खोलकर जाँचो।" data-en="After studying, close the book and explain the topic in your own words. Then check it.">पढ़ने के बाद किताब बंद करके टॉपिक अपने शब्दों में दोहराओ। फिर किताब खोलकर जाँचो।</p></div></section>
+<section class="page" id="study"><h2>📚 Study Zone</h2><div class="card"><label>Class</label><select class="field"><option>Class 6</option><option>Class 7</option><option>Class 8</option><option selected>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option></select><label>Board</label><select class="field"><option>UP Board</option><option>CBSE</option><option>Other</option></select><label>Medium</label><select class="field"><option>हिंदी</option><option>English</option></select><label>Subject</label><div class="row"><button class="chip on">Science</button><button class="chip">Maths</button><button class="chip">English</button><button class="chip">Hindi</button><button class="chip">Social Science</button></div></div><div class="card"><h3>Smart Study</h3><p class="muted">🧠 आसान भाषा में समझो<br>⚡ याद रखने की ट्रिक्स<br>✍️ आसान से कठिन अभ्यास</p><div class="notice">अभी यह शुरुआती ढाँचा है। प्रमाणित चैप्टर-वाइज सामग्री बाद के चरण में जोड़ी जाएगी।</div></div></section>
+<section class="page" id="quiz"><h2>🏆 Quiz Challenge</h2><div class="card"><label>Difficulty</label><div class="row" id="levels"><button class="chip on" onclick="level(this)">Easy</button><button class="chip" onclick="level(this)">Medium</button><button class="chip" onclick="level(this)">Hard</button></div><label>Questions</label><select id="qcount" class="field"><option>10</option><option>20</option><option>30</option></select><button class="btn" onclick="startQuiz()">Start Quiz</button><div id="quizBox"></div></div><div class="notice">अभी यह sample quiz है। Friends के साथ live 1-vs-1 और secure score के लिए online backend जरूरी है।</div></section>
+<section class="page" id="doubts"><h2>💬 Doubts Community</h2><div class="card"><textarea class="field" id="doubt" placeholder="अपना सवाल लिखें..."></textarea><button class="btn" onclick="postDoubt()">Post question</button></div><div class="card"><h3>Your questions</h3><div id="posts" class="empty">अभी कोई सवाल नहीं।</div></div><div class="notice">अभी सवाल इसी फोन में सेव होंगे। सभी छात्रों के साथ साझा करने के लिए online backend चाहिए।</div></section>
+<section class="page" id="groups"><div class="between"><div><h2>👥 Groups & Friends</h2><p class="muted">दोस्तों के साथ पढ़ो और अभ्यास करो।</p></div><button class="btn soft" onclick="showCreate()">＋ Create</button></div><div class="row" style="margin:14px 0"><button id="gt" class="chip on" onclick="tab('g')">My Groups</button><button id="ft" class="chip" onclick="tab('f')">Friends / Chats</button></div><div id="gTab"><div class="card"><h3>Create a group</h3><input id="gname" class="field" placeholder="Group name"><input id="gdesc" class="field" placeholder="Description (optional)"><button class="btn" onclick="createGroup()">Create Group</button></div><div class="card"><h3>My Groups</h3><div id="groupsList" class="empty">अभी कोई ग्रुप नहीं।</div></div></div><div id="fTab" style="display:none"><div class="card"><h3>Add a friend</h3><input id="fname" class="field" placeholder="Friend name"><button class="btn" onclick="addFriend()">Add friend</button></div><div class="card"><h3>Friends & Chats</h3><div id="friendsList" class="empty">अभी कोई दोस्त नहीं।</div></div></div><div class="notice">ध्यान दें: अभी यह फोन में चलने वाला demo है। असली WhatsApp-जैसी chat, दूसरे फोन पर messages, invite links और live groups के लिए Supabase backend जोड़ना होगा।</div></section>
+<section class="page" id="groupChat"><button class="btn soft" onclick="go('groups')">← Groups</button><h2 id="groupTitle">Group</h2><div class="card"><h3>Group Chat</h3><div class="chat" id="groupMsgs"></div><div class="send"><input id="groupText" class="field" placeholder="Message..." style="margin:0"><button class="btn" onclick="send('group')">Send</button></div></div><div class="card"><button class="btn soft" onclick="go('quiz')">🏆 Group Quiz Challenge</button><button class="btn line" onclick="alert('Invite links will be enabled with the online backend.')">Invite friends</button></div></section>
+<section class="page" id="dmChat"><button class="btn soft" onclick="go('groups')">← Chats</button><h2 id="dmTitle">Friend</h2><div class="card"><div class="chat" id="dmMsgs"></div><div class="send"><input id="dmText" class="field" placeholder="Message..." style="margin:0"><button class="btn" onclick="send('dm')">Send</button></div></div></section>
+<section class="page" id="notes"><h2>📝 Notes & Papers</h2><div class="card"><input id="ntitle" class="field" placeholder="Note title"><textarea id="nbody" class="field" placeholder="Write your notes..."></textarea><button class="btn" onclick="saveNote()">Save Note</button></div><div class="card"><h3>Saved Notes</h3><div id="notesList" class="empty">No notes yet.</div></div></section>
+<section class="page" id="planner"><h2>🗓️ Study Planner</h2><div class="card"><input id="goal" class="field" placeholder="Today's study goal"><button class="btn" onclick="addGoal()">Add Goal</button></div><div class="card"><h3>My Goals</h3><div id="goalsList" class="empty">No goals yet.</div></div></section>
+<section class="page" id="leaderboard"><h2>🥇 Leaderboard</h2><div class="card empty">ऑनलाइन ranking के लिए student accounts और server की जरूरत होगी।</div></section>
+<section class="page" id="profile"><h2>Profile</h2><div class="card"><div class="row"><div class="avatar" style="width:68px;height:68px;font-size:28px">👤</div><div><h2 id="pname">Student</h2><span class="muted">IndiaMate Student</span></div></div><p class="muted">Posts: <b id="pcount">0</b>　 Groups: <b id="gcount">0</b>　 Points: <b id="points">0</b></p><input id="name" class="field" placeholder="Your name"><button class="btn soft" onclick="saveName()">Save profile</button></div><div class="card">📷 <b>Contact Owner</b><br><a href="https://www.instagram.com/hkkumar00king/" target="_blank" rel="noopener">@hkkumar00king</a></div></section>
+<footer>IndiaMate Students Hub • Learn • Practice • Grow</footer></main>
+<nav class="bottom"><button class="nav active" data-p="home" onclick="go('home')"><span>⌂</span>Home</button><button class="nav" data-p="study" onclick="go('study')"><span>⌕</span>Study</button><button class="nav quiz" data-p="quiz" onclick="go('quiz')"><span>＋</span>Quiz</button><button class="nav" data-p="groups" onclick="go('groups')"><span>▣</span>Groups</button><button class="nav" data-p="profile" onclick="go('profile')"><span>♙</span>Profile</button></nav></div>
 <script>
-'use strict';
-const $=id=>document.getElementById(id);
-let lang=localStorage.getItem('im_lang')||'hi';
-let currentPage='home';
-function setLanguage(){
- document.documentElement.lang=lang;
- document.querySelectorAll('[data-hi][data-en]').forEach(el=>{el.textContent=el.dataset[lang]});
- $('langTop').textContent=lang==='hi'?'EN':'हि';
-}
-function toggleLanguage(){lang=lang==='hi'?'en':'hi';localStorage.setItem('im_lang',lang);setLanguage()}
-function showPage(id,fromBack=false){
- const target=$(id);if(!target)return;
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- target.classList.add('active');currentPage=id;
- document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
- window.scrollTo({top:0,behavior:'instant'});
- if(!fromBack){history.pushState({imPage:id},'', '#'+id)}
-}
-function setupBackButton(){
- // Keep an in-app history entry so Android/browser Back returns to the previous app screen.
- history.replaceState({imPage:'home'},'',location.pathname+location.search+'#home');
- history.pushState({imPage:'home',guard:true},'',location.pathname+location.search+'#home');
- window.addEventListener('popstate',()=>{
-   if(currentPage!=='home'){showPage('home',true)}
-   // Re-arm the guard: on Home, a further Back stays in the app instead of accidentally closing it.
-   history.pushState({imPage:'home',guard:true},'',location.pathname+location.search+'#home');
- });
-}
-function readList(key){try{return JSON.parse(localStorage.getItem('im_'+key)||'[]')}catch(e){return []}}
-function writeList(key,data){localStorage.setItem('im_'+key,JSON.stringify(data))}
-function renderList(key,id){
- const arr=readList(key),el=$(id);if(!el)return;
- if(!arr.length){el.className='empty';el.textContent=lang==='hi'?'अभी कुछ नहीं है।':'Nothing here yet.';return}
- el.className='';
- el.innerHTML=arr.map((x,i)=>`<div class="list-item"><b>${escapeHtml(x.title||x.text||x)}</b>${x.body?`<div class="muted">${escapeHtml(x.body)}</div>`:''}<button class="action ghost" style="margin-top:7px;padding:6px 10px" onclick="removeItem('${key}',${i})">${lang==='hi'?'हटाएँ':'Delete'}</button></div>`).join('');
-}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function removeItem(key,i){const a=readList(key);a.splice(i,1);writeList(key,a);refreshLists()}
-function addLocal(key,inputId,listId){
- const el=$(inputId),value=el.value.trim();if(!value)return alert(lang==='hi'?'पहले कुछ लिखें।':'Please enter something first.');
- const a=readList(key);a.unshift({text:value,title:value,created:Date.now()});writeList(key,a);el.value='';renderList(key,listId);
-}
-function createGroup(){const el=$('groupName'),v=el.value.trim();if(!v)return alert(lang==='hi'?'ग्रुप का नाम लिखें।':'Enter a group name.');const a=readList('groups');a.unshift({title:v});writeList('groups',a);el.value='';renderList('groups','groupList')}
-function saveNote(){const t=$('noteTitle').value.trim(),b=$('noteText').value.trim();if(!t||!b)return alert(lang==='hi'?'शीर्षक और नोट दोनों लिखें।':'Enter both title and note.');const a=readList('notes');a.unshift({title:t,body:b});writeList('notes',a);$('noteTitle').value='';$('noteText').value='';renderList('notes','noteList')}
-function saveName(){const n=$('nameInput').value.trim();if(!n)return;localStorage.setItem('im_name',n);$('profileName').textContent=n}
-function startDemoQuiz(){const q=[{q:'पानी का रासायनिक सूत्र क्या है?',a:['H₂O','CO₂','O₂'],correct:0},{q:'2 + 3 = ?',a:['4','5','6'],correct:1}];let i=0,score=0;const area=$('quizArea');function draw(){if(i>=q.length){area.textContent=(lang==='hi'?'डेमो पूरा! सही जवाब: ':'Demo complete! Correct answers: ')+score+'/'+q.length;$('points').textContent=String(Number($('points').textContent)+score);return}const x=q[i];area.innerHTML=`<b>${escapeHtml(x.q)}</b><div class="chips">${x.a.map((v,j)=>`<button class="chip" onclick="answerDemo(${j})">${escapeHtml(v)}</button>`).join('')}</div>`;window.answerDemo=(j)=>{if(j===x.correct)score++;i++;draw()}}draw()}
-function refreshLists(){renderList('doubts','doubtList');renderList('groups','groupList');renderList('notes','noteList');renderList('tasks','taskList');$('postCount').textContent=String(readList('doubts').length)}
-setLanguage();refreshLists();const savedName=localStorage.getItem('im_name');if(savedName){$('profileName').textContent=savedName;$('nameInput').value=savedName}setupBackButton();
-</script>
-</body>
-  </html>
+'use strict';const $=x=>document.getElementById(x),ids=['home','study','quiz','doubts','groups','groupChat','dmChat','notes','planner','leaderboard','profile'];let current='home',lang=localStorage.imLang||'hi',gid='',fid='',difficulty='Easy',qi=0,score=0;
+function data(k){try{return JSON.parse(localStorage.getItem('im2_'+k)||'[]')}catch(e){return []}}function save(k,v){localStorage.setItem('im2_'+k,JSON.stringify(v))}function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function go(id,pop=false){if(!ids.includes(id))return;ids.forEach(x=>$(x).classList.toggle('active',x===id));current=id;document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('active',n.dataset.p===id||(['groupChat','dmChat'].includes(id)&&n.dataset.p==='groups')));window.scrollTo(0,0);if(!pop)history.pushState({page:id},'',location.pathname+location.search+'#'+id)}
+window.addEventListener('popstate',()=>{let id=location.hash.slice(1);if(!ids.includes(id)||['groupChat','dmChat'].includes(id))id='groups';go(id,true)});
+function toggleLang(){lang=lang==='hi'?'en':'hi';localStorage.imLang=lang;$('langBtn').textContent=lang==='hi'?'EN':'हि';document.querySelectorAll('[data-hi][data-en]').forEach(e=>e.textContent=e.dataset[lang])}
+$('langBtn').textContent=lang==='hi'?'EN':'हि';document.querySelectorAll('[data-hi][data-en]').forEach(e=>e.textContent=e.dataset[lang]);
+function tab(t){$('gTab').style.display=t==='g'?'block':'none';$('fTab').style.display=t==='f'?'block':'none';$('gt').classList.toggle('on',t==='g');$('ft').classList.toggle('on',t==='f')}function showCreate(){tab('g');$('gname').focus()}
+function createGroup(){let n=$('gname').value.trim();if(!n)return alert('Group name likho.');let a=data('groups');a.unshift({id:'g'+Date.now(),name:n,desc:$('gdesc').value.trim(),msgs:[]});save('groups',a);$('gname').value='';$('gdesc').value='';render();openGroup(a[0].id)}
+function render(){let a=data('groups');$('groupsList').innerHTML=a.length?a.map(g=>`<div class="person"><span class="avatar">👥</span><div class="details"><b>${safe(g.name)}</b><div class="muted">${safe(g.desc||'Study group')} · ${g.msgs.length} messages</div></div><button class="btn soft" onclick="openGroup('${g.id}')">Open</button></div>`).join(''):'<div class="empty">अभी कोई ग्रुप नहीं।</div>';$('friendsList').innerHTML=data('friends').map(f=>`<div class="person"><span class="avatar">🙂</span><div class="details"><b>${safe(f.name)}</b><div class="muted">Personal chat</div></div><button class="btn soft" onclick="openDM('${f.id}')">Message</button></div>`).join('')||'<div class="empty">अभी कोई दोस्त नहीं।</div>';$('gcount').textContent=a.length;$('posts').innerHTML=data('posts').map(p=>`<div class="person">${safe(p)}</div>`).join('')||'<div class="empty">अभी कोई सवाल नहीं।</div>';$('pcount').textContent=data('posts').length;$('notesList').innerHTML=data('notes').map((n,i)=>`<div class="person"><div class="details"><b>${safe(n.title)}</b><div class="muted">${safe(n.body)}</div></div><button class="btn line" onclick="del('notes',${i})">Delete</button></div>`).join('')||'<div class="empty">No notes yet.</div>';$('goalsList').innerHTML=data('goals').map((g,i)=>`<div class="person"><div class="details">${safe(g)}</div><button class="btn line" onclick="del('goals',${i})">Delete</button></div>`).join('')||'<div class="empty">No goals yet.</div>'}
+function openGroup(id){gid=id;let g=data('groups').find(x=>x.id===id);if(!g)return;$('groupTitle').textContent=g.name;renderChat('group');go('groupChat')}
+function addFriend(){let n=$('fname').value.trim();if(!n)return;let a=data('friends');if(a.some(f=>f.name.toLowerCase()===n.toLowerCase()))return alert('Already added');a.push({id:'f'+Date.now(),name:n,msgs:[]});save('friends',a);$('fname').value='';render()}
+function openDM(id){fid=id;let f=data('friends').find(x=>x.id===id);if(!f)return;$('dmTitle').textContent=f.name;renderChat('dm');go('dmChat')}
+function renderChat(t){let a=t==='group'?data('groups').find(x=>x.id===gid)?.msgs:data('friends').find(x=>x.id===fid)?.msgs;let el=$(t==='group'?'groupMsgs':'dmMsgs');el.innerHTML=a?.length?a.map(m=>`<div class="bubble ${m.me?'me':''}">${safe(m.text)}</div>`).join(''):'<div class="empty">No messages yet 👋</div>';el.scrollTop=el.scrollHeight}
+function send(t){let inp=$(t==='group'?'groupText':'dmText'),v=inp.value.trim();if(!v)return;let key=t==='group'?'groups':'friends',a=data(key),obj=a.find(x=>x.id===(t==='group'?gid:fid));if(!obj)return;obj.msgs.push({text:v,me:true});save(key,a);inp.value='';renderChat(t);render()}
+function postDoubt(){let v=$('doubt').value.trim();if(!v)return;let a=data('posts');a.unshift(v);save('posts',a);$('doubt').value='';render()}
+function saveNote(){let t=$('ntitle').value.trim(),b=$('nbody').value.trim();if(!t||!b)return alert('Title aur note dono likho.');let a=data('notes');a.unshift({title:t,body:b});save('notes',a);$('ntitle').value='';$('nbody').value='';render()}
+function addGoal(){let v=$('goal').value.trim();if(!v)return;let a=data('goals');a.unshift(v);save('goals',a);$('goal').value='';render()}function del(k,i){let a=data(k);a.splice(i,1);save(k,a);render()}function saveName(){let n=$('name').value.trim();if(n){localStorage.imName=n;$('pname').textContent=n}}if(localStorage.imName){$('pname').textContent=localStorage.imName;$('name').value=localStorage.imName}
+function level(el){document.querySelectorAll('#levels .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on');difficulty=el.textContent}
+const qs=[{q:'पानी का रासायनिक सूत्र क्या है?',a:['H₂O','CO₂','O₂'],c:0},{q:'2 + 3 = ?',a:['4','5','6'],c:1},{q:'सूर्य किस दिशा से निकलता है?',a:['उत्तर','पूर्व','पश्चिम'],c:1},{q:'एक सप्ताह में कितने दिन होते हैं?',a:['5','6','7'],c:2},{q:'पौधे भोजन किस प्रक्रिया से बनाते हैं?',a:['प्रकाश संश्लेषण','वाष्पीकरण','घर्षण'],c:0}];
+function startQuiz(){qi=0;score=0;drawQ()}function drawQ(){if(qi>=qs.length){$('quizBox').innerHTML=`<div class="card"><h3>Quiz complete 🎉</h3>Your score: ${score}/${qs.length}<br><button class="btn" onclick="startQuiz()">Try again</button></div>`;$('points').textContent=Number($('points').textContent||0)+score;return}let q=qs[qi];$('quizBox').innerHTML=`<div class="card"><small class="muted">Question ${qi+1} / ${qs.length} · ${difficulty}</small><h3>${safe(q.q)}</h3>${q.a.map((a,i)=>`<button class="btn soft" style="display:block;width:100%;text-align:left;margin:7px 0" onclick="answerQ(${i})">${safe(a)}</button>`).join('')}</div>`}function answerQ(i){if(i===qs[qi].c)score++;qi++;drawQ()}
+render();</script></body></html>
