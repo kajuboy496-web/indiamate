@@ -116,7 +116,14 @@ hr{border:0;border-top:1px solid var(--line);margin:14px 0}
 </section>
 
 <section id="leaderboard" class="page">
- <h1>🏅 Leaderboard</h1><div class="card"><div class="empty">असली online ranking के लिए student accounts, सुरक्षित server-side scores और anti-cheat व्यवस्था चाहिए।</div></div>
+ <h1>🏅 Leaderboard</h1>
+ <p class="muted">Quiz पूरा करो और अपने Points यहाँ देखो।</p>
+ <div class="card">
+  <div class="tip"><strong>⭐ तुम्हारे कुल Points</strong><div id="myTotalPoints" style="font-size:34px;font-weight:800;color:var(--blue);margin-top:8px">0</div><small class="muted">हर सही जवाब = 10 Points (बेहतर Best Score पर ही नए Points)</small></div>
+  <h2 style="margin-top:18px">तुम्हारा Best Score</h2>
+  <div id="myLeaderboard"></div>
+ </div>
+ <div class="notice">यह अभी इसी फोन पर सेव होने वाली व्यक्तिगत Ranking है। सभी छात्रों की असली All India / State Ranking और दोस्तों के नाम दिखाने के लिए Login और Online Backend जोड़ना होगा।</div>
 </section>
 
 <section id="profile" class="page">
@@ -168,11 +175,31 @@ function deleteTask(id){write('tasks',read('tasks',[]).filter(t=>t.id!==id));ren
 function studyStart(){$('studyResult').classList.remove('hidden');$('studyResult').innerHTML=`<h2>${$('classSelect').value} • ${selectedSubject}</h2><p class="muted">${$('boardSelect').value} • ${$('mediumSelect').value}</p><p>इस विषय के लिए chapter-wise lessons और verified practice material अगली content update में जोड़ा जाएगा।</p>`}
 const questions=[{q:'पानी का रासायनिक सूत्र क्या है?',o:['H₂O','CO₂','O₂'],a:0,why:'पानी में दो हाइड्रोजन और एक ऑक्सीजन परमाणु होता है।'},{q:'भारत की राजधानी क्या है?',o:['मुंबई','नई दिल्ली','जयपुर'],a:1,why:'भारत की राजधानी नई दिल्ली है।'},{q:'5 × 6 कितना होता है?',o:['11','30','56'],a:1,why:'5 को 6 से गुणा करने पर 30 मिलता है।'},{q:'पौधे भोजन बनाने की प्रक्रिया को क्या कहते हैं?',o:['प्रकाश संश्लेषण','वाष्पीकरण','संघनन'],a:0,why:'हरे पौधे प्रकाश की मदद से भोजन बनाते हैं।'},{q:'एक सप्ताह में कितने दिन होते हैं?',o:['5','6','7'],a:2,why:'एक सप्ताह में सात दिन होते हैं।'}];let qi=0,score=0;
 function startQuiz(){qi=0;score=0;$('quizArea').classList.remove('hidden');showQuestion()}
-function showQuestion(){if(qi>=questions.length){$('quizArea').innerHTML=`<hr><h2>Quiz पूरा हुआ! 🎉</h2><p>Score: <b>${score} / ${questions.length}</b></p><button class="btn" onclick="startQuiz()">फिर से करें</button>`;return}let q=questions[qi];$('quizArea').innerHTML=`<hr><div class="muted">Question ${qi+1} / ${questions.length} • ${difficulty}</div><h2>${q.q}</h2>${q.o.map((x,i)=>`<button class="qoption" onclick="answerQuiz(${i})">${x}</button>`).join('')}`}
+function showQuestion(){if(qi>=questions.length){saveQuizResult();$('quizArea').innerHTML=`<hr><h2>Quiz पूरा हुआ! 🎉</h2><p>Score: <b>${score} / ${questions.length}</b></p><p><b>इस Quiz के Points: ${score*10}</b></p><p class="small">तुम्हारा Best Score Leaderboard में अपने-आप अपडेट हो गया।</p><button class="btn" onclick="startQuiz()">फिर से करें</button><button class="btn secondary" onclick="go('leaderboard')">Leaderboard देखो</button>`;return}let q=questions[qi];$('quizArea').innerHTML=`<hr><div class="muted">Question ${qi+1} / ${questions.length} • ${difficulty}</div><h2>${q.q}</h2>${q.o.map((x,i)=>`<button class="qoption" onclick="answerQuiz(${i})">${x}</button>`).join('')}`}
 function answerQuiz(i){let q=questions[qi];let buttons=$('quizArea').querySelectorAll('.qoption');buttons.forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add('correct');if(j===i&&i!==q.a)b.classList.add('wrong')});if(i===q.a)score++;let note=document.createElement('p');note.className='small';note.textContent=q.why;$('quizArea').appendChild(note);let next=document.createElement('button');next.className='btn';next.textContent='Next';next.onclick=()=>{qi++;showQuestion()};$('quizArea').appendChild(next)}
+function saveQuizResult(){
+ let records=read('quizBest',{});
+ let old=records[difficulty]||0;
+ if(score>old){records[difficulty]=score;write('quizBest',records)}
+ let history=read('quizHistory',[]);
+ history.unshift({difficulty,score,total:questions.length,date:new Date().toLocaleDateString()});
+ write('quizHistory',history.slice(0,50));
+ renderLeaderboard();
+}
+function renderLeaderboard(){
+ let records=read('quizBest',{});
+ let total=Object.values(records).reduce((sum,n)=>sum+(Number(n)||0),0)*10;
+ if($('myTotalPoints'))$('myTotalPoints').textContent=total;
+ let name=esc(read('name','Student'));
+ let rows=['Easy','Medium','Hard'].map(level=>{
+  let best=Number(records[level]||0);
+  return `<div class="listitem"><div class="info"><strong>${level}</strong><small>Best: ${best} सही जवाब</small></div><b style="color:var(--blue)">${best*10} Points</b></div>`;
+ }).join('');
+ if($('myLeaderboard'))$('myLeaderboard').innerHTML=`<div class="listitem"><div class="avatar">🏅</div><div class="info"><strong>${name}</strong><small>इस डिवाइस का खिलाड़ी</small></div><b style="color:var(--blue)">${total} pts</b></div>${rows}`;
+}
 function saveProfile(){let n=$('nameInput').value.trim();if(n){write('name',n);renderAll()}}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function renderAll(){renderFeed();renderGroups();renderNotes();renderTasks();let n=read('name','Student');$('profileName').textContent=n;$('nameInput').value=n;$('postCount').textContent=posts().length;$('noteCount').textContent=read('notes',[]).length;$('taskCount').textContent=read('tasks',[]).length}
+function renderAll(){renderFeed();renderGroups();renderNotes();renderTasks();renderLeaderboard();let n=read('name','Student');$('profileName').textContent=n;$('nameInput').value=n;$('postCount').textContent=posts().length;$('noteCount').textContent=read('notes',[]).length;$('taskCount').textContent=read('tasks',[]).length}
 renderAll();
 </script>
 </body></html>
