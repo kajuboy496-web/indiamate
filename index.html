@@ -173,15 +173,22 @@ function renderTasks(){$('taskList').innerHTML=read('tasks',[]).map(t=>`<div cla
 function toggleTask(id){let a=read('tasks',[]);let t=a.find(x=>x.id===id);if(t)t.done=!t.done;write('tasks',a);renderTasks()}
 function deleteTask(id){write('tasks',read('tasks',[]).filter(t=>t.id!==id));renderTasks()}
 function studyStart(){$('studyResult').classList.remove('hidden');$('studyResult').innerHTML=`<h2>${$('classSelect').value} • ${selectedSubject}</h2><p class="muted">${$('boardSelect').value} • ${$('mediumSelect').value}</p><p>इस विषय के लिए chapter-wise lessons और verified practice material अगली content update में जोड़ा जाएगा।</p>`}
-const questions=[{q:'पानी का रासायनिक सूत्र क्या है?',o:['H₂O','CO₂','O₂'],a:0,why:'पानी में दो हाइड्रोजन और एक ऑक्सीजन परमाणु होता है।'},{q:'भारत की राजधानी क्या है?',o:['मुंबई','नई दिल्ली','जयपुर'],a:1,why:'भारत की राजधानी नई दिल्ली है।'},{q:'5 × 6 कितना होता है?',o:['11','30','56'],a:1,why:'5 को 6 से गुणा करने पर 30 मिलता है।'},{q:'पौधे भोजन बनाने की प्रक्रिया को क्या कहते हैं?',o:['प्रकाश संश्लेषण','वाष्पीकरण','संघनन'],a:0,why:'हरे पौधे प्रकाश की मदद से भोजन बनाते हैं।'},{q:'एक सप्ताह में कितने दिन होते हैं?',o:['5','6','7'],a:2,why:'एक सप्ताह में सात दिन होते हैं।'}];let qi=0,score=0;
+const questions=[{q:'पानी का रासायनिक सूत्र क्या है?',o:['H₂O','CO₂','O₂'],a:0,why:'पानी में दो हाइड्रोजन और एक ऑक्सीजन परमाणु होता है।'},{q:'भारत की राजधानी क्या है?',o:['मुंबई','नई दिल्ली','जयपुर'],a:1,why:'भारत की राजधानी नई दिल्ली है।'},{q:'5 × 6 कितना होता है?',o:['11','30','56'],a:1,why:'5 को 6 से गुणा करने पर 30 मिलता है।'},{q:'पौधे भोजन बनाने की प्रक्रिया को क्या कहते हैं?',o:['प्रकाश संश्लेषण','वाष्पीकरण','संघनन'],a:0,why:'हरे पौधे प्रकाश की मदद से भोजन बनाते हैं।'},{q:'एक सप्ताह में कितने दिन होते हैं?',o:['5','6','7'],a:2,why:'एक सप्ताह में सात दिन होते हैं।'}];let qi=0,score=0,lastQuizBonus=0,lastQuizBest=0;
 function startQuiz(){qi=0;score=0;$('quizArea').classList.remove('hidden');showQuestion()}
-function showQuestion(){if(qi>=questions.length){saveQuizResult();$('quizArea').innerHTML=`<hr><h2>Quiz पूरा हुआ! 🎉</h2><p>Score: <b>${score} / ${questions.length}</b></p><p><b>इस Quiz के Points: ${score*10}</b></p><p class="small">तुम्हारा Best Score Leaderboard में अपने-आप अपडेट हो गया।</p><button class="btn" onclick="startQuiz()">फिर से करें</button><button class="btn secondary" onclick="go('leaderboard')">Leaderboard देखो</button>`;return}let q=questions[qi];$('quizArea').innerHTML=`<hr><div class="muted">Question ${qi+1} / ${questions.length} • ${difficulty}</div><h2>${q.q}</h2>${q.o.map((x,i)=>`<button class="qoption" onclick="answerQuiz(${i})">${x}</button>`).join('')}`}
+function showQuestion(){if(qi>=questions.length){saveQuizResult();$('quizArea').innerHTML=`<hr><h2>Quiz पूरा हुआ! 🎉</h2><p>Score: <b>${score} / ${questions.length}</b></p><p><b>इस बार मिले नए Points: ${lastQuizBonus}</b></p><p class="small">इस Difficulty का Best Score: ${lastQuizBest} सही जवाब। दोबारा खेलने पर पुराने Points दोबारा नहीं जुड़ेंगे; केवल नया Best बनने पर अंतर के Points जुड़ेंगे।</p><button class="btn" onclick="startQuiz()">फिर से करें</button><button class="btn secondary" onclick="go('leaderboard')">Leaderboard देखो</button>`;return}let q=questions[qi];$('quizArea').innerHTML=`<hr><div class="muted">Question ${qi+1} / ${questions.length} • ${difficulty}</div><h2>${q.q}</h2>${q.o.map((x,i)=>`<button class="qoption" onclick="answerQuiz(${i})">${x}</button>`).join('')}`}
 function answerQuiz(i){let q=questions[qi];let buttons=$('quizArea').querySelectorAll('.qoption');buttons.forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add('correct');if(j===i&&i!==q.a)b.classList.add('wrong')});if(i===q.a)score++;let note=document.createElement('p');note.className='small';note.textContent=q.why;$('quizArea').appendChild(note);let next=document.createElement('button');next.className='btn';next.textContent='Next';next.onclick=()=>{qi++;showQuestion()};$('quizArea').appendChild(next)}
 function saveQuizResult(){
- let records=read('quizBest',{});
- let old=records[difficulty]||0;
- if(score>old){records[difficulty]=score;write('quizBest',records)}
- let history=read('quizHistory',[]);
+ // हर difficulty का केवल सबसे अच्छा स्कोर गिना जाएगा।
+ const records=read('quizBest',{});
+ const oldBest=Number(records[difficulty]||0);
+ const newBest=Math.max(oldBest,Number(score)||0);
+ lastQuizBest=newBest;
+ lastQuizBonus=Math.max(0,newBest-oldBest)*10;
+ if(newBest>oldBest){
+  records[difficulty]=newBest;
+  write('quizBest',records);
+ }
+ const history=read('quizHistory',[]);
  history.unshift({difficulty,score,total:questions.length,date:new Date().toLocaleDateString()});
  write('quizHistory',history.slice(0,50));
  renderLeaderboard();
